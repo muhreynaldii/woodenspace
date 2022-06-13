@@ -1,8 +1,16 @@
 import "./App.css";
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
 function App() {
-  return <h1 className="bg-black p-10 font-bold">Hello</h1>;
+  return (
+    <Routes>
+      <Route path="/">
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;

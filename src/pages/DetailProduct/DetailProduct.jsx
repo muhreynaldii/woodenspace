@@ -44,11 +44,11 @@ const DetailProduct = () => {
                 <p className="text-md mb-6 font-normal">Rp. 250.000</p>
                 <button
                   type="button"
-                  className="mb-4 block w-full rounded-2xl bg-dark-blue-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-dark-blue-03"
+                  className="mb-4 block w-full rounded-2xl bg-purple-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-purple-03"
                 >
                   Terbitkan
                 </button>
-                <button className=" block w-full rounded-2xl border border-dark-blue-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-dark-blue-03 hover:text-white">
+                <button className=" block w-full rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-purple-03 hover:text-white">
                   Edit
                 </button>
               </div>

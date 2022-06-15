@@ -9,7 +9,7 @@ import fi_search from "../../assets/icons/fi_search.png";
 const Header = () => {
   return (
     <>
-      <header className="fixed top-0 left-0 z-10 w-full items-center bg-white shadow-high">
+      <header className="fixed top-0 left-0 z-20 w-full items-center bg-white shadow-high">
         <div className="container mx-auto">
           <div className="relative flex items-center justify-between">
             <div className="flex items-center px-4 py-5">

@@ -11,24 +11,28 @@ const CarouselProduct = () => {
     indicators: true,
     infinite: false,
     autoplay: false,
-    prevArrow: null,
-    // nextArrow: (
-    //   <div className="absolute cursor-pointer">
+    // prevArrow: (
+    //   <span className="cursor-pointer">
     //     <img src={btn_right} alt="btn" />
-    //   </div>
+    //   </span>
+    // ),
+    // nextArrow: (
+    //   <span className="cursor-pointer">
+    //     <img src={btn_right} alt="btn" />
+    //   </span>
     // ),
   };
 
   return (
     <>
-      <Slide {...slideProperty} className="p-0">
-        {slideImages.map((item, index) => {
+      <Slide {...slideProperty} className="mb-4">
+        {slideImages.map((img, index) => {
           return (
             <div
-              className="mb-6 flex w-full justify-center overflow-hidden rounded-2xl"
+              className="w-full justify-center overflow-hidden rounded-2xl"
               key={index}
             >
-              <img src={item} alt="Product" />
+              <img src={img} alt="Product" />
             </div>
           );
         })}

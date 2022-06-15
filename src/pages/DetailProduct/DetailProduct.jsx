@@ -10,7 +10,7 @@ import User from "../../assets/image/user.png";
 const DetailProduct = () => {
   return (
     <>
-      <header className="fixed top-0 left-0 z-10 w-full items-center bg-white shadow-3xl">
+      <header className="shadow-3xl fixed top-0 left-0 z-10 w-full items-center bg-white">
         <div className="container">
           <div className="relative flex items-center justify-between">
             <div class="flex items-center px-4 py-5">
@@ -59,7 +59,7 @@ const DetailProduct = () => {
               <div className="mb-4 w-full overflow-hidden rounded-lg">
                 <img src={Product} alt="Product" />
               </div>
-              <div className="w-full rounded-lg p-4 shadow-3xl">
+              <div className="shadow-3xl w-full rounded-lg p-4">
                 <h3 className="mb-4 text-base font-bold">Deskripsi</h3>
                 <p className="mb-4 text-base text-slate-400">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -80,7 +80,7 @@ const DetailProduct = () => {
               </div>
             </div>
             <div className="w-1/4">
-              <div className="mb-6 rounded-lg p-4 shadow-3xl">
+              <div className="shadow-3xl mb-6 rounded-lg p-4">
                 <h3 className="mb-3 text-2xl font-semibold">
                   Jam Tangan Casio
                 </h3>
@@ -88,15 +88,15 @@ const DetailProduct = () => {
                 <p className="text-md mb-6 font-semibold">Rp. 250.000</p>
                 <button
                   type="button"
-                  className="mb-4 block w-full rounded-2xl bg-primary px-6 py-3 text-white"
+                  className="bg-primary mb-4 block w-full rounded-2xl px-6 py-3 text-white"
                 >
                   Terbitkan
                 </button>
-                <button className=" block w-full rounded-2xl border border-primary bg-white px-6 py-3 text-black">
+                <button className=" border-primary block w-full rounded-2xl border bg-white px-6 py-3 text-black">
                   Edit
                 </button>
               </div>
-              <div className="flex items-center rounded-lg p-4 shadow-3xl">
+              <div className="shadow-3xl flex items-center rounded-lg p-4">
                 <div className="overflow-hidden rounded-lg">
                   <img src={User} alt="User Image" />
                 </div>

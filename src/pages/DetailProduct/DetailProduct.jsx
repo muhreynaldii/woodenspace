@@ -3,6 +3,7 @@ import User from "../../assets/image/user.png";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 
+
 const DetailProduct = () => {
   return (
     <>

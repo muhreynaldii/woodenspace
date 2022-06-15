@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import DetailProduct from "./pages/DetailProduct/DetailProduct";
 import ListProduct from "./pages/ListProduct/ListProduct";
 
-function App() {
+export default function App() {
   return (
     <Routes>
       <Route path="/">
@@ -16,5 +16,3 @@ function App() {
     </Routes>
   );
 }
-
-export default App;

@@ -1,6 +1,6 @@
 import React from "react";
 import Product from "../../assets/image/products/product-1.png";
-import btn_right from "../../assets/icons/btn-right.png";
+// import btn_right from "../../assets/icons/btn-right.png";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 

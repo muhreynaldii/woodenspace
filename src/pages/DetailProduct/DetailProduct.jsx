@@ -3,7 +3,6 @@ import User from "../../assets/image/user.png";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 
-
 const DetailProduct = () => {
   return (
     <>
@@ -38,8 +37,10 @@ const DetailProduct = () => {
             </div>
             <div className="w-full px-4 lg:w-[336px]">
               <div className="mb-6 rounded-2xl p-4 shadow-high">
-                <h3 className="mb-2 text-base font-normal">Jam Tangan Casio</h3>
-                <p className="mb-4 text-sm text-neutral-03">Aksesoris</p>
+                <h3 className="mb-2 text-base font-medium">Jam Tangan Casio</h3>
+                <p className="mb-4 text-sm font-normal text-neutral-03">
+                  Aksesoris
+                </p>
                 <p className="text-md mb-6 font-normal">Rp. 250.000</p>
                 <button
                   type="button"
@@ -56,7 +57,7 @@ const DetailProduct = () => {
                   <img src={User} alt="User" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-sm font-normal">Nama Penjual</h3>
+                  <p className="text-sm font-medium">Nama Penjual</p>
                   <p className="text-xs text-neutral-03">Kota</p>
                 </div>
               </div>

@@ -15,7 +15,7 @@ const DetailProduct = () => {
               {/* Carousel Product */}
               <CarouselProduct />
               {/* /Caousel Product/ */}
-              <div className="w-full rounded-2xl p-4 shadow-low">
+              <div className="mb-2 w-full rounded-2xl p-4 shadow-low">
                 <h3 className="mb-4 text-sm font-bold">Deskripsi</h3>
                 <p className="mb-4 text-sm text-neutral-03">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.

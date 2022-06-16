@@ -1,0 +1,27 @@
+.swiper-button-next {
+  background-image: url("../../assets/icons/btn-right.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-pagination-bullet {
+  background: #c4c4c4;
+  border: 1px solid #7126b5;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #7126b5;
+  border: 1px solid #7126b5;
+}

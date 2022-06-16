@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../assets/image/logo.png";
 import iconLogin from "../../assets/icons/fi_log-in.png";
 import iconPlus from "../../assets/icons/fi_plus.png";
 import casio1 from "../../assets/image/casio_1.png";
@@ -7,73 +6,63 @@ import casio2 from "../../assets/image/casio_2.png";
 import banner from "../../assets/image/banner.png";
 import ButtonCategory from "./../../components/ButtonCategory/ButtonCategory";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper";
+import { EffectCoverflow } from "swiper";
 import "swiper/css";
-import "swiper/css/pagination";
+import Header from "../../components/Header/Header";
+import "./Home.css";
 
 function Home() {
   return (
     <>
-      <header>
-        <div className="shadow-high">
-          <div className="container mx-auto flex h-[84px] items-center">
-            <div className="flex w-1/2">
-              <div className="flex w-1/6 flex-wrap items-center">
-                <img src={logo} alt="logo" className="w-[100px] sm:w-[100px]" />
-              </div>
-              <div className="w-5/6">
-                <input
-                  type="search"
-                  name=""
-                  id=""
-                  className="ml-6 h-[48px] w-[222px] rounded-2xl bg-[#EEEEEE] px-3 py-6 pl-6 text-neutral-03 lg:w-[444px]"
-                  placeholder="Cari disini .."
-                />
-              </div>
-            </div>
-            <div className="flex w-1/2 justify-center lg:justify-end">
-              <button className="flex h-[48px] w-[105px] rounded-xl bg-purple-04 px-4 py-[14px] text-white">
-                <img src={iconLogin} alt="icon-login" className="mr-2" />
-                <span className="text-sm">Masuk</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-      <section id="carousel" className="my-10 h-[288px]">
+      <Header>
+        <button className="flex h-[48px] w-[105px] rounded-xl bg-purple-04 px-4 py-[14px] text-white">
+          <img src={iconLogin} alt="icon-login" className="mr-2" />
+          <span className="text-sm">Masuk</span>
+        </button>
+      </Header>
+      <section id="carousel" className="my-10 mt-32 h-[144px] sm:h-[288px]">
         <Swiper
-          slidesPerView={"1"}
+          effect={"coverflow"}
+          grabCursor={true}
           centeredSlides={true}
-          spaceBetween={30}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 325,
+            modifier: 1,
+            slideShadows: true,
           }}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Autoplay, Pagination]}
-          className="h-full w-full"
+          pagination={true}
+          modules={[EffectCoverflow]}
+          className="mySwiper"
         >
           <SwiperSlide>
             <img
               src={banner}
               alt=""
-              className="rounded-[20px] object-cover lg:h-full lg:w-full"
+              className="overflow-hidden rounded-[20px] object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
               src={banner}
               alt=""
-              className="rounded-[20px] object-cover lg:h-full lg:w-full"
+              className="overflow-hidden rounded-[20px] object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
               src={banner}
               alt=""
-              className="rounded-[20px] object-cover lg:h-full lg:w-full"
+              className="overflow-hidden rounded-[20px] object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src={banner}
+              alt=""
+              className="overflow-hidden rounded-[20px] object-cover"
             />
           </SwiperSlide>
         </Swiper>

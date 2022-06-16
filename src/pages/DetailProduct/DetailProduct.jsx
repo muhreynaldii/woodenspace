@@ -2,11 +2,14 @@ import React from "react";
 import User from "../../assets/image/user.png";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
+import NavMenu from "./../../components/NavMenu/NavMenu";
 
 const DetailProduct = () => {
   return (
     <>
-      <Header />
+      <Header>
+        <NavMenu />
+      </Header>
 
       <section id="detail-product" className="pt-32">
         <div className="container mx-auto">

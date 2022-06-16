@@ -9,11 +9,14 @@ import fi_chevron_1 from "../../assets/icons/fi_chevron-right-1.svg";
 import fi_heart from "../../assets/icons/fi_heart.svg";
 import fi_dollar from "../../assets/icons/fi_dollar-sign.svg";
 import { Link } from "react-router-dom";
+import NavMenu from "./../../components/NavMenu/NavMenu";
 
 const ListProduct = () => {
   return (
     <>
-      <Header />
+      <Header>
+        <NavMenu />
+      </Header>
 
       <section id="list-product" className="pt-32">
         <div className="container mx-auto px-4">

@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
-import fi_list from "../../assets/icons/fi_list.png";
-import fi_bell from "../../assets/icons/fi_bell.png";
-import fi_user from "../../assets/icons/fi_user.png";
 import fi_search from "../../assets/icons/fi_search.png";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <header className="fixed top-0 left-0 z-20 w-full items-center bg-white shadow-high">
@@ -31,27 +28,7 @@ const Header = () => {
                 </span>
               </div>
             </div>
-            <div className="px-4 py-5">
-              <nav id="nav-menu">
-                <ul className="flex">
-                  <li>
-                    <a href="#">
-                      <img src={fi_list} alt="List Icon" className="mx-5" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src={fi_bell} alt="List Icon" className="mx-5" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src={fi_user} alt="List Icon" className="mx-5" />
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+            <div className="px-4 py-5">{props.children}</div>
           </div>
         </div>
       </header>

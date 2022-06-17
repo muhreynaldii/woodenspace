@@ -2,18 +2,15 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import User from "../../assets/image/user.png";
 import Product from "../../assets/image/products/product-1.png";
-import fi_plus from "../../assets/icons/fi_plus.svg";
-import fi_box from "../../assets/icons/fi_box.svg";
-import fi_chevron from "../../assets/icons/fi_chevron-right.svg";
-import fi_chevron_1 from "../../assets/icons/fi_chevron-right-1.svg";
-import fi_heart from "../../assets/icons/fi_heart.svg";
-import fi_dollar from "../../assets/icons/fi_dollar-sign.svg";
 import { Link } from "react-router-dom";
+import NavMenu from "./../../components/NavMenu/NavMenu";
 
 const ListProduct = () => {
   return (
     <>
-      <Header />
+      <Header>
+        <NavMenu />
+      </Header>
 
       <section id="list-product" className="pt-32">
         <div className="container mx-auto px-4">
@@ -46,51 +43,213 @@ const ListProduct = () => {
             <div className="w-full lg:w-[968px]">
               <div className="flex flex-col lg:flex-row">
                 <div className="mr-8 mb-6 h-[248px] w-full rounded-2xl p-6 shadow-low md:w-full lg:w-[268px]">
-                  <h3 className="mb-6 text-base font-semibold">Kategori</h3>
+                  <h3 className="mb-6 text-base font-medium">Kategori</h3>
                   <ul>
-                    <li className="border-b-neutral-01 border-b-2 pb-4">
+                    <li className="border-b-neutral-01 group border-b pb-4 hover:border-b-purple-04">
                       <div className="flex items-center">
-                        <img src={fi_box} alt="" className="mr-2" />
+                        <svg
+                          id="package-alt"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                          width="28"
+                          height="28"
+                        >
+                          <polygon
+                            id="primary"
+                            points="20 16.5 20 7.5 12 3 4 7.5 4 16.5 12 21 20 16.5"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 1,
+                            }}
+                          ></polygon>
+                          <polyline
+                            id="primary-2"
+                            data-name="primary"
+                            points="20 7.5 12 11.5 4 7.5"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 1,
+                            }}
+                          ></polyline>
+                          <line
+                            id="primary-3"
+                            data-name="primary"
+                            x1="12"
+                            y1="11.5"
+                            x2="12"
+                            y2="21"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 1,
+                            }}
+                          ></line>
+                          <polyline
+                            id="primary-4"
+                            data-name="primary"
+                            points="16 14 16 9.5 12 7.5"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 1,
+                            }}
+                          ></polyline>
+                        </svg>
                         <Link
                           to="#"
-                          className="mr-7 text-base font-medium text-purple-04"
+                          className="mr-7 text-base font-normal text-neutral-05 group-hover:text-purple-04"
                         >
                           Semua Produk
                         </Link>
-                        <img src={fi_chevron} alt="" />
+                        <svg
+                          id="right-2"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className="icon line stroke-neutral-02 group-hover:stroke-purple-04"
+                          width="20"
+                          height="20"
+                        >
+                          <polyline
+                            id="primary"
+                            points="7.5 3 16.5 12 7.5 21"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                            }}
+                          ></polyline>
+                        </svg>
                       </div>
                     </li>
-                    <li className="border-b-neutral-01 mt-4 border-b-2 pb-4">
+                    <li className="border-b-neutral-01 group mt-4 border-b pb-4 hover:border-b-purple-04">
                       <div className="flex items-center">
-                        <img src={fi_heart} alt="" className="mr-2" />
+                        {/* <img src={fi_heart} alt="" className="mr-2" /> */}
+                        <svg
+                          id="heartbeat"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                          width="26"
+                          height="26"
+                        >
+                          <path
+                            id="primary"
+                            d="M19,14.07A32,32,0,0,1,12,21a32,32,0,0,1-7-6.93c-2.22-3-2.76-7.25-.53-9.45,4-4,7.57.61,7.57.61s3.55-4.58,7.57-.61C21.8,6.82,21.26,11.09,19,14.07ZM8,12h2l1-3,2,6,1-3h2"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 1.5,
+                            }}
+                          ></path>
+                        </svg>
                         <Link
                           to="#"
-                          className="mr-[78px] text-base font-medium text-black"
+                          className="mr-[78px] text-base font-normal text-neutral-05 group-hover:text-purple-04"
                         >
                           Diminati
                         </Link>
-                        <img src={fi_chevron_1} alt="" />
+                        <svg
+                          id="right-2"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className="icon line stroke-neutral-02 group-hover:stroke-purple-04"
+                          width="20"
+                          height="20"
+                        >
+                          <polyline
+                            id="primary"
+                            points="7.5 3 16.5 12 7.5 21"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                            }}
+                          ></polyline>
+                        </svg>
                       </div>
                     </li>
-                    <li className="mt-4">
+                    <li className="group mt-4">
                       <div className="flex items-center">
-                        <img src={fi_dollar} alt="" className="mr-2" />
+                        <svg
+                          id="dollar-symbol"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                          width="26"
+                          height="26"
+                        >
+                          <path
+                            id="primary"
+                            d="M12,21V3M7,15.5A3.5,3.5,0,0,0,10.5,19h3A3.5,3.5,0,0,0,17,15.5h0A3.5,3.5,0,0,0,13.5,12h-3A3.5,3.5,0,0,1,7,8.5H7A3.5,3.5,0,0,1,10.5,5h3A3.5,3.5,0,0,1,17,8.5"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 1.5,
+                            }}
+                          ></path>
+                        </svg>
                         <Link
                           to="#"
-                          className="mr-[90px] text-base font-medium text-black"
+                          className="mr-[90px] text-base font-normal text-neutral-05 group-hover:text-purple-04"
                         >
                           Terjual
                         </Link>
-                        <img src={fi_chevron_1} alt="" />
+                        <svg
+                          id="right-2"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className="icon line stroke-neutral-02 group-hover:stroke-purple-04"
+                          width="20"
+                          height="20"
+                        >
+                          <polyline
+                            id="primary"
+                            points="7.5 3 16.5 12 7.5 21"
+                            style={{
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                            }}
+                          ></polyline>
+                        </svg>
                       </div>
                     </li>
                   </ul>
                 </div>
                 <div className="flex w-full flex-wrap justify-between lg:w-3/4">
                   {/* <Link to="/detail"> */}
-                  <div className="border-neutral-01 mb-6 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer lg:w-[207px]">
-                    <img src={fi_plus} alt="icon_add" />
-                    <p className="mt-3 text-sm font-normal text-neutral-03">
+                  <div className=" border-neutral-01 group mb-6 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-purple-04 lg:w-[207px]">
+                    <svg
+                      id="plus"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      className="icon line stroke-neutral-03 group-hover:stroke-purple-04"
+                      width="30"
+                      height="30"
+                    >
+                      <path
+                        id="primary"
+                        d="M5,12H19M12,5V19"
+                        style={{
+                          strokelLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                        }}
+                      ></path>
+                    </svg>
+                    <p className="mt-3 text-sm font-normal text-neutral-03 group-hover:text-purple-04">
                       Tambah Produk
                     </p>
                   </div>

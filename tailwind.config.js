@@ -12,6 +12,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        eye: "url('/src/assets/icons/fi_eye.png')",
+      },
       colors: {
         "purple-01": "#E2D4F0",
         "purple-02": "#D0B7E6",
@@ -23,7 +26,7 @@ module.exports = {
         "cream-03": "#FFE9CA",
         "cream-04": "#D4C2A8",
         "cream-05": "#AA9B87",
-        "neutral-02": "#AA9B87",
+        "neutral-02": "#D0D0D0",
         "neutral-03": "#8A8A8A",
         "neutral-04": "#3C3C3C",
         "neutral-05": "#151515",

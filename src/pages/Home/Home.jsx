@@ -33,6 +33,7 @@ function Home() {
             modifier: 1,
             slideShadows: true,
           }}
+          loop={true}
           pagination={true}
           modules={[EffectCoverflow]}
           className="mySwiper"

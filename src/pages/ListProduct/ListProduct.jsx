@@ -2,11 +2,6 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import User from "../../assets/image/user.png";
 import Product from "../../assets/image/products/product-1.png";
-import fi_box from "../../assets/icons/fi_box.svg";
-import fi_chevron from "../../assets/icons/fi_chevron-right.svg";
-import fi_chevron_1 from "../../assets/icons/fi_chevron-right-1.svg";
-import fi_heart from "../../assets/icons/fi_heart.svg";
-import fi_dollar from "../../assets/icons/fi_dollar-sign.svg";
 import { Link } from "react-router-dom";
 import NavMenu from "./../../components/NavMenu/NavMenu";
 
@@ -48,7 +43,7 @@ const ListProduct = () => {
             <div className="w-full lg:w-[968px]">
               <div className="flex flex-col lg:flex-row">
                 <div className="mr-8 mb-6 h-[248px] w-full rounded-2xl p-6 shadow-low md:w-full lg:w-[268px]">
-                  <h3 className="mb-6 text-base font-semibold">Kategori</h3>
+                  <h3 className="mb-6 text-base font-medium">Kategori</h3>
                   <ul>
                     <li className="border-b-neutral-01 group border-b pb-4 hover:border-b-purple-04">
                       <div className="flex items-center">
@@ -56,7 +51,7 @@ const ListProduct = () => {
                           id="package-alt"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          class="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                          className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
                           width="28"
                           height="28"
                         >
@@ -117,7 +112,7 @@ const ListProduct = () => {
                           id="right-2"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          class="icon line stroke-neutral-02 group-hover:stroke-purple-04"
+                          className="icon line stroke-neutral-02 group-hover:stroke-purple-04"
                           width="20"
                           height="20"
                         >
@@ -141,7 +136,7 @@ const ListProduct = () => {
                           id="heartbeat"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          class="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                          className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
                           width="26"
                           height="26"
                         >
@@ -166,7 +161,7 @@ const ListProduct = () => {
                           id="right-2"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          class="icon line stroke-neutral-02 group-hover:stroke-purple-04"
+                          className="icon line stroke-neutral-02 group-hover:stroke-purple-04"
                           width="20"
                           height="20"
                         >
@@ -189,7 +184,7 @@ const ListProduct = () => {
                           id="dollar-symbol"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          class="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                          className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
                           width="26"
                           height="26"
                         >
@@ -214,7 +209,7 @@ const ListProduct = () => {
                           id="right-2"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          class="icon line stroke-neutral-02 group-hover:stroke-purple-04"
+                          className="icon line stroke-neutral-02 group-hover:stroke-purple-04"
                           width="20"
                           height="20"
                         >
@@ -236,7 +231,6 @@ const ListProduct = () => {
                 <div className="flex w-full flex-wrap justify-between lg:w-3/4">
                   {/* <Link to="/detail"> */}
                   <div className=" border-neutral-01 group mb-6 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-purple-04 lg:w-[207px]">
-                    {/* <img src={fi_plus} alt="icon_add" /> */}
                     <svg
                       id="plus"
                       xmlns="http://www.w3.org/2000/svg"

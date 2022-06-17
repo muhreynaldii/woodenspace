@@ -23,7 +23,7 @@ module.exports = {
         "cream-03": "#FFE9CA",
         "cream-04": "#D4C2A8",
         "cream-05": "#AA9B87",
-        "neutral-02": "#AA9B87",
+        "neutral-02": "#D0D0D0",
         "neutral-03": "#8A8A8A",
         "neutral-04": "#3C3C3C",
         "neutral-05": "#151515",

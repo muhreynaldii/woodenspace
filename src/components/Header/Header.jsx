@@ -26,7 +26,7 @@ const Header = (props) => {
                       id="search"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
-                      class="icon line"
+                      className="icon line"
                       width="28"
                       height="28"
                     >

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
-import fi_search from "../../assets/icons/fi_search.png";
 
 const Header = (props) => {
   return (
@@ -23,7 +22,26 @@ const Header = (props) => {
                 />
                 <span className="absolute right-4 top-1/4">
                   <button>
-                    <img src={fi_search} alt="Search Icon" />
+                    <svg
+                      id="search"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="icon line"
+                      width="28"
+                      height="28"
+                    >
+                      <path
+                        id="primary"
+                        d="M17,10a7,7,0,1,1-7-7A7,7,0,0,1,17,10Zm4,11-6-6"
+                        style={{
+                          fill: "none",
+                          stroke: "#8a8a8a",
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                        }}
+                      ></path>
+                    </svg>
                   </button>
                 </span>
               </div>

@@ -204,4 +204,18 @@ function Home() {
   );
 }
 
+    <div class="px-32 my-8 flex">
+      <div class="">
+          <img src={logo} alt=""/>
+      </div>
+
+      <div class="pl-96">
+          <h1>Lengkapi Info Akun</h1>
+      </div>
+    </div>
+  //   </>
+  // )
+
+
+
 export default Home;

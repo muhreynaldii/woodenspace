@@ -11,6 +11,7 @@ import InfoProduk from "./pages/InfoProduk/InfoProduk";
 import InfoPenawar from "./pages/InfoPenawar/InfoPenawar";
 import ModalTawar from "./components/ModalTawar/ModalTawar";
 
+
 export default function App() {
   return (
     <Routes>

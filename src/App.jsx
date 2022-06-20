@@ -10,6 +10,7 @@ import InfoProfil from "./pages/InfoProfil/InfoProfil";
 import InfoProduk from "./pages/InfoProduk/InfoProduk";
 import InfoPenawar from "./pages/InfoPenawar/InfoPenawar";
 import Buyer from "./pages/Buyer/Buyer";
+import InfoPenawarStatus from "./pages/InfoPenawarStatus/InfoPenawarStatus";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="produk" element={<InfoProduk />} />
         <Route path="info_penawar" element={<InfoPenawar />} />
         <Route path="buyer" element={<Buyer />} />
+        <Route path="info_penawar_status" element={<InfoPenawarStatus />} />
       </Route>
     </Routes>
   );

@@ -1,11 +1,22 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import User from "../../assets/image/user.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import Product from "../../assets/image/products/product-1.png";
+import ModalTawarAccepted from "../../components/ModalTawarAccepted/ModalTawarAccepted";
 
 const InfoPenawar = () => {
+  let [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   return (
     <>
       <header className="fixed top-0 left-0 z-20 w-full items-center bg-white shadow-high">
@@ -81,10 +92,20 @@ const InfoPenawar = () => {
                 <button className="rounded-2xl border border-purple-04 bg-white px-12 py-2 text-sm font-medium transition duration-300 hover:bg-purple-04 hover:text-white">
                   Tolak
                 </button>
-                <button className="ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-12 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black">
+                <button
+                  onClick={openModal}
+                  className="ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-12 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black"
+                >
                   Terima
                 </button>
               </div>
+              {/* Import Modal Tawar Accepted */}
+              <ModalTawarAccepted
+                openModal={openModal}
+                closeModal={closeModal}
+                isOpen={isOpen}
+              />
+              {/* Import Modal Tawar Accepted */}
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ const Header = (props) => {
           <div className="relative flex items-center justify-between">
             <div className="flex items-center py-5 pl-4 pr-1 lg:px-4">
               <div>
-                <Link to="/home" className="hidden lg:block">
+                <Link to="/" className="hidden lg:block">
                   <img src={Logo} alt="Logo" width={"100px"} />
                 </Link>
               </div>

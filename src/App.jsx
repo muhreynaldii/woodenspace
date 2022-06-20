@@ -7,6 +7,7 @@ import ListProduct from "./pages/ListProduct/ListProduct";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import InfoPenawar from "./pages/InfoPenawar/InfoPenawar";
+import Buyer from "./pages/Buyer/Buyer";
 import ModalTawar from "./components/ModalTawar/ModalTawar";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="register" element={<Register />} />
         <Route path="info_penawar" element={<InfoPenawar />} />
         <Route path="modaltawar" element={<ModalTawar />} />
+        <Route path="buyer" element={<Buyer />} />
       </Route>
     </Routes>
   );

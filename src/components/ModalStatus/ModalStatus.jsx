@@ -71,7 +71,7 @@ const ModalStatus = ({ closeModal, isOpen }) => {
                     </div>
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-8">
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white"

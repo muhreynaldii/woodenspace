@@ -1,10 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import User from "../../assets/image/user.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import Product from "../../assets/image/products/product-1.png";
-import ModalTawarAccepted from "../../components/ModalTawarAccepted/ModalTawarAccepted";
 import ModalStatus from "../../components/ModalStatus/ModalStatus";
 
 const InfoPenawarStatus = () => {
@@ -113,13 +112,13 @@ const InfoPenawarStatus = () => {
                   </span>
                 </button>
               </div>
-              {/* Import Modal Tawar Accepted */}
+              {/* Import Modal Status */}
               <ModalStatus
                 openModal={openModal}
                 closeModal={closeModal}
                 isOpen={isOpen}
               />
-              {/* Import Modal Tawar Accepted */}
+              {/* Import Modal Status */}
             </div>
           </div>
         </div>

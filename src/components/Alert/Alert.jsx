@@ -39,7 +39,7 @@ const Alert = ({ closeModal, isOpen, title }) => {
                       {title}
                     </Dialog.Title>
                     <AiOutlineClose
-                      className="cursor-pointer text-2xl text-white"
+                      className="cursor-pointer text-xl text-white"
                       onClick={closeModal}
                     />
                   </div>

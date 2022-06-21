@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginRegister from "../../components/LoginRegister/LoginRegister";
 import { Link } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function Register() {
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange = (e) => {
+    setPasswordInput(e.target.value);
+  };
+
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
   return (
     <LoginRegister name={"Daftar"}>
       <label htmlFor="nama" className="mb-1 text-xs">
@@ -28,13 +42,24 @@ function Register() {
       <label htmlFor="password" className="mb-1 text-xs">
         Password
       </label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="6+ karakter"
-        className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 bg-eye bg-right bg-no-repeat bg-origin-content py-3 px-4 placeholder:text-sm"
-      />
+      <div className="relative flex flex-row">
+        <input
+          type={passwordType}
+          name="password"
+          id="password"
+          placeholder="6+ karakter"
+          className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+          value={passwordInput}
+          onChange={handlePasswordChange}
+        />
+        <button onClick={togglePassword} className="absolute right-3 top-5">
+          {passwordType === "password" ? (
+            <AiOutlineEyeInvisible className="text-2xl text-neutral-03" />
+          ) : (
+            <AiOutlineEye className="text-2xl text-neutral-03" />
+          )}
+        </button>
+      </div>
       <button className="mt-6 mb-10 block h-[48px] w-[452px] rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
         {" "}
         Daftar

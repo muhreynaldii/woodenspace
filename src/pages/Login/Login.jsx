@@ -51,6 +51,11 @@ function Login() {
           )}
         </button>
       </div>
+      <span className="flex justify-end text-sm">
+        <Link to="/forgot" className="mx-2 text-sm text-purple-04">
+          Lupa Password?
+        </Link>
+      </span>
       <button className="mt-6 mb-10 block h-[48px] w-[452px] rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
         {" "}
         Masuk

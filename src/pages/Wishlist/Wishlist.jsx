@@ -47,11 +47,10 @@ const Wishlist = () => {
                 {/* Card Kategori */}
                 <CardCategory />
                 {/* Card Kategori */}
-                <div className="mx-auto flex w-full flex-col items-center justify-center text-center lg:w-3/4">
-                  {/* Empty Card */}
-                  <CardEmpty />
-                  {/* Empty Card */}
-                </div>
+
+                {/* Empty Card */}
+                <CardEmpty />
+                {/* Empty Card */}
               </div>
             </div>
           </div>

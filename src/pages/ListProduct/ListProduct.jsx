@@ -2,10 +2,21 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import User from "../../assets/image/user.png";
 import Product from "../../assets/image/products/product-1.png";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavMenu from "./../../components/NavMenu/NavMenu";
+import Alert from "../../components/Alert/Alert";
 
 const ListProduct = () => {
+  let [isOpen, setIsOpen] = useState(true);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
   return (
     <>
       <Header>
@@ -306,6 +317,12 @@ const ListProduct = () => {
           </div>
         </div>
       </section>
+      <Alert
+        openModal={openModal}
+        closeModal={closeModal}
+        isOpen={isOpen}
+        title={"Produk berhasil diterbitkan."}
+      />
     </>
   );
 };

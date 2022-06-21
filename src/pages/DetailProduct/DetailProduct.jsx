@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import User from "../../assets/image/user.png";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
 
 const DetailProduct = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Header>
@@ -48,6 +50,7 @@ const DetailProduct = () => {
                 <button
                   type="button"
                   className="mb-4 block w-full rounded-2xl bg-purple-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-purple-03"
+                  onClick={() => navigate("/list_product")}
                 >
                   Terbitkan
                 </button>

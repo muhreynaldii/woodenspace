@@ -1,7 +1,6 @@
 import React from "react";
 import Plus from "../../assets/icons/fi_plus (hitam).png";
 import { Link } from "react-router-dom";
-import Camera from "../../assets/icons/fi_camera.png";
 import Logo from "../../assets/image/logo.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 

@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 import User from "../../assets/image/user.png";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import CardCategory from "../../components/CardCategory/CardCategory";
 import CardEmpty from "../../components/CardEmpty/CardEmpty";

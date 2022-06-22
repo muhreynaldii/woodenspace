@@ -13,6 +13,7 @@ import Buyer from "./pages/Buyer/Buyer";
 import InfoPenawarStatus from "./pages/InfoPenawarStatus/InfoPenawarStatus";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="info_penawar_status" element={<InfoPenawarStatus />} />
         <Route path="forgot" element={<ForgotPassword />} />
         <Route path="wishlist" element={<Wishlist />} />
+        <Route path="resetpassword" element={<ResetPassword />} />
       </Route>
     </Routes>
   );

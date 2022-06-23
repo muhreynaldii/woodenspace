@@ -13,9 +13,9 @@ function ForgotPassword() {
         name="email"
         id="email"
         placeholder="Contoh : Johndoe@gmail.com"
-        className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+        className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
       />
-      <button className="mt-6 mb-10 block h-[48px] w-[452px] rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
+      <button className="mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
         {" "}
         Reset Password
       </button>

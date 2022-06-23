@@ -34,7 +34,7 @@ function ResetPassword() {
           name="password"
           id="password"
           placeholder="6+ karakter"
-          className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+          className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
         />
         <button onClick={toggleNewPassword} className="absolute right-3 top-5">
           {newPasswordType === "password" ? (
@@ -53,7 +53,7 @@ function ResetPassword() {
           name="password"
           id="password"
           placeholder="6+ karakter"
-          className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+          className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
         />
         <button
           onClick={toggleConfNewPassword}
@@ -66,7 +66,7 @@ function ResetPassword() {
           )}
         </button>
       </div>
-      <button className="mt-6 mb-10 block h-[48px] w-[452px] rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
+      <button className="mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
         {" "}
         Reset Password
       </button>

@@ -27,7 +27,7 @@ function Register() {
         name="nama"
         id="nama"
         placeholder="Nama Lengkap"
-        className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+        className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
       />
       <label htmlFor="email" className="mb-1 text-xs">
         Email
@@ -37,7 +37,7 @@ function Register() {
         name="email"
         id="email"
         placeholder="Contoh : Johndoe@gmail.com"
-        className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+        className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
       />
       <label htmlFor="password" className="mb-1 text-xs">
         Password
@@ -48,7 +48,7 @@ function Register() {
           name="password"
           id="password"
           placeholder="6+ karakter"
-          className="my-2 block h-[48px] w-[452px] rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
+          className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
           value={passwordInput}
           onChange={handlePasswordChange}
         />
@@ -60,7 +60,7 @@ function Register() {
           )}
         </button>
       </div>
-      <button className="mt-6 mb-10 block h-[48px] w-[452px] rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
+      <button className="mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-purple-04 py-3 px-6 text-center text-white">
         {" "}
         Daftar
       </button>

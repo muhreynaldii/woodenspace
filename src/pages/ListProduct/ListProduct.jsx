@@ -94,9 +94,9 @@ const ListProduct = () => {
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <p className="mb-1 text-sm font-normal hover:text-purple-04">
+                      <h5 className="mb-1 text-sm font-normal hover:text-purple-04">
                         Jam Tangan Casio
-                      </p>
+                      </h5>
                     </Link>
                     <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
                     <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
@@ -110,9 +110,9 @@ const ListProduct = () => {
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <p className="mb-1 text-sm font-normal hover:text-purple-04">
+                      <h5 className="mb-1 text-sm font-normal hover:text-purple-04">
                         Jam Tangan Casio
-                      </p>
+                      </h5>
                     </Link>
                     <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
                     <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
@@ -126,9 +126,9 @@ const ListProduct = () => {
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <p className="mb-1 text-sm font-normal hover:text-purple-04">
+                      <h5 className="mb-1 text-sm font-normal hover:text-purple-04">
                         Jam Tangan Casio
-                      </p>
+                      </h5>
                     </Link>
                     <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
                     <p className="mb-3 text-sm font-normal">Rp. 250.000</p>

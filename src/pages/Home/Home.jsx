@@ -10,6 +10,7 @@ import { EffectCoverflow } from "swiper";
 import "swiper/css";
 import Header from "../../components/Header/Header";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -17,7 +18,9 @@ function Home() {
       <Header>
         <button className="flex h-[48px] w-[105px] rounded-xl bg-purple-04 px-4 py-[14px] text-white">
           <img src={iconLogin} alt="icon-login" className="mr-2" />
-          <span className="text-sm">Masuk</span>
+          <Link to="/login">
+            <span className="text-sm">Masuk</span>
+          </Link>
         </button>
       </Header>
       <section id="carousel" className="my-10 mt-32 h-[144px] sm:h-[288px]">
@@ -93,7 +96,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -105,7 +112,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -117,7 +128,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -129,7 +144,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -141,7 +160,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -153,7 +176,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -165,7 +192,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -177,7 +208,11 @@ function Home() {
                 alt="casio1"
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
-              <h5 className="mb-1 text-sm text-black">Jam Tangan Casio</h5>
+              <Link to="/buyer">
+                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                  Jam Tangan Casio
+                </h5>
+              </Link>
               <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
               <p className="mb-1 text-sm text-black">Rp.250.000</p>
             </div>
@@ -185,16 +220,15 @@ function Home() {
         </div>
       </section>
       <div className="fixed bottom-5 w-screen">
-        <button className="mx-auto flex h-[52px] w-[115px] items-center rounded-xl bg-purple-04 py-4 px-6 text-white shadow-lg shadow-purple-03">
-          <img src={iconPlus} alt="icon-plus" className="mr-4" />
-          <span>Jual</span>
-        </button>
+        <Link to="/list_product">
+          <button className="mx-auto flex h-[52px] w-[115px] items-center rounded-xl bg-purple-04 py-4 px-6 text-white shadow-lg shadow-purple-03">
+            <img src={iconPlus} alt="icon-plus" className="mr-4" />
+            <span>Jual</span>
+          </button>
+        </Link>
       </div>
     </>
   );
 }
-
-
-
 
 export default Home;

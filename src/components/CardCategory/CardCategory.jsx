@@ -66,7 +66,7 @@ const CardCategory = () => {
               </svg>
               <Link
                 to="/list_product"
-                className="mr-[6.50rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-8"
+                className="mr-[6rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-8"
               >
                 Semua Produk
               </Link>
@@ -114,7 +114,7 @@ const CardCategory = () => {
               </svg>
               <Link
                 to="/wishlist"
-                className="mr-[9.5rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-[78px]"
+                className="mr-[9rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-[78px]"
               >
                 Diminati
               </Link>
@@ -162,7 +162,7 @@ const CardCategory = () => {
               </svg>
               <Link
                 to="#"
-                className="mr-[10.25rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-[92px]"
+                className="mr-[9.75rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-[92px]"
               >
                 Terjual
               </Link>

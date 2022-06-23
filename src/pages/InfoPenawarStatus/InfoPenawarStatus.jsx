@@ -95,9 +95,9 @@ const InfoPenawarStatus = () => {
                 >
                   Status
                 </button>
-                <button className="group relative ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-12 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black">
+                <button className="group relative ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-10 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black lg:px-12">
                   Hubungi di
-                  <span className="absolute right-6 top-3">
+                  <span className="absolute right-4 top-3 lg:right-6">
                     <svg
                       role="img"
                       viewBox="0 0 24 24"

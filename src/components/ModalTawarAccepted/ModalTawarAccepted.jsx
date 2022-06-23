@@ -3,6 +3,7 @@ import User from "../../assets/image/user.png";
 import Product from "../../assets/image/products/product-1.png";
 import { Dialog, Transition } from "@headlessui/react";
 import iconX from "../../assets/icons/fi_x.png";
+import { Link } from "react-router-dom";
 
 const ModalTawarAccepted = ({ closeModal, isOpen }) => {
   return (
@@ -91,13 +92,14 @@ const ModalTawarAccepted = ({ closeModal, isOpen }) => {
                   </div>
 
                   <div className="relative mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white"
-                      onClick={closeModal}
-                    >
-                      Hubungi Via Whatsapp
-                    </button>
+                    <Link to="/info_penawar_status">
+                      <button
+                        type="button"
+                        className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white"
+                      >
+                        Hubungi Via Whatsapp
+                      </button>
+                    </Link>
                     <span className="absolute right-6 top-4">
                       <svg
                         role="img"

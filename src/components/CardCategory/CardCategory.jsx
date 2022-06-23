@@ -8,7 +8,7 @@ const CardCategory = () => {
         <h3 className="mb-6 text-base font-medium">Kategori</h3>
         <ul>
           <li className="border-b-neutral-01 group border-b pb-4 hover:border-b-purple-04">
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <svg
                 id="package-alt"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const CardCategory = () => {
               </svg>
               <Link
                 to="/list_product"
-                className="mr-7 text-base font-normal text-neutral-05 group-hover:text-purple-04"
+                className="mr-[6rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-8"
               >
                 Semua Produk
               </Link>
@@ -92,8 +92,7 @@ const CardCategory = () => {
             </div>
           </li>
           <li className="border-b-neutral-01 group mt-4 border-b pb-4 hover:border-b-purple-04">
-            <div className="flex items-center">
-              {/* <img src={fi_heart} alt="" className="mr-2" /> */}
+            <div className="flex items-center justify-between">
               <svg
                 id="heartbeat"
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +114,7 @@ const CardCategory = () => {
               </svg>
               <Link
                 to="/wishlist"
-                className="mr-[78px] text-base font-normal text-neutral-05 group-hover:text-purple-04"
+                className="mr-[9rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-[78px]"
               >
                 Diminati
               </Link>
@@ -141,7 +140,7 @@ const CardCategory = () => {
             </div>
           </li>
           <li className="group mt-4">
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <svg
                 id="dollar-symbol"
                 xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +162,7 @@ const CardCategory = () => {
               </svg>
               <Link
                 to="#"
-                className="mr-[90px] text-base font-normal text-neutral-05 group-hover:text-purple-04"
+                className="mr-[9.75rem] text-base font-normal text-neutral-05 group-hover:text-purple-04 lg:mr-[92px]"
               >
                 Terjual
               </Link>

@@ -49,7 +49,7 @@ const ModalTawar = ({ closeModal, isOpen }) => {
                       Harga tawaranmu akan diketahui penjual, jika penjual cocok
                       kamu akan segera dihubungi penjual.
                     </p>
-                    <div className="mb-6 flex h-[80px] w-[296px] items-center rounded-2xl bg-[#EEEEEE] p-4 shadow-high">
+                    <div className="mb-6 flex h-[80px] w-full items-center rounded-2xl bg-[#EEEEEE] p-4 shadow-high">
                       <img
                         src={product}
                         alt=""
@@ -72,11 +72,11 @@ const ModalTawar = ({ closeModal, isOpen }) => {
                     </label>
                     <input
                       type="number"
-                      className="placeholder: mb-6 h-[48px] w-[296px] rounded-2xl border border-neutral-02 py-3 px-4 text-sm shadow-high placeholder:text-neutral-03"
+                      className="placeholder: mb-6 h-[48px] w-full rounded-2xl border border-neutral-02 py-3 px-4 text-sm shadow-high placeholder:text-neutral-03"
                       placeholder="Rp 0,00"
                     />
                     <button
-                      className="h-[48px] w-[296px] rounded-2xl bg-purple-04 py-3 px-6 text-center text-sm font-medium text-white hover:bg-purple-03"
+                      className="h-[48px] w-full rounded-2xl bg-purple-04 py-3 px-6 text-center text-sm font-medium text-white hover:bg-purple-03"
                       onClick={closeModal}
                     >
                       {" "}

@@ -57,11 +57,11 @@ const ListProduct = () => {
                 {/* Card Category */}
                 <CardCategory />
                 {/* Card Category */}
-                <div className="flex w-full flex-wrap justify-between lg:w-3/4">
+                <div className="flex w-full flex-wrap gap-3 lg:w-3/4 lg:gap-7">
                   <Link
                     as="div"
                     to="/produk"
-                    className=" border-neutral-01 group mb-6 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-purple-04 lg:w-[207px]"
+                    className=" border-neutral-01 group mb-3 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-purple-04 lg:mb-0 lg:w-[207px]"
                   >
                     <svg
                       id="plus"
@@ -86,48 +86,50 @@ const ListProduct = () => {
                     </p>
                   </Link>
 
-                  <div className="mb-6 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <div
-                      className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                      style={{ backgroundImage: `url(${Product})` }}
-                    ></div>
-                    <p className="mb-1 text-sm font-normal">Jam Tangan Casio</p>
+                  <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
+                    <Link to="buyer">
+                      <div
+                        className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
+                        style={{ backgroundImage: `url(${Product})` }}
+                      ></div>
+                    </Link>
+                    <Link to="/buyer">
+                      <p className="mb-1 text-sm font-normal hover:text-purple-04">
+                        Jam Tangan Casio
+                      </p>
+                    </Link>
                     <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
                     <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
                   </div>
-                  <div className="mb-6 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <div
-                      className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                      style={{ backgroundImage: `url(${Product})` }}
-                    ></div>
-                    <p className="mb-1 text-sm font-normal">Jam Tangan Casio</p>
+
+                  <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
+                    <Link to="buyer">
+                      <div
+                        className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
+                        style={{ backgroundImage: `url(${Product})` }}
+                      ></div>
+                    </Link>
+                    <Link to="/buyer">
+                      <p className="mb-1 text-sm font-normal hover:text-purple-04">
+                        Jam Tangan Casio
+                      </p>
+                    </Link>
                     <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
                     <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
                   </div>
-                  <div className="mb-6 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <div
-                      className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                      style={{ backgroundImage: `url(${Product})` }}
-                    ></div>
-                    <p className="mb-1 text-sm font-normal">Jam Tangan Casio</p>
-                    <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
-                    <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
-                  </div>
-                  <div className="mb-6 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <div
-                      className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                      style={{ backgroundImage: `url(${Product})` }}
-                    ></div>
-                    <p className="mb-1 text-sm font-normal">Jam Tangan Casio</p>
-                    <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
-                    <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
-                  </div>
-                  <div className="mb-6 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <div
-                      className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                      style={{ backgroundImage: `url(${Product})` }}
-                    ></div>
-                    <p className="mb-1 text-sm font-normal">Jam Tangan Casio</p>
+
+                  <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
+                    <Link to="buyer">
+                      <div
+                        className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
+                        style={{ backgroundImage: `url(${Product})` }}
+                      ></div>
+                    </Link>
+                    <Link to="/buyer">
+                      <p className="mb-1 text-sm font-normal hover:text-purple-04">
+                        Jam Tangan Casio
+                      </p>
+                    </Link>
                     <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
                     <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
                   </div>

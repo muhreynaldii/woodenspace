@@ -57,7 +57,7 @@ const DetailProduct = () => {
                 <p className="text-md mb-6 font-normal">Rp. 250.000</p>
                 <button
                   type="button"
-                  className="mb-4 block w-full rounded-2xl bg-purple-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-purple-03"
+                  className="mb-4 block w-full rounded-2xl bg-purple-04 py-3 px-2 text-sm text-white transition duration-300 hover:bg-purple-03 sm:px-6 sm:py-3"
                   onClick={openModal}
                 >
                   Saya tertarik dan ingin nego

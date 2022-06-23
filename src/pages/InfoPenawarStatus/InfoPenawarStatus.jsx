@@ -91,7 +91,7 @@ const InfoPenawarStatus = () => {
               <div className="border-b-neutral-01 mt-4 flex justify-center border-b-2 pb-4 md:justify-end">
                 <button
                   onClick={openModal}
-                  className="rounded-2xl border border-purple-04 bg-white px-12 py-2 text-sm font-medium transition duration-300 hover:bg-purple-04 hover:text-white"
+                  className="rounded-2xl border border-purple-04 bg-white px-3 py-1 text-sm font-medium transition duration-300 hover:bg-purple-04 hover:text-white sm:px-12 sm:py-2"
                 >
                   Status
                 </button>

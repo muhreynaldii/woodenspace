@@ -89,12 +89,12 @@ const InfoPenawar = () => {
                 </div>
               </div>
               <div className="border-b-neutral-01 mt-4 flex justify-center border-b-2 pb-4 md:justify-end">
-                <button className="rounded-2xl border border-purple-04 bg-white px-12 py-2 text-sm font-medium transition duration-300 hover:bg-purple-04 hover:text-white">
+                <button className="rounded-2xl border border-purple-04 bg-white px-8 py-[6px] text-sm font-medium transition duration-300 hover:bg-purple-04 hover:text-white sm:px-12 sm:py-2">
                   Tolak
                 </button>
                 <button
                   onClick={openModal}
-                  className="ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-12 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black"
+                  className="ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-8 py-[6px] text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black sm:px-12 sm:py-2"
                 >
                   Terima
                 </button>

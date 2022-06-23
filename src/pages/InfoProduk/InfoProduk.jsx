@@ -108,10 +108,10 @@ function InfoProduk() {
                   </label>
                 </div>
                 <div className="button-group mb-20 flex gap-4">
-                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm font-medium text-neutral-05 hover:bg-purple-04 hover:text-white">
+                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm font-medium text-neutral-05 hover:bg-purple-01">
                     Preview
                   </button>
-                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-purple-04 px-6 py-3 text-sm font-medium text-white hover:bg-white hover:text-black">
+                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-purple-04 px-6 py-3 text-sm font-medium text-white hover:bg-purple-03">
                     Terbitkan
                   </button>
                 </div>

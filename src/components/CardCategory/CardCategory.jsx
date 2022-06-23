@@ -97,7 +97,7 @@ const CardCategory = () => {
                 id="heartbeat"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                className="icon line mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
+                className="mr-2 stroke-neutral-03 group-hover:stroke-purple-04"
                 width="26"
                 height="26"
               >

@@ -57,7 +57,7 @@ const ListProduct = () => {
                 {/* Card Category */}
                 <CardCategory />
                 {/* Card Category */}
-                <div className="flex w-full flex-wrap gap-3 lg:w-3/4 lg:gap-7">
+                <div className="flex w-full flex-wrap justify-center gap-3 sm:justify-start lg:w-3/4 lg:gap-7">
                   <Link
                     as="div"
                     to="/produk"

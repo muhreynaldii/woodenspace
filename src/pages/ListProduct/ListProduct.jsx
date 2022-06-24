@@ -87,51 +87,61 @@ const ListProduct = () => {
                   </Link>
 
                   <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <Link to="buyer">
+                    <Link to="/buyer">
                       <div
                         className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
                         style={{ backgroundImage: `url(${Product})` }}
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <h5 className="mb-1 text-sm font-normal hover:text-purple-04">
+                      <h5 className="mb-1 truncate text-xs font-normal hover:text-purple-04 sm:text-sm">
                         Jam Tangan Casio
                       </h5>
                     </Link>
-                    <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
-                    <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
+                    <p className="mb-2 text-[10px] text-neutral-03 sm:text-xs">
+                      Aksesoris
+                    </p>
+                    <p className="mb-3 text-xs font-normal sm:text-sm">
+                      Rp. 250.000
+                    </p>
                   </div>
-
                   <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <Link to="buyer">
+                    <Link to="/buyer">
                       <div
                         className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
                         style={{ backgroundImage: `url(${Product})` }}
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <h5 className="mb-1 text-sm font-normal hover:text-purple-04">
+                      <h5 className="mb-1 truncate text-xs font-normal hover:text-purple-04 sm:text-sm">
                         Jam Tangan Casio
                       </h5>
                     </Link>
-                    <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
-                    <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
+                    <p className="mb-2 text-[10px] text-neutral-03 sm:text-xs">
+                      Aksesoris
+                    </p>
+                    <p className="mb-3 text-xs font-normal sm:text-sm">
+                      Rp. 250.000
+                    </p>
                   </div>
-
                   <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <Link to="buyer">
+                    <Link to="/buyer">
                       <div
                         className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
                         style={{ backgroundImage: `url(${Product})` }}
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <h5 className="mb-1 text-sm font-normal hover:text-purple-04">
+                      <h5 className="mb-1 truncate text-xs font-normal hover:text-purple-04 sm:text-sm">
                         Jam Tangan Casio
                       </h5>
                     </Link>
-                    <p className="mb-2 text-xs text-neutral-03">Aksesoris</p>
-                    <p className="mb-3 text-sm font-normal">Rp. 250.000</p>
+                    <p className="mb-2 text-[10px] text-neutral-03 sm:text-xs">
+                      Aksesoris
+                    </p>
+                    <p className="mb-3 text-xs font-normal sm:text-sm">
+                      Rp. 250.000
+                    </p>
                   </div>
                 </div>
               </div>

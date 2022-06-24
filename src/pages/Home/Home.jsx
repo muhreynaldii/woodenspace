@@ -97,7 +97,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -113,7 +113,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -129,7 +129,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -145,7 +145,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -161,7 +161,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -177,7 +177,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -193,7 +193,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -209,7 +209,7 @@ function Home() {
                 className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
               />
               <Link to="/buyer">
-                <h5 className="mb-1 text-sm text-black hover:text-purple-04">
+                <h5 className="mb-1 truncate text-sm text-black hover:text-purple-04">
                   Jam Tangan Casio
                 </h5>
               </Link>
@@ -221,7 +221,7 @@ function Home() {
       </section>
       <div className="fixed bottom-5 w-screen">
         <Link to="produk">
-          <button className="mx-auto flex h-[52px] w-[115px] items-center rounded-xl bg-purple-04 py-4 px-6 text-white shadow-lg shadow-purple-03">
+          <button className="mx-auto flex h-[52px] w-[115px] items-center rounded-xl bg-purple-04 py-4 px-6 text-white shadow-lg shadow-purple-03 transition duration-300 hover:bg-purple-03">
             <img src={iconPlus} alt="icon-plus" className="mr-4" />
             <span>Jual</span>
           </button>

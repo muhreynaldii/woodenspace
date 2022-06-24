@@ -95,7 +95,7 @@ const ModalTawarAccepted = ({ closeModal, isOpen }) => {
                     <Link to="/info_penawar_status">
                       <button
                         type="button"
-                        className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white"
+                        className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:bg-purple-03"
                       >
                         Hubungi Via Whatsapp
                       </button>

@@ -10,7 +10,7 @@ function InfoProduk() {
       <header className="fixed top-0 left-0 z-20 w-full items-center bg-white shadow-high">
         <div className="container mx-auto">
           <div className="relative flex items-center justify-between">
-            <div className="flex items-center py-5 pl-4 pr-1 lg:px-0">
+            <div className="flex items-center py-5 pl-4 pr-1 lg:px-4">
               <img src={Logo} alt="Logo" width={"100px"} />
             </div>
           </div>
@@ -108,11 +108,12 @@ function InfoProduk() {
                   </label>
                 </div>
                 <div className="button-group mb-20 flex gap-4">
-                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm font-medium text-neutral-05 hover:bg-purple-01">
-                    Preview
+                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm font-medium text-neutral-05 transition duration-300 hover:bg-purple-03 hover:text-white">
+                    <Link to="/detail">Preview</Link>
                   </button>
-                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-purple-04 px-6 py-3 text-sm font-medium text-white hover:bg-purple-03">
-                    Terbitkan
+
+                  <button className="transiiton mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-purple-04 px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-purple-03">
+                    <Link to="/list_product">Terbitkan</Link>
                   </button>
                 </div>
               </form>

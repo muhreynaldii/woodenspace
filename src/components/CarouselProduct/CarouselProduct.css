@@ -17,11 +17,11 @@
 
 .swiper-pagination-bullet {
   background: #c4c4c4;
-  border: 1px solid #7126b5;
+  border: 1px solid #7a7d68;
   opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-  background: #7126b5;
-  border: 1px solid #7126b5;
+  background: #7a7d68;
+  border: 1px solid #7a7d68;
 }

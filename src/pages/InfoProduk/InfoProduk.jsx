@@ -108,11 +108,11 @@ function InfoProduk() {
                   </label>
                 </div>
                 <div className="button-group mb-20 flex gap-4">
-                  <button className="mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm font-medium text-neutral-05 transition duration-300 hover:bg-purple-03 hover:text-white">
+                  <button className="mx-auto block w-1/2 rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm font-medium text-neutral-04 transition duration-300 hover:bg-olive-04 hover:text-white">
                     <Link to="/detail">Preview</Link>
                   </button>
 
-                  <button className="transiiton mx-auto block w-1/2 rounded-2xl border border-purple-04 bg-purple-04 px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-purple-03">
+                  <button className="transiiton mx-auto block w-1/2 rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-olive-02 hover:text-neutral-04">
                     <Link to="/list_product">Terbitkan</Link>
                   </button>
                 </div>

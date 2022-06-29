@@ -16,6 +16,10 @@ module.exports = {
         eye: "url('/src/assets/icons/fi_eye.png')",
       },
       colors: {
+        "olive-01": "#F4F4F4",
+        "olive-02": "#D6D9D0",
+        "olive-03": "#B7BDB0",
+        "olive-04": "#7A7D68",
         "purple-01": "#E2D4F0",
         "purple-02": "#D0B7E6",
         "purple-03": "#A06ECE",

@@ -1,12 +1,20 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import User from "../../assets/image/user.png";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
+import ModalTawar from "../../components/ModalTawar/ModalTawar";
 
-const DetailProduct = () => {
-  const navigate = useNavigate();
+const DetailProductBuyer = () => {
+  let [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
   return (
     <>
       <Header>
@@ -49,13 +57,10 @@ const DetailProduct = () => {
                 <p className="text-md mb-6 font-normal">Rp. 250.000</p>
                 <button
                   type="button"
-                  className="mb-4 block w-full rounded-2xl bg-purple-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-purple-03"
-                  onClick={() => navigate("/seller/list_product")}
+                  className="mb-4 block w-full rounded-2xl bg-purple-04 py-3 px-2 text-sm text-white transition duration-300 hover:bg-purple-03 sm:px-6 sm:py-3"
+                  onClick={openModal}
                 >
-                  Terbitkan
-                </button>
-                <button className=" block w-full rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-purple-03 hover:text-white">
-                  Edit
+                  Saya tertarik dan ingin nego
                 </button>
               </div>
               <div className="flex items-center rounded-2xl p-4 shadow-low">
@@ -71,8 +76,13 @@ const DetailProduct = () => {
           </div>
         </div>
       </section>
+      <ModalTawar
+        openModal={openModal}
+        closeModal={closeModal}
+        isOpen={isOpen}
+      />
     </>
   );
 };
 
-export default DetailProduct;
+export default DetailProductBuyer;

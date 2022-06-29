@@ -92,7 +92,7 @@ const ModalTawarAccepted = ({ closeModal, isOpen }) => {
                   </div>
 
                   <div className="relative mt-4">
-                    <Link to="/info_penawar_status">
+                    <Link to="/seller/bidding_status">
                       <button
                         type="button"
                         className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:bg-purple-03"

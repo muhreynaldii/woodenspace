@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-function Buyer() {
+function Seller() {
   return (
     <>
       <Outlet />
@@ -9,4 +9,4 @@ function Buyer() {
   );
 }
 
-export default Buyer;
+export default Seller;

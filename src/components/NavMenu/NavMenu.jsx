@@ -220,14 +220,14 @@ function NavMenu() {
           <Menu.Items className="absolute top-8 right-0 mt-2 w-48 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:w-56">
             <div className="px-2 py-2">
               <Menu.Item>
-                <Link as="div" to="/profil">
+                <Link as="div" to="/profile">
                   <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-violet-500 hover:text-white lg:text-base">
                     Edit Profil
                   </button>
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link as="div" to="/list_product">
+                <Link as="div" to="/seller/list_product">
                   <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-violet-500 hover:text-white lg:text-base">
                     Jualan Saya
                   </button>

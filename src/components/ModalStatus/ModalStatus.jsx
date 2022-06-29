@@ -74,7 +74,7 @@ const ModalStatus = ({ closeModal, isOpen }) => {
                   <div className="mt-8">
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-2xl bg-purple-04 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:bg-purple-03"
+                      className="inline-flex w-full justify-center rounded-2xl bg-olive-04 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
                       onClick={closeModal}
                     >
                       Kirim

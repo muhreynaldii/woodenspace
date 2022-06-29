@@ -55,7 +55,7 @@ const InfoPenawar = () => {
                 </div>
 
                 <div>
-                  <button className="rounded-lg border border-purple-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-purple-04 hover:text-white">
+                  <button className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white">
                     Edit
                   </button>
                 </div>
@@ -89,12 +89,12 @@ const InfoPenawar = () => {
                 </div>
               </div>
               <div className="border-b-neutral-01 mt-4 flex justify-center border-b-2 pb-4 md:justify-end">
-                <button className="rounded-2xl border border-purple-04 bg-white px-8 py-[6px] text-sm font-medium transition duration-300 hover:bg-purple-03 hover:text-white sm:px-12 sm:py-2">
+                <button className="rounded-2xl border border-olive-04 bg-white px-8 py-[6px] text-sm font-medium transition duration-300 hover:bg-olive-04 hover:text-white sm:px-12 sm:py-2">
                   Tolak
                 </button>
                 <button
                   onClick={openModal}
-                  className="ml-4 rounded-2xl border border-purple-04 bg-purple-04 px-8 py-[6px] text-sm font-medium text-white transition duration-300 hover:bg-purple-03 sm:px-12 sm:py-2"
+                  className="ml-4 rounded-2xl bg-olive-04 px-8 py-[6px] text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04 sm:px-12 sm:py-2"
                 >
                   Terima
                 </button>

@@ -15,15 +15,15 @@ function ForgotPassword() {
         placeholder="Contoh : Johndoe@gmail.com"
         className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
       />
-      <button className="mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-purple-04 py-3 px-6 text-center text-white transition hover:bg-purple-03">
+      <button className="hover:bg- mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-olive-04 py-3 px-6 text-center text-white transition hover:bg-olive-02 hover:text-neutral-04">
         {" "}
         Reset Password
       </button>
       <span className="flex justify-center text-sm">
-        Sudah memiliki login dan password?
+        Sudah memiliki email dan password?
         <Link
           to="/login"
-          className="mx-2 text-sm text-purple-04 hover:underline"
+          className="mx-2 text-sm text-olive-04 hover:underline"
         >
           Masuk di sini
         </Link>

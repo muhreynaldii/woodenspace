@@ -76,7 +76,7 @@ const ModalTawar = ({ closeModal, isOpen }) => {
                       placeholder="Rp 0,00"
                     />
                     <button
-                      className="h-[48px] w-full rounded-2xl bg-purple-04 py-3 px-6 text-center text-sm font-medium text-white transition duration-300 hover:bg-purple-03"
+                      className="h-[48px] w-full rounded-2xl bg-olive-04 py-3 px-6 text-center text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
                       onClick={closeModal}
                     >
                       {" "}

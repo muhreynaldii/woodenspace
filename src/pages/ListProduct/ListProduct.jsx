@@ -42,7 +42,7 @@ const ListProduct = () => {
                 </div>
 
                 <div>
-                  <button className="rounded-lg border border-purple-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-purple-04 hover:text-white">
+                  <button className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white">
                     Edit
                   </button>
                 </div>
@@ -61,13 +61,13 @@ const ListProduct = () => {
                   <Link
                     as="div"
                     to="/produk"
-                    className=" border-neutral-01 group mb-3 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-purple-04 lg:mb-0 lg:w-[207px]"
+                    className=" border-neutral-01 group mb-3 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-olive-04 lg:mb-0 lg:w-[207px]"
                   >
                     <svg
                       id="plus"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
-                      className="icon line stroke-neutral-03 group-hover:stroke-purple-04"
+                      className="icon line stroke-neutral-03 group-hover:stroke-olive-04"
                       width="30"
                       height="30"
                     >
@@ -81,7 +81,7 @@ const ListProduct = () => {
                         }}
                       ></path>
                     </svg>
-                    <p className="mt-3 text-sm font-normal text-neutral-03 group-hover:text-purple-04">
+                    <p className="mt-3 text-sm font-normal text-neutral-03 group-hover:text-olive-04">
                       Tambah Produk
                     </p>
                   </Link>
@@ -94,7 +94,7 @@ const ListProduct = () => {
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <h5 className="mb-1 truncate text-xs font-normal hover:text-purple-04 sm:text-sm">
+                      <h5 className="mb-1 truncate text-xs font-normal hover:text-olive-04 sm:text-sm">
                         Jam Tangan Casio
                       </h5>
                     </Link>
@@ -113,7 +113,7 @@ const ListProduct = () => {
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <h5 className="mb-1 truncate text-xs font-normal hover:text-purple-04 sm:text-sm">
+                      <h5 className="mb-1 truncate text-xs font-normal hover:text-olive-04 sm:text-sm">
                         Jam Tangan Casio
                       </h5>
                     </Link>
@@ -132,7 +132,7 @@ const ListProduct = () => {
                       ></div>
                     </Link>
                     <Link to="/buyer">
-                      <h5 className="mb-1 truncate text-xs font-normal hover:text-purple-04 sm:text-sm">
+                      <h5 className="mb-1 truncate text-xs font-normal hover:text-olive-04 sm:text-sm">
                         Jam Tangan Casio
                       </h5>
                     </Link>

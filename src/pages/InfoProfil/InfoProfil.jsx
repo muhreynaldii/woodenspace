@@ -31,7 +31,7 @@ function InfoProfil() {
               </Link>
             </div>
             <div className="mx-auto w-full font-normal lg:w-[568px]">
-              <div className="mx-auto mb-6 h-24 w-24 rounded-lg bg-purple-300">
+              <div className="mx-auto mb-6 h-24 w-24 rounded-lg bg-olive-02">
                 <Link to="#">
                   <div className="p-9">
                     <img src={Camera} alt="Camera" />

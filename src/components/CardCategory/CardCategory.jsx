@@ -65,7 +65,7 @@ const CardCategory = () => {
                 ></polyline>
               </svg>
               <Link
-                to="/list_product"
+                to="/seller/list_product"
                 className="mr-[6rem] text-base font-normal text-neutral-05 group-hover:text-olive-04 lg:mr-8"
               >
                 Semua Produk
@@ -113,7 +113,7 @@ const CardCategory = () => {
                 ></path>
               </svg>
               <Link
-                to="/wishlist"
+                to="/seller/wishlist"
                 className="mr-[9rem] text-base font-normal text-neutral-05 group-hover:text-olive-04 lg:mr-[78px]"
               >
                 Diminati

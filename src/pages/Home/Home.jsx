@@ -220,7 +220,7 @@ function Home() {
         </div>
       </section>
       <div className="fixed bottom-5 w-screen">
-        <Link to="produk">
+        <Link to="/seller/add_product">
           <button className="mx-auto flex h-[52px] w-[115px] items-center rounded-xl bg-olive-04 py-4 px-6 text-white shadow-lg shadow-olive-03 transition duration-300">
             <img src={iconPlus} alt="icon-plus" className="mr-4" />
             <span>Jual</span>

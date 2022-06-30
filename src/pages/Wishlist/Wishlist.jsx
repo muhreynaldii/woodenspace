@@ -30,7 +30,7 @@ const Wishlist = () => {
                 </div>
 
                 <div>
-                  <button className="rounded-lg border border-purple-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-purple-04 hover:text-white">
+                  <button className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white">
                     Edit
                   </button>
                 </div>

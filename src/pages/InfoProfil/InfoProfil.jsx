@@ -31,7 +31,7 @@ function InfoProfil() {
               </Link>
             </div>
             <div className="mx-auto w-full font-normal lg:w-[568px]">
-              <div className="mx-auto mb-6 h-24 w-24 rounded-lg bg-purple-300">
+              <div className="mx-auto mb-6 h-24 w-24 rounded-lg bg-olive-02">
                 <Link to="#">
                   <div className="p-9">
                     <img src={Camera} alt="Camera" />
@@ -110,7 +110,7 @@ function InfoProfil() {
                     />
                   </label>
                 </div>
-                <button className="mx-auto mb-20 block w-full rounded-2xl bg-purple-04 px-6 py-3 text-sm font-medium text-white hover:bg-purple-03">
+                <button className="mx-auto mb-20 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04">
                   Simpan
                 </button>
               </form>

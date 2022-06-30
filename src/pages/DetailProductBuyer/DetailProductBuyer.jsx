@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
 import ModalTawar from "../../components/ModalTawar/ModalTawar";
 
-const DetailProductBuyer = () => {
+const DetailProduct = () => {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -57,7 +57,7 @@ const DetailProductBuyer = () => {
                 <p className="text-md mb-6 font-normal">Rp. 250.000</p>
                 <button
                   type="button"
-                  className="mb-4 block w-full rounded-2xl bg-purple-04 py-3 px-2 text-sm text-white transition duration-300 hover:bg-purple-03 sm:px-6 sm:py-3"
+                  className="mb-4 block w-full rounded-2xl bg-olive-04 py-3 px-2 text-sm text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04 sm:px-6 sm:py-3"
                   onClick={openModal}
                 >
                   Saya tertarik dan ingin nego
@@ -85,4 +85,4 @@ const DetailProductBuyer = () => {
   );
 };
 
-export default DetailProductBuyer;
+export default DetailProduct;

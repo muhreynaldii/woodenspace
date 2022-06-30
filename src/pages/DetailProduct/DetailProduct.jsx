@@ -49,12 +49,12 @@ const DetailProduct = () => {
                 <p className="text-md mb-6 font-normal">Rp. 250.000</p>
                 <button
                   type="button"
-                  className="mb-4 block w-full rounded-2xl bg-purple-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-purple-03"
-                  onClick={() => navigate("/seller/list_product")}
+                  className="mb-4 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
+                  onClick={() => navigate("/list_product")}
                 >
                   Terbitkan
                 </button>
-                <button className=" block w-full rounded-2xl border border-purple-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-purple-03 hover:text-white">
+                <button className=" block w-full rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-olive-04 hover:text-white">
                   Edit
                 </button>
               </div>

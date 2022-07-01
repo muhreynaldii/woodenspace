@@ -16,6 +16,7 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import Seller from "./pages/Seller/Seller";
 import DetailProductBuyer from "./pages/DetailProductBuyer/DetailProductBuyer";
+import ProtectedRoute from "./routes/ProtectedRoutes";
 
 export default function App() {
   return (
@@ -27,18 +28,20 @@ export default function App() {
         <Route path="register" element={<Register />} />
         <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="forgot" element={<ForgotPassword />} />
-        <Route path="/seller" element={<Seller />}>
-          <Route index element={<ListProduct />} />
-          <Route path="list_product" element={<ListProduct />} />
-          <Route path="detail" element={<DetailProduct />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="add_product" element={<InfoProduk />} />
-          <Route path="bidding" element={<InfoPenawar />} />
-          <Route path="bidding_status" element={<InfoPenawarStatus />} />
-        </Route>
-        <Route path="/buyer" element={<Buyer />}>
-          <Route index element={<DetailProductBuyer />} />
-          <Route path="detail" element={<DetailProductBuyer />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/seller" element={<Seller />}>
+            <Route index element={<ListProduct />} />
+            <Route path="list_product" element={<ListProduct />} />
+            <Route path="detail" element={<DetailProduct />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="add_product" element={<InfoProduk />} />
+            <Route path="bidding" element={<InfoPenawar />} />
+            <Route path="bidding_status" element={<InfoPenawarStatus />} />
+          </Route>
+          <Route path="/buyer" element={<Buyer />}>
+            <Route index element={<DetailProductBuyer />} />
+            <Route path="detail" element={<DetailProductBuyer />} />
+          </Route>
         </Route>
       </Route>
     </Routes>

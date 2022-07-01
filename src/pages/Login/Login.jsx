@@ -33,12 +33,19 @@ function Login() {
         validate={(values) => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = <p className="text-xs text-red-500">Required</p>;
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Invalid email address";
+            errors.email = (
+              <p className="text-xs text-red-500">Invalid email address</p>
+            );
           }
+
+          if (!values.password) {
+            errors.password = <p className="text-xs text-red-500">Required</p>;
+          }
+
           return errors;
         }}
         onSubmit={async (values) => {
@@ -84,7 +91,7 @@ function Login() {
               onChange={handleChange}
             />
             {errors.email && touched.email && errors.email}
-            <br />
+
             <label htmlFor="password" className="mb-1 text-xs">
               Password
             </label>

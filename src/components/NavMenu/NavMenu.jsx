@@ -241,14 +241,12 @@ function NavMenu() {
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link as="div" to="/">
-                  <button
-                    className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </button>
-                </Link>
+                <button
+                  className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
               </Menu.Item>
             </div>
           </Menu.Items>

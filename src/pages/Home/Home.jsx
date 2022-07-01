@@ -11,17 +11,23 @@ import "swiper/css";
 import Header from "../../components/Header/Header";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import NavMenu from "../../components/NavMenu/NavMenu";
 
 function Home() {
+  const token = localStorage.getItem("token");
   return (
     <>
       <Header>
-        <button className="flex h-[48px] w-[105px] rounded-xl bg-olive-04 px-4 py-[14px] text-white">
-          <img src={iconLogin} alt="icon-login" className="mr-2" />
-          <Link to="/login">
-            <span className="text-sm">Masuk</span>
-          </Link>
-        </button>
+        {token ? (
+          <NavMenu />
+        ) : (
+          <button className="flex h-[48px] w-[105px] rounded-xl bg-olive-04 px-4 py-[14px] text-white">
+            <img src={iconLogin} alt="icon-login" className="mr-2" />
+            <Link to="/login">
+              <span className="text-sm">Masuk</span>
+            </Link>
+          </button>
+        )}
       </Header>
       <section id="carousel" className="my-10 mt-32 h-[144px] sm:h-[288px]">
         <Swiper

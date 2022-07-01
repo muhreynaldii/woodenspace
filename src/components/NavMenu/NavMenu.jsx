@@ -2,9 +2,16 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Product from "../../assets/image/products/product-1.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavMenu() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
+  };
+
   return (
     <nav id="nav-menu" className="mt-1">
       {/* Menu List Menu */}
@@ -235,7 +242,10 @@ function NavMenu() {
               </Menu.Item>
               <Menu.Item>
                 <Link as="div" to="/">
-                  <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
+                  <button
+                    className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base"
+                    onClick={handleLogout}
+                  >
                     Logout
                   </button>
                 </Link>

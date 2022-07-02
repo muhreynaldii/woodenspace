@@ -10,6 +10,7 @@ function NavMenu() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login", { replace: true });
+    alert("Logout successed");
   };
 
   return (

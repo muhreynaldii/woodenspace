@@ -55,14 +55,17 @@ function Login() {
               url: "https://wooden-space-authorization.herokuapp.com/api/v1/auth/login",
               data: values,
             });
-            console.log(res.data.data.token);
+            // console.log(res.data.data.token);
 
             if (res.status === 200) {
               localStorage.setItem("token", res.data.data.token);
               navigate("/", { replace: true });
+              alert(res.data.message);
             }
           } catch (error) {
-            console.log(error);
+            if (error.response) {
+              alert(error.response.data.message);
+            }
           }
         }}
       >

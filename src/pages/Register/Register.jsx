@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 function Register() {
   const [passwordType, setPasswordType] = useState("password");
@@ -22,6 +23,22 @@ function Register() {
     }
     setPasswordType("password");
   };
+
+  const RegisterSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(3, "Terlalu Pendek!")
+      .max(40, "Terlalu Panjang!")
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string()
+      .required("Required")
+      .min(8, "Password terlalu pendek - minimal 8 karakter")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
+        "Harus Berisi 8 Karakter, Satu Huruf Besar, Satu Huruf Kecil, dan Satu Angka"
+      ),
+  });
+
   return (
     <LoginRegister name={"Daftar"}>
       <Formik
@@ -30,27 +47,7 @@ function Register() {
           email: "",
           password: "",
         }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = <p className="text-xs text-red-500">Required</p>;
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = (
-              <p className="text-xs text-red-500">Invalid email address</p>
-            );
-          }
-
-          if (!values.password) {
-            errors.password = <p className="text-xs text-red-500">Required</p>;
-          }
-          if (!values.username) {
-            errors.username = <p className="text-xs text-red-500">Required</p>;
-          }
-
-          return errors;
-        }}
+        validationSchema={RegisterSchema}
         onSubmit={async (values) => {
           try {
             const res = await axios({
@@ -94,7 +91,9 @@ function Register() {
               value={values.username}
               onChange={handleChange}
             />
-            {errors.username && touched.username && errors.username}
+            <span className="block text-xs text-red-500">
+              {errors.username && touched.username && errors.username}
+            </span>
             <label htmlFor="email" className="mb-1 text-xs">
               Email
             </label>
@@ -108,7 +107,9 @@ function Register() {
               value={values.email}
               onChange={handleChange}
             />
-            {errors.email && touched.email && errors.email}
+            <span className="block text-xs text-red-500">
+              {errors.email && touched.email && errors.email}
+            </span>
             <label htmlFor="password" className="mb-1 text-xs">
               Password
             </label>
@@ -117,7 +118,7 @@ function Register() {
                 type={passwordType}
                 name="password"
                 id="password"
-                placeholder="6+ karakter"
+                placeholder="Masukkan Password"
                 className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
                 onBlur={handleBlur}
                 value={values.password}
@@ -135,7 +136,9 @@ function Register() {
                 )}
               </button>
             </div>
-            {errors.password && touched.password && errors.password}
+            <span className="block text-xs text-red-500">
+              {errors.password && touched.password && errors.password}
+            </span>
             <button
               className="mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-olive-04 py-3 px-6 text-center text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
               type="submit"

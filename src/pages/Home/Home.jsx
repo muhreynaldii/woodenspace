@@ -3,7 +3,9 @@ import iconLogin from "../../assets/icons/fi_log-in.png";
 import iconPlus from "../../assets/icons/fi_plus.png";
 import casio1 from "../../assets/image/casio_1.png";
 import casio2 from "../../assets/image/casio_2.png";
-import banner from "../../assets/image/banner.png";
+import banner2 from "../../assets/image/banner2.png";
+import banner3 from "../../assets/image/banner3.png";
+import banner4 from "../../assets/image/banner4.png";
 import ButtonCategory from "./../../components/ButtonCategory/ButtonCategory";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper";
@@ -29,7 +31,10 @@ function Home() {
           </button>
         )}
       </Header>
-      <section id="carousel" className="my-10 mt-32 h-[144px] sm:h-[288px]">
+      <section
+        id="carousel"
+        className="my-10 mt-32 h-[144px] sm:h-[194px] lg:h-[288px]"
+      >
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
@@ -49,30 +54,23 @@ function Home() {
         >
           <SwiperSlide>
             <img
-              src={banner}
+              src={banner2}
               alt=""
-              className="overflow-hidden rounded-[20px] object-cover"
+              className="h-[144px] overflow-hidden rounded-[20px] object-cover sm:h-[194px] lg:h-[288px]"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={banner}
+              src={banner3}
               alt=""
-              className="overflow-hidden rounded-[20px] object-cover"
+              className="h-[144px] overflow-hidden rounded-[20px] object-cover sm:h-[194px] lg:h-[288px]"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={banner}
+              src={banner4}
               alt=""
-              className="overflow-hidden rounded-[20px] object-cover"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src={banner}
-              alt=""
-              className="overflow-hidden rounded-[20px] object-cover"
+              className="h-[144px] overflow-hidden rounded-[20px] object-cover sm:h-[194px] lg:h-[288px]"
             />
           </SwiperSlide>
         </Swiper>

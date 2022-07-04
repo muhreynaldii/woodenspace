@@ -4,6 +4,7 @@ import LoginRegister from "../../components/LoginRegister/LoginRegister";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 function Login() {
   const [passwordType, setPasswordType] = useState("password");
@@ -23,6 +24,11 @@ function Login() {
     setPasswordType("password");
   };
 
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().required("Required"),
+  });
+
   return (
     <LoginRegister name={"Masuk"}>
       <Formik
@@ -30,24 +36,7 @@ function Login() {
           email: "",
           password: "",
         }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = <p className="text-xs text-red-500">Required</p>;
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = (
-              <p className="text-xs text-red-500">Invalid email address</p>
-            );
-          }
-
-          if (!values.password) {
-            errors.password = <p className="text-xs text-red-500">Required</p>;
-          }
-
-          return errors;
-        }}
+        validationSchema={LoginSchema}
         onSubmit={async (values) => {
           try {
             const res = await axios({
@@ -93,8 +82,9 @@ function Login() {
               value={values.email}
               onChange={handleChange}
             />
-            {errors.email && touched.email && errors.email}
-
+            <span className="block text-xs text-red-500">
+              {errors.email && touched.email && errors.email}
+            </span>
             <label htmlFor="password" className="mb-1 text-xs">
               Password
             </label>
@@ -103,7 +93,7 @@ function Login() {
                 type={passwordType}
                 name="password"
                 id="password"
-                placeholder="6+ karakter"
+                placeholder="Masukkan Password"
                 className="my-2 block h-[48px] w-full rounded-2xl border-2 border-neutral-02 py-3 px-4 placeholder:text-sm"
                 onBlur={handleBlur}
                 value={values.password}
@@ -121,7 +111,9 @@ function Login() {
                 )}
               </button>
             </div>
-            {errors.password && touched.password && errors.password}
+            <span className="block text-xs text-red-500">
+              {errors.password && touched.password && errors.password}
+            </span>
             <span className="flex justify-end text-sm">
               <Link
                 to="/forgot"

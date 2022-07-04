@@ -17,3 +17,11 @@
 .swiper-slide-shadow-right {
   border-radius: 20px;
 }
+
+.swiper-slide.swiper-slide-prev {
+  justify-content: end;
+}
+
+.swiper-slide.swiper-slide-next {
+  justify-content: start;
+}

@@ -11,7 +11,11 @@ const Header = (props) => {
             <div className="flex items-center py-5 pl-4 pr-1 lg:px-4">
               <div>
                 <Link to="/" className="hidden lg:block">
-                  <img src={Logo} alt="Logo" width={"100px"} />
+                  <img
+                    src={Logo}
+                    alt="Logo"
+                    className="h-[34px] w-[100px] rounded"
+                  />
                 </Link>
               </div>
               <div className="relative">

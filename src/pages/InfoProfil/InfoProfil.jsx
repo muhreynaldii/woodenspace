@@ -3,8 +3,58 @@ import { Link } from "react-router-dom";
 import Camera from "../../assets/icons/fi_camera.png";
 import Logo from "../../assets/image/logo.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 function InfoProfil() {
+  const [data, setData] = useState([]);
+  const [newData, setNewData] = useState({
+    name: "",
+    city: "",
+    avatar: "",
+    address: "",
+    phone_number: "",
+  });
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
+  const getUserProfile = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/1",
+        data: data,
+      });
+
+      setData(response.data.data.detail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateProfile = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(
+        `https://wooden-space-api-development.herokuapp.com/api/v1/user/update_profile`,
+        newData
+      );
+      getUserProfile();
+      setNewData({
+        name: "",
+        city: "",
+        avatar: null,
+        address: "",
+        phone_number: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 z-20 w-full items-center bg-white shadow-high">
@@ -15,7 +65,7 @@ function InfoProfil() {
                 <img src={Logo} alt="Logo" width={"100px"} />
               </Link>
             </div>
-            <div className="mx-auto">
+            <div className="mx-auto lg:relative lg:right-[45px]">
               <h3 className="text-base font-normal">Lengkapi Info Akun</h3>
             </div>
           </div>
@@ -38,7 +88,7 @@ function InfoProfil() {
                   </div>
                 </Link>
               </div>
-              <form>
+              <form onSubmit={updateProfile}>
                 <div className="form-group mb-4">
                   <label htmlFor="nama">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
@@ -49,6 +99,13 @@ function InfoProfil() {
                       id="nama"
                       placeholder="Nama"
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
+                      value={data.name || ""}
+                      onChange={(e) =>
+                        setNewData({
+                          ...data,
+                          name: e.target.value,
+                        })
+                      }
                     />
                   </label>
                 </div>
@@ -58,27 +115,19 @@ function InfoProfil() {
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
                       Kota
                     </span>
-                    <select
-                      name="kota"
+                    <input
+                      type="text"
                       id="kota"
-                      className="value:text-neutral-03 block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
-                    >
-                      <option className="text-xs text-neutral-03" value="-">
-                        Pilih Kota
-                      </option>
-                      <option
-                        className="text-xs text-neutral-03"
-                        value="Bandung"
-                      >
-                        Bandung
-                      </option>
-                      <option
-                        className="text-xs text-neutral-03"
-                        value="Jakarta"
-                      >
-                        Jakarta
-                      </option>
-                    </select>
+                      placeholder="Kota"
+                      className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
+                      value={data.city || ""}
+                      onChange={(e) =>
+                        setNewData({
+                          ...data,
+                          city: e.target.value,
+                        })
+                      }
+                    />
                   </label>
                 </div>
 
@@ -93,6 +142,13 @@ function InfoProfil() {
                       cols="30"
                       rows="2"
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
+                      value={data.address || ""}
+                      onChange={(e) =>
+                        setNewData({
+                          ...data,
+                          address: e.target.value,
+                        })
+                      }
                     ></textarea>
                   </label>
                 </div>
@@ -107,10 +163,20 @@ function InfoProfil() {
                       id="no"
                       placeholder="Contoh +628123456789"
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
+                      value={data.phone_number || ""}
+                      onChange={(e) =>
+                        setNewData({
+                          ...data,
+                          phone_number: e.target.value,
+                        })
+                      }
                     />
                   </label>
                 </div>
-                <button className="mx-auto mb-20 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04">
+                <button
+                  type="submit"
+                  className="mx-auto mb-20 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
+                >
                   Simpan
                 </button>
               </form>

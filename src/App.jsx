@@ -24,11 +24,11 @@ export default function App() {
       <Route path="/">
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="profile" element={<InfoProfil />} />
         <Route path="register" element={<Register />} />
         <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="forgot" element={<ForgotPassword />} />
         <Route element={<ProtectedRoute />}>
+          <Route path="profile" element={<InfoProfil />} />
           <Route path="/seller" element={<Seller />}>
             <Route index element={<ListProduct />} />
             <Route path="list_product" element={<ListProduct />} />

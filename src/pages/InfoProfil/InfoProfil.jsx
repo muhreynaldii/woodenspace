@@ -40,23 +40,19 @@ function InfoProfil() {
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
-      await axios({
+      const res = await axios({
         method: "put",
         url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/update_profile",
-        data: newData,
+        data: data,
         headers: { Authorization: token },
         withCredentials: true,
       });
 
       getUserProfile();
 
-      setNewData({
-        name: "",
-        city: "",
-        avatar: null,
-        address: "",
-        phone_number: "",
-      });
+      if (res.status === 200) {
+        alert(res.data.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -108,7 +104,7 @@ function InfoProfil() {
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
                       value={data.name || ""}
                       onChange={(e) =>
-                        setNewData({
+                        setData({
                           ...data,
                           name: e.target.value,
                         })
@@ -129,7 +125,7 @@ function InfoProfil() {
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
                       value={data.city || ""}
                       onChange={(e) =>
-                        setNewData({
+                        setData({
                           ...data,
                           city: e.target.value,
                         })
@@ -151,7 +147,7 @@ function InfoProfil() {
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
                       value={data.address || ""}
                       onChange={(e) =>
-                        setNewData({
+                        setData({
                           ...data,
                           address: e.target.value,
                         })
@@ -172,7 +168,7 @@ function InfoProfil() {
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
                       value={data.phone_number || ""}
                       onChange={(e) =>
-                        setNewData({
+                        setData({
                           ...data,
                           phone_number: e.target.value,
                         })

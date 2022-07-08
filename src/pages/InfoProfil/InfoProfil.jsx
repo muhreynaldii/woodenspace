@@ -13,7 +13,6 @@ function InfoProfil() {
 
   useEffect(() => {
     getUserProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getUserProfile = async () => {
@@ -48,7 +47,9 @@ function InfoProfil() {
         alert(res.data.message);
       }
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        alert(error.response.data.message);
+      }
     }
   };
 

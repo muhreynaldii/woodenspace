@@ -14,6 +14,7 @@ import Header from "../../components/Header/Header";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import NavMenu from "../../components/NavMenu/NavMenu";
+import "swiper/css/pagination";
 
 function Home() {
   const token = localStorage.getItem("token");
@@ -82,13 +83,27 @@ function Home() {
           <h2 className="text-center font-bold lg:text-left">
             Telusuri Kategori
           </h2>
-          <div className="mt-4 mb-10 flex flex-wrap justify-center lg:justify-start">
-            <ButtonCategory name={"Semua"} />
-            <ButtonCategory name={"Hobi"} />
-            <ButtonCategory name={"Kendaraan"} />
-            <ButtonCategory name={"Baju"} />
-            <ButtonCategory name={"Elektronik"} />
-            <ButtonCategory name={"Kesehatan"} />
+          <div className="mt-4 mb-10">
+            <Swiper slidesPerView={"auto"} className="mySwiper">
+              <SwiperSlide style={{ width: "auto" }}>
+                <ButtonCategory name={"Semua"} />
+              </SwiperSlide>
+              <SwiperSlide style={{ width: "auto" }}>
+                <ButtonCategory name={"Hobi"} />
+              </SwiperSlide>
+              <SwiperSlide style={{ width: "auto" }}>
+                <ButtonCategory name={"Kendaraan"} />
+              </SwiperSlide>
+              <SwiperSlide style={{ width: "auto" }}>
+                <ButtonCategory name={"Baju"} />
+              </SwiperSlide>
+              <SwiperSlide style={{ width: "auto" }}>
+                <ButtonCategory name={"Elektronik"} />
+              </SwiperSlide>
+              <SwiperSlide style={{ width: "auto" }}>
+                <ButtonCategory name={"Kesehatan"} />
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
         <div

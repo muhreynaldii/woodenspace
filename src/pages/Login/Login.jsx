@@ -16,6 +16,22 @@ function Login() {
     }
   });
 
+  const refreshToken = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://wooden-space-authorization.herokuapp.com/api/v1/auth/refresh_token",
+        withCredentials: true,
+      });
+
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.data.token);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const togglePassword = () => {
     if (passwordType === "password") {
       setPasswordType("text");
@@ -43,11 +59,12 @@ function Login() {
               method: "post",
               url: "https://wooden-space-authorization.herokuapp.com/api/v1/auth/login",
               data: values,
+              withCredentials: true,
             });
-            // console.log(res.data.data.token);
+            // console.log(res.data);
 
             if (res.status === 200) {
-              localStorage.setItem("token", res.data.data.token);
+              await refreshToken();
               navigate("/", { replace: true });
               alert(res.data.message);
             }

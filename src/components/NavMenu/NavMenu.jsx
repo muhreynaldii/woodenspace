@@ -3,14 +3,24 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Product from "../../assets/image/products/product-1.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function NavMenu() {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login", { replace: true });
-    alert("Logout successed");
+  const handleLogout = async () => {
+    try {
+      await axios({
+        method: "get",
+        url: "https://wooden-space-authorization.herokuapp.com/api/v1/auth/logout",
+        withCredentials: true,
+      });
+      localStorage.removeItem("token");
+      navigate("/login", { replace: true });
+      alert("Logout successed");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

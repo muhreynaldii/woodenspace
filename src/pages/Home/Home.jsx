@@ -17,6 +17,7 @@ import NavMenu from "../../components/NavMenu/NavMenu";
 
 function Home() {
   const token = localStorage.getItem("token");
+
   return (
     <>
       <Header>

@@ -7,8 +7,8 @@ function LoginRegister(props) {
       <div className="w-full lg:w-1/2">
         <img
           src={Hero}
-          alt="mobil=hero"
-          className="h-[100px] w-full object-cover lg:h-screen lg:w-full"
+          alt="mobil-hero"
+          className="h-[100px] w-full object-cover drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] lg:h-screen lg:w-full"
         />
       </div>
       <div className="mt-10 flex w-full items-center justify-center lg:mt-0 lg:w-1/2">

@@ -18,7 +18,7 @@ import Seller from "./pages/Seller/Seller";
 import DetailProductBuyer from "./pages/DetailProductBuyer/DetailProductBuyer";
 import ProtectedRoute from "./routes/ProtectedRoutes";
 
-export default function App() {
+function App() {
   return (
     <Routes>
       <Route path="/">
@@ -47,3 +47,5 @@ export default function App() {
     </Routes>
   );
 }
+
+export default App;

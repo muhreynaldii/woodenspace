@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function InfoProfil() {
+  const token = localStorage.getItem("token");
   const [data, setData] = useState([]);
   const [newData, setNewData] = useState({
     name: "",
@@ -25,8 +26,9 @@ function InfoProfil() {
     try {
       const response = await axios({
         method: "get",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/1",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
         data: data,
+        headers: { Authorization: token },
       });
 
       setData(response.data.data.detail);
@@ -38,11 +40,16 @@ function InfoProfil() {
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(
-        `https://wooden-space-api-development.herokuapp.com/api/v1/user/update_profile`,
-        newData
-      );
+      await axios({
+        method: "put",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/update_profile",
+        data: newData,
+        headers: { Authorization: token },
+        withCredentials: true,
+      });
+
       getUserProfile();
+
       setNewData({
         name: "",
         city: "",

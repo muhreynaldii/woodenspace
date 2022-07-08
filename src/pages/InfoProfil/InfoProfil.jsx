@@ -10,16 +10,10 @@ import axios from "axios";
 function InfoProfil() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState([]);
-  const [newData, setNewData] = useState({
-    name: "",
-    city: "",
-    avatar: "",
-    address: "",
-    phone_number: "",
-  });
 
   useEffect(() => {
     getUserProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getUserProfile = async () => {

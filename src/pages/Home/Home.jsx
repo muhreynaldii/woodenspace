@@ -24,12 +24,12 @@ function Home() {
         {token ? (
           <NavMenu />
         ) : (
-          <button className="flex h-[48px] w-[105px] rounded-xl bg-olive-04 px-4 py-[14px] text-white">
-            <img src={iconLogin} alt="icon-login" className="mr-2" />
-            <Link to="/login">
+          <Link to="/login">
+            <button className="flex h-[48px] w-[105px] rounded-xl bg-olive-04 px-4 py-[14px] text-white">
+              <img src={iconLogin} alt="icon-login" className="mr-2" />
               <span className="text-sm">Masuk</span>
-            </Link>
-          </button>
+            </button>
+          </Link>
         )}
       </Header>
       <section
@@ -224,7 +224,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <div className="fixed bottom-5 w-screen">
+      <div className="fixed bottom-1 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <Link to="/seller/add_product">
           <button className="mx-auto flex h-[52px] w-[115px] items-center rounded-xl bg-olive-04 py-4 px-6 text-white shadow-lg shadow-olive-03 transition duration-300">
             <img src={iconPlus} alt="icon-plus" className="mr-4" />

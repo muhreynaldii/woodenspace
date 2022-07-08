@@ -8,7 +8,7 @@ import banner3 from "../../assets/image/banner3.png";
 import banner4 from "../../assets/image/banner4.png";
 import ButtonCategory from "./../../components/ButtonCategory/ButtonCategory";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow } from "swiper";
+import { EffectCoverflow, Autoplay } from "swiper";
 import "swiper/css";
 import Header from "../../components/Header/Header";
 import "./Home.css";
@@ -48,9 +48,10 @@ function Home() {
             modifier: 1,
             slideShadows: true,
           }}
+          autoplay={true}
           loop={true}
           pagination={true}
-          modules={[EffectCoverflow]}
+          modules={[EffectCoverflow, Autoplay]}
           className="mySwiper"
         >
           <SwiperSlide>

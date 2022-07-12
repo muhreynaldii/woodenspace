@@ -15,9 +15,32 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import "swiper/css/pagination";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function Home() {
   const token = localStorage.getItem("token");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    products();
+  }, []);
+
+  const products = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/buyer/product/",
+        headers: token && { Authorization: token },
+        data: data,
+      });
+
+      setData(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -26,7 +49,7 @@ function Home() {
           <NavMenu />
         ) : (
           <Link to="/login">
-            <button className="flex h-[48px] w-[105px] rounded-xl bg-olive-04 px-4 py-[14px] text-white">
+            <button className="mx-4 flex h-[48px] w-[105px] rounded-xl bg-olive-04 px-4 py-[14px] text-white">
               <img src={iconLogin} alt="icon-login" className="mr-2" />
               <span className="text-sm">Masuk</span>
             </button>
@@ -78,12 +101,12 @@ function Home() {
           </SwiperSlide>
         </Swiper>
       </section>
-      <section id="product" className="container mx-auto">
+      <section id="product" className="container mx-auto mb-20">
         <div id="category">
           <h2 className="text-center font-bold lg:text-left">
             Telusuri Kategori
           </h2>
-          <div className="mt-4 mb-10">
+          <div className="mt-4 mb-10 ml-4">
             <Swiper slidesPerView={"auto"} className="mySwiper">
               <SwiperSlide style={{ width: "auto" }}>
                 <ButtonCategory name={"Semua"} />
@@ -110,134 +133,34 @@ function Home() {
           id="card"
           className="flex flex-wrap justify-center lg:justify-start"
         >
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio1}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio2}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio1}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio2}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio1}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio2}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio1}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
-          <div className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low">
-            <div>
-              <img
-                src={casio2}
-                alt="casio1"
-                className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-              />
-              <Link to="/buyer">
-                <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
-                  Jam Tangan Casio
-                </h5>
-              </Link>
-              <p className="mb-2 text-[10px] text-neutral-03">Aksesoris</p>
-              <p className="mb-1 text-sm text-black">Rp.250.000</p>
-            </div>
-          </div>
+          {data &&
+            data.map((item) => (
+              <div
+                className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low"
+                key={item.id}
+              >
+                <div>
+                  <img
+                    src={
+                      item.product_images[0].url
+                        ? item.product_images[0].url
+                        : "https://fakeimg.pl/300/?text=NoPhoto"
+                    }
+                    alt={item.name}
+                    className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
+                  />
+                  <Link to="/buyer">
+                    <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
+                      {item.name}
+                    </h5>
+                  </Link>
+                  <p className="mb-2 text-[10px] text-neutral-03">
+                    {item.category.name}
+                  </p>
+                  <p className="mb-1 text-sm text-black">Rp.{item.price}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </section>
       <div className="fixed bottom-1 left-1/2 -translate-x-1/2 -translate-y-1/2">

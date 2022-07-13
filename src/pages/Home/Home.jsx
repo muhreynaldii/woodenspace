@@ -20,10 +20,26 @@ import { useState } from "react";
 function Home() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState([]);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     products();
+    getCategory();
   }, []);
+
+  const getCategory = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/category/",
+        data: category,
+      });
+      setCategory(response.data.data);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const products = async () => {
     try {
@@ -104,26 +120,18 @@ function Home() {
           <h2 className="text-center font-bold lg:text-left">
             Telusuri Kategori
           </h2>
-          <div className="mt-4 mb-10 ml-4">
+          <div className="mt-4 mb-10 ml-4 lg:ml-0">
             <Swiper slidesPerView={"auto"} className="mySwiper">
               <SwiperSlide style={{ width: "auto" }}>
                 <ButtonCategory name={"Semua"} />
               </SwiperSlide>
-              <SwiperSlide style={{ width: "auto" }}>
-                <ButtonCategory name={"Hobi"} />
-              </SwiperSlide>
-              <SwiperSlide style={{ width: "auto" }}>
-                <ButtonCategory name={"Kendaraan"} />
-              </SwiperSlide>
-              <SwiperSlide style={{ width: "auto" }}>
-                <ButtonCategory name={"Baju"} />
-              </SwiperSlide>
-              <SwiperSlide style={{ width: "auto" }}>
-                <ButtonCategory name={"Elektronik"} />
-              </SwiperSlide>
-              <SwiperSlide style={{ width: "auto" }}>
-                <ButtonCategory name={"Kesehatan"} />
-              </SwiperSlide>
+
+              {category &&
+                category.map((item) => (
+                  <SwiperSlide style={{ width: "auto" }} key={item.id}>
+                    <ButtonCategory name={item.name} />
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
         </div>

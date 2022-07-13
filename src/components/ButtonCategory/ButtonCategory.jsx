@@ -15,7 +15,7 @@ function ButtonCategory(props) {
         alt="icon-search"
         className="mr-2 transition"
       />
-      <span className="group-hover:text-white group-hover:transition">
+      <span className="capitalize group-hover:text-white group-hover:transition">
         {props.name}
       </span>
     </button>

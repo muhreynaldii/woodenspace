@@ -40,7 +40,7 @@ function App() {
           </Route>
           <Route path="/buyer" element={<Buyer />}>
             <Route index element={<DetailProductBuyer />} />
-            <Route path="detail" element={<DetailProductBuyer />} />
+            <Route path="detail/:id" element={<DetailProductBuyer />} />
           </Route>
         </Route>
       </Route>

@@ -1,12 +1,34 @@
-import React, { useState } from "react";
-import User from "../../assets/image/user.png";
+import React, { useState, useEffect } from "react";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
 import ModalTawar from "../../components/ModalTawar/ModalTawar";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const DetailProduct = () => {
+const DetailProductBuyer = () => {
   let [isOpen, setIsOpen] = useState(false);
+  const token = localStorage.getItem("token");
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    product();
+  }, [id]);
+
+  const product = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/buyer/product/${id}`,
+        data: data,
+        headers: { Authorization: token },
+      });
+      setData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function closeModal() {
     setIsOpen(false);
@@ -26,35 +48,30 @@ const DetailProduct = () => {
           <div className="mb-8 flex flex-wrap justify-center gap-4">
             <div className="w-full px-4 lg:w-[600px]">
               {/* Carousel Product */}
-              <CarouselProduct />
+              <CarouselProduct
+                product_name={data.name}
+                product_images={data?.product_images}
+              />
               {/* /Caousel Product/ */}
               <div className="mb-2 w-full rounded-2xl p-4 shadow-low">
                 <h3 className="mb-4 text-sm font-bold">Deskripsi</h3>
                 <p className="mb-4 text-sm text-neutral-03">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur consectetur hic consequatur delectus id vero deserunt
-                  debitis optio, dolor perspiciatis quod quae amet ut ea. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Eos odio
-                  magni quasi tenetur minus architecto dolorem ullam doloremque
-                  cumque facilis.
-                </p>
-                <p className="mb-4 text-sm text-neutral-03">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur consectetur hic consequatur delectus id vero deserunt
-                  debitis optio, dolor perspiciatis quod quae amet ut ea. Lorem,
-                  ipsum dolor sit amet consectetur adipisicing elit. Sit enim
-                  molestiae assumenda quos. Dignissimos eos veniam cum quaerat?
-                  Eum, repellat?
+                  {data.description}
                 </p>
               </div>
             </div>
             <div className="w-full px-4 lg:w-[336px]">
               <div className="mb-6 rounded-2xl p-4 shadow-high">
-                <h3 className="mb-2 text-base font-medium">Jam Tangan Casio</h3>
-                <p className="mb-4 text-sm font-normal text-neutral-03">
-                  Aksesoris
+                <h3 className="mb-2 text-base font-medium">{data.name}</h3>
+                <p className="mb-4 text-sm font-normal capitalize text-neutral-03">
+                  {data?.category?.name}
                 </p>
-                <p className="text-md mb-6 font-normal">Rp. 250.000</p>
+                <p className="text-md mb-6 font-normal">
+                  Rp.
+                  {new Intl.NumberFormat("id-ID").format(
+                    Math.floor(data.price)
+                  )}
+                </p>
                 <button
                   type="button"
                   className="mb-4 block w-full rounded-2xl bg-olive-04 py-3 px-2 text-sm text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04 sm:px-6 sm:py-3"
@@ -65,11 +82,19 @@ const DetailProduct = () => {
               </div>
               <div className="flex items-center rounded-2xl p-4 shadow-low">
                 <div className="overflow-hidden rounded-2xl">
-                  <img src={User} alt="User" />
+                  <img
+                    src={data?.owner?.detail?.avatar_url}
+                    alt={data?.owner?.detail?.name}
+                    className="h-[48px] w-[48px] rounded-2xl"
+                  />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium">Nama Penjual</p>
-                  <p className="text-xs text-neutral-03">Kota</p>
+                  <p className="text-sm font-medium">
+                    {data?.owner?.detail?.name}
+                  </p>
+                  <p className="text-xs text-neutral-03">
+                    {data?.owner?.detail?.city}
+                  </p>
                 </div>
               </div>
             </div>
@@ -85,4 +110,4 @@ const DetailProduct = () => {
   );
 };
 
-export default DetailProduct;
+export default DetailProductBuyer;

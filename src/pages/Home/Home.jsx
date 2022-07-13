@@ -1,8 +1,6 @@
 import React from "react";
 import iconLogin from "../../assets/icons/fi_log-in.png";
 import iconPlus from "../../assets/icons/fi_plus.png";
-import casio1 from "../../assets/image/casio_1.png";
-import casio2 from "../../assets/image/casio_2.png";
 import banner2 from "../../assets/image/banner2.png";
 import banner3 from "../../assets/image/banner3.png";
 import banner4 from "../../assets/image/banner4.png";
@@ -140,24 +138,33 @@ function Home() {
                 key={item.id}
               >
                 <div>
-                  <img
-                    src={
-                      item.product_images[0].url
-                        ? item.product_images[0].url
-                        : "https://fakeimg.pl/300/?text=NoPhoto"
-                    }
-                    alt={item.name}
-                    className="mb-2 h-[100px] w-[165px] rounded-[4px] object-cover"
-                  />
-                  <Link to="/buyer">
+                  <Link as="div" to={`/buyer/detail/${item.id}`}>
+                    <div className="overflow-hidden">
+                      <img
+                        src={
+                          item.product_images[0].url
+                            ? item.product_images[0].url
+                            : "https://fakeimg.pl/300/?text=NoPhoto"
+                        }
+                        alt={item.name}
+                        className="mb-2 h-[100px] w-[165px] overflow-hidden rounded-[4px] object-scale-down transition duration-500 hover:scale-125"
+                      />
+                    </div>
+                  </Link>
+                  <Link to={`/buyer/detail/${item.id}`}>
                     <h5 className="mb-1 truncate text-sm text-black hover:text-olive-04">
                       {item.name}
                     </h5>
                   </Link>
-                  <p className="mb-2 text-[10px] text-neutral-03">
-                    {item.category.name}
+                  <p className="mb-2 text-[10px] capitalize text-neutral-03">
+                    {item?.category?.name}
                   </p>
-                  <p className="mb-1 text-sm text-black">Rp.{item.price}</p>
+                  <p className="mb-1 text-sm text-black">
+                    Rp.
+                    {new Intl.NumberFormat("id-ID").format(
+                      Math.floor(item.price)
+                    )}
+                  </p>
                 </div>
               </div>
             ))}

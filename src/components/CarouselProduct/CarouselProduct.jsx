@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./CarouselProduct.css";
 
-const CarouselProduct = ({ product_name, product_images }) => {
+const CarouselProduct = ({ images, product_name, product_images }) => {
   const swiperProp = {
     cssMode: true,
     navigation: true,
@@ -23,17 +23,35 @@ const CarouselProduct = ({ product_name, product_images }) => {
     <>
       <Swiper {...swiperProp} className="mySwiper mb-6 md:w-3/4 lg:w-full">
         <div className="justify-center overflow-hidden rounded-2xl">
-          {product_images?.map((item, index) => (
-            <SwiperSlide key={index}>
-              <img
-                src={
-                  item?.url ? item?.url : "https://fakeimg.pl/300/?text=NoPhoto"
-                }
-                alt={product_name}
-                className="h-[436px] w-[600px] rounded-2xl object-scale-down"
-              />
-            </SwiperSlide>
-          ))}
+          {product_images &&
+            product_images?.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={
+                    item?.url
+                      ? item?.url
+                      : "https://fakeimg.pl/300/?text=NoPhoto"
+                  }
+                  alt={product_name}
+                  className="h-[436px] w-[600px] rounded-2xl object-scale-down"
+                />
+              </SwiperSlide>
+            ))}
+
+          {images &&
+            images?.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={
+                    item?.url
+                      ? item?.url
+                      : "https://fakeimg.pl/300/?text=NoPhoto"
+                  }
+                  alt="product"
+                  className="h-[436px] w-[600px] rounded-2xl object-scale-down"
+                />
+              </SwiperSlide>
+            ))}
         </div>
       </Swiper>
     </>

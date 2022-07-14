@@ -32,7 +32,7 @@ function App() {
           <Route path="/seller" element={<Seller />}>
             <Route index element={<ListProduct />} />
             <Route path="list_product" element={<ListProduct />} />
-            <Route path="detail" element={<DetailProduct />} />
+            <Route path="detail/:id" element={<DetailProduct />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="add_product" element={<InfoProduk />} />
             <Route path="bidding" element={<InfoPenawar />} />

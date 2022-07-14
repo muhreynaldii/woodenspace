@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import User from "../../assets/image/user.png";
-import Product from "../../assets/image/products/product-1.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavMenu from "./../../components/NavMenu/NavMenu";
 import Alert from "../../components/Alert/Alert";
 import CardCategory from "../../components/CardCategory/CardCategory";
+import axios from "axios";
 
 const ListProduct = () => {
   let [isOpen, setIsOpen] = useState(true);
+  const [data, setData] = useState([]);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   function closeModal() {
     setIsOpen(false);
@@ -18,6 +24,21 @@ const ListProduct = () => {
   function openModal() {
     setIsOpen(true);
   }
+
+  const getProducts = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/seller/product",
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      setData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Header>
@@ -86,63 +107,40 @@ const ListProduct = () => {
                     </p>
                   </Link>
 
-                  <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <Link to="/buyer">
+                  {data &&
+                    data.map((item) => (
                       <div
-                        className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                        style={{ backgroundImage: `url(${Product})` }}
-                      ></div>
-                    </Link>
-                    <Link to="/buyer">
-                      <h5 className="mb-1 truncate text-xs font-normal hover:text-olive-04 sm:text-sm">
-                        Jam Tangan Casio
-                      </h5>
-                    </Link>
-                    <p className="mb-2 text-[10px] text-neutral-03 sm:text-xs">
-                      Aksesoris
-                    </p>
-                    <p className="mb-3 text-xs font-normal sm:text-sm">
-                      Rp. 250.000
-                    </p>
-                  </div>
-                  <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <Link to="/buyer">
-                      <div
-                        className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                        style={{ backgroundImage: `url(${Product})` }}
-                      ></div>
-                    </Link>
-                    <Link to="/buyer">
-                      <h5 className="mb-1 truncate text-xs font-normal hover:text-olive-04 sm:text-sm">
-                        Jam Tangan Casio
-                      </h5>
-                    </Link>
-                    <p className="mb-2 text-[10px] text-neutral-03 sm:text-xs">
-                      Aksesoris
-                    </p>
-                    <p className="mb-3 text-xs font-normal sm:text-sm">
-                      Rp. 250.000
-                    </p>
-                  </div>
-                  <div className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]">
-                    <Link to="/buyer">
-                      <div
-                        className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                        style={{ backgroundImage: `url(${Product})` }}
-                      ></div>
-                    </Link>
-                    <Link to="/buyer">
-                      <h5 className="mb-1 truncate text-xs font-normal hover:text-olive-04 sm:text-sm">
-                        Jam Tangan Casio
-                      </h5>
-                    </Link>
-                    <p className="mb-2 text-[10px] text-neutral-03 sm:text-xs">
-                      Aksesoris
-                    </p>
-                    <p className="mb-3 text-xs font-normal sm:text-sm">
-                      Rp. 250.000
-                    </p>
-                  </div>
+                        className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
+                        key={item.id}
+                      >
+                        <Link to={`/seller/detail/${item.id}`}>
+                          <div
+                            className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
+                            style={{
+                              backgroundImage: `url(${
+                                item.product_images[0].url
+                                  ? item.product_images[0].url
+                                  : "https://fakeimg.pl/300/?text=NoPhoto"
+                              })`,
+                            }}
+                          ></div>
+                        </Link>
+                        <Link to={`/seller/detail/${item.id}`}>
+                          <h5 className="mb-1 truncate text-xs font-normal capitalize hover:text-olive-04 sm:text-sm">
+                            {item?.name}
+                          </h5>
+                        </Link>
+                        <p className="mb-2 text-[10px] capitalize text-neutral-03 sm:text-xs">
+                          {item?.category?.name}
+                        </p>
+                        <p className="mb-3 text-xs font-normal sm:text-sm">
+                          Rp.
+                          {new Intl.NumberFormat("id-ID").format(
+                            Math.floor(item?.price)
+                          )}
+                        </p>
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>

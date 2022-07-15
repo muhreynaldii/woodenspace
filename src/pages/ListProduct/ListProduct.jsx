@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
-import User from "../../assets/image/user.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavMenu from "./../../components/NavMenu/NavMenu";
@@ -11,9 +10,11 @@ import axios from "axios";
 const ListProduct = () => {
   let [isOpen, setIsOpen] = useState(true);
   const [data, setData] = useState([]);
+  const [profile, setProfile] = useState([]);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    getUserProfile();
     getProducts();
   }, []);
 
@@ -24,6 +25,21 @@ const ListProduct = () => {
   function openModal() {
     setIsOpen(true);
   }
+
+  const getUserProfile = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
+        data: profile,
+        headers: { Authorization: token },
+      });
+
+      setProfile(res.data.data.detail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getProducts = async () => {
     try {
@@ -54,18 +70,25 @@ const ListProduct = () => {
               <div className="flex w-full items-center justify-between rounded-2xl p-4 shadow-low">
                 <div className="flex items-center">
                   <div className="overflow-hidden rounded-2xl">
-                    <img src={User} alt="User" />
+                    <img
+                      src={profile.avatar_url}
+                      alt="User"
+                      className="h-[48px] w-[48px]"
+                    />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium">Nama Penjual</p>
-                    <p className="text-xs text-neutral-03">Kota</p>
+                    <p className="text-sm font-medium">{profile.name}</p>
+                    <p className="text-xs text-neutral-03">{profile.city}</p>
                   </div>
                 </div>
 
                 <div>
-                  <button className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white">
+                  <Link
+                    to="/profile"
+                    className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white"
+                  >
                     Edit
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -81,7 +104,7 @@ const ListProduct = () => {
                 <div className="flex w-full flex-wrap justify-center gap-3 sm:justify-start lg:w-3/4 lg:gap-7">
                   <Link
                     as="div"
-                    to="/produk"
+                    to="/seller/add_product"
                     className=" border-neutral-01 group mb-3 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-olive-04 lg:mb-0 lg:w-[207px]"
                   >
                     <svg
@@ -114,16 +137,17 @@ const ListProduct = () => {
                         key={item.id}
                       >
                         <Link to={`/seller/detail/${item.id}`}>
-                          <div
-                            className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2"
-                            style={{
-                              backgroundImage: `url(${
+                          <div className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2">
+                            <img
+                              src={
                                 item.product_images[0].url
                                   ? item.product_images[0].url
                                   : "https://fakeimg.pl/300/?text=NoPhoto"
-                              })`,
-                            }}
-                          ></div>
+                              }
+                              alt=""
+                              className="h-[100px] w-[190px] overflow-hidden rounded-[4px] object-scale-down transition duration-500 hover:scale-125"
+                            />
+                          </div>
                         </Link>
                         <Link to={`/seller/detail/${item.id}`}>
                           <h5 className="mb-1 truncate text-xs font-normal capitalize hover:text-olive-04 sm:text-sm">

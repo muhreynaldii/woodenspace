@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import User from "../../assets/image/user.png";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
@@ -76,7 +75,11 @@ const DetailProduct = () => {
               </div>
               <div className="flex items-center rounded-2xl p-4 shadow-low">
                 <div className="overflow-hidden rounded-2xl">
-                  <img src={data?.owner?.detail?.avatar_url} alt="User" />
+                  <img
+                    src={data?.owner?.detail?.avatar_url}
+                    alt="User"
+                    className="h-[48px] w-[48px]"
+                  />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium">

@@ -5,7 +5,6 @@ import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import Alert from "../../components/Alert/Alert";
 
 function InfoProduk() {
   const token = localStorage.getItem("token");
@@ -84,7 +83,6 @@ function InfoProduk() {
           </div>
         </div>
       </header>
-
       <section id="info-profil" className="pt-32">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex w-full flex-wrap justify-center lg:w-[800px] lg:flex-nowrap">
@@ -215,7 +213,6 @@ function InfoProduk() {
                   <button className="mx-auto block w-1/2 rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm font-medium text-neutral-04 transition duration-300 hover:bg-olive-04 hover:text-white">
                     <Link to="/seller/detail">Preview</Link>
                   </button>
-
                   <button
                     type="submit"
                     className="transiiton mx-auto block w-1/2 rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-olive-02 hover:text-neutral-04"

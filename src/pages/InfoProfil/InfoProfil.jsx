@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Camera from "../../assets/icons/fi_camera.png";
 import Logo from "../../assets/image/logo.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import { useState } from "react";
@@ -10,6 +9,16 @@ import axios from "axios";
 function InfoProfil() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState([]);
+  const [preview, setPreview] = useState("");
+
+  const setImage = (e) => {
+    const image = e.target.files[0];
+    setPreview(URL.createObjectURL(image));
+    setData({
+      ...data,
+      avatar: image,
+    });
+  };
 
   useEffect(() => {
     getUserProfile();
@@ -32,12 +41,21 @@ function InfoProfil() {
 
   const updateProfile = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("avatar", data.avatar);
+    formData.append("name", data.name);
+    formData.append("city", data.city);
+    formData.append("address", data.address);
+    formData.append("phone_number", data.phone_number);
     try {
       const res = await axios({
         method: "put",
         url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/update_profile",
-        data: data,
-        headers: { Authorization: token },
+        data: formData,
+        headers: {
+          Authorization: token,
+          "Content-type": "multipart/form-data",
+        },
         withCredentials: true,
       });
 
@@ -69,7 +87,6 @@ function InfoProfil() {
           </div>
         </div>
       </header>
-
       <section id="info-profil" className="pt-16 lg:pt-32">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex w-full flex-wrap justify-center lg:w-[800px] lg:flex-nowrap">
@@ -79,14 +96,33 @@ function InfoProfil() {
               </Link>
             </div>
             <div className="mx-auto w-full font-normal lg:w-[568px]">
-              <div className="mx-auto mb-6 h-24 w-24 rounded-lg bg-olive-02">
+              <div className="mx-auto mb-6 h-24 w-24 overflow-hidden rounded-lg bg-olive-02">
                 <Link to="#">
-                  <div className="p-9">
-                    <img src={Camera} alt="Camera" />
-                  </div>
+                  {preview ? (
+                    <img src={preview} alt="avatar" className="object-cover" />
+                  ) : (
+                    <img
+                      src={data.avatar_url}
+                      alt="avatar"
+                      className="object-cover"
+                    />
+                  )}
                 </Link>
               </div>
               <form onSubmit={updateProfile}>
+                <div className="form-group mb-4">
+                  <label htmlFor="foto">
+                    <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
+                      Foto
+                    </span>
+                    <input
+                      type="file"
+                      id="foto"
+                      className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
+                      onChange={setImage}
+                    />
+                  </label>
+                </div>
                 <div className="form-group mb-4">
                   <label htmlFor="nama">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
@@ -107,8 +143,7 @@ function InfoProfil() {
                     />
                   </label>
                 </div>
-
-                <div className="form-grop mb-4">
+                <div className="form-group mb-4">
                   <label htmlFor="kota">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
                       Kota
@@ -129,7 +164,7 @@ function InfoProfil() {
                   </label>
                 </div>
 
-                <div className="form-grop mb-4">
+                <div className="form-group mb-4">
                   <label htmlFor="Kota">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
                       Alamat
@@ -150,7 +185,6 @@ function InfoProfil() {
                     ></textarea>
                   </label>
                 </div>
-
                 <div className="form-group mb-4">
                   <label htmlFor="no">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">

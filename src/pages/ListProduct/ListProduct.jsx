@@ -3,12 +3,10 @@ import Header from "../../components/Header/Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavMenu from "./../../components/NavMenu/NavMenu";
-import Alert from "../../components/Alert/Alert";
 import CardCategory from "../../components/CardCategory/CardCategory";
 import axios from "axios";
 
 const ListProduct = () => {
-  let [isOpen, setIsOpen] = useState(true);
   const [data, setData] = useState([]);
   const [profile, setProfile] = useState([]);
   const token = localStorage.getItem("token");
@@ -17,14 +15,6 @@ const ListProduct = () => {
     getUserProfile();
     getProducts();
   }, []);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
 
   const getUserProfile = async () => {
     try {
@@ -93,7 +83,6 @@ const ListProduct = () => {
               </div>
             </div>
           </div>
-
           {/* list product box */}
           <div className="flex justify-center">
             <div className="w-full lg:w-[968px]">
@@ -171,12 +160,6 @@ const ListProduct = () => {
           </div>
         </div>
       </section>
-      <Alert
-        openModal={openModal}
-        closeModal={closeModal}
-        isOpen={isOpen}
-        title={"Produk berhasil diterbitkan."}
-      />
     </>
   );
 };

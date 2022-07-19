@@ -4,6 +4,9 @@ import { Fragment } from "react";
 import Product from "../../assets/image/products/product-1.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+import "animate.css";
+import "../../Alert.css";
 
 function NavMenu() {
   const navigate = useNavigate();
@@ -17,7 +20,22 @@ function NavMenu() {
       });
       localStorage.removeItem("token");
       navigate("/login", { replace: true });
-      alert("Logout successed");
+      Swal.fire({
+        html: "<p>Berhasil Logout</p>",
+        position: "top",
+        showConfirmButton: false,
+        color: "black",
+        width: 500,
+        padding: "0",
+        timer: 2000,
+        showClass: {
+          popup: "animate__animated animate__backInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__backOutUp",
+        },
+        customClass: "swal-dark",
+      });
     } catch (error) {
       console.log(error);
     }

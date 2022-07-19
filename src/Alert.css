@@ -1,0 +1,21 @@
+.swal-danger {
+  background-color: red;
+  border-radius: 12px;
+  height: 52px;
+}
+
+.swal-success {
+  background-color: #73ca5c;
+  border-radius: 12px;
+  height: 52px;
+}
+
+.swal2-html-container {
+  margin: 12px;
+}
+
+.swal-dark {
+  background-color: #d6d8d9;
+  border-radius: 12px;
+  height: 52px;
+}

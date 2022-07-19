@@ -4,6 +4,8 @@ import LoginRegister from "../../components/LoginRegister/LoginRegister";
 import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 function ForgotPassword() {
   const ForgotSchema = Yup.object().shape({
@@ -25,11 +27,29 @@ function ForgotPassword() {
             });
 
             if (res.status === 200) {
-              alert(res.data.message);
+              Swal.fire({
+                html: "<p>Jika Email anda terdapat di Database, Anda akan menerima alamat pemulihan dalam beberapa menit </p>",
+                position: "top",
+                showConfirmButton: false,
+                color: "black",
+                width: 1000,
+                padding: "0",
+                timer: 4000,
+                customClass: "swal-dark",
+              });
             }
           } catch (error) {
             if (error.response) {
-              alert(error.response.data.message[0].message);
+              Swal.fire({
+                html: "<p>Jika Email anda terdapat di Database, Anda akan menerima alamat pemulihan dalam beberapa menit </p>",
+                position: "top",
+                showConfirmButton: false,
+                color: "black",
+                width: 1000,
+                padding: "0",
+                timer: 4000,
+                customClass: "swal-dark",
+              });
             }
           }
         }}

@@ -5,6 +5,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
+import "animate.css";
+import "../../Alert.css";
 
 function Login() {
   const [passwordType, setPasswordType] = useState("password");
@@ -61,16 +64,41 @@ function Login() {
               data: values,
               withCredentials: true,
             });
-            // console.log(res.data);
-
             if (res.status === 200) {
               await refreshToken();
               navigate("/", { replace: true });
-              alert(res.data.message);
+              Swal.fire({
+                html: "<p>Berhasil Masuk</p>",
+                position: "top",
+                showConfirmButton: false,
+                color: "white",
+                width: 500,
+                padding: "0",
+                timer: 2000,
+                showClass: {
+                  popup: "animate__animated animate__backInDown",
+                },
+                hideClass: {
+                  popup: "animate__animated animate__backOutUp",
+                },
+                customClass: "swal-success",
+              });
             }
           } catch (error) {
             if (error.response) {
-              alert(error.response.data.message);
+              Swal.fire({
+                html: "<p>Email atau Password salah</p>",
+                position: "top",
+                showConfirmButton: false,
+                color: "white",
+                padding: "0",
+                width: 500,
+                timer: 1500,
+                showClass: {
+                  popup: "animate__animated animate__headShake",
+                },
+                customClass: "swal-danger",
+              });
             }
           }
         }}

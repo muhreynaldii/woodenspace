@@ -5,6 +5,8 @@ import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 function InfoProfil() {
   const token = localStorage.getItem("token");
@@ -62,11 +64,29 @@ function InfoProfil() {
       getUserProfile();
 
       if (res.status === 200) {
-        alert(res.data.message);
+        Swal.fire({
+          html: "<p>Berhasil Update Profil.</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
       }
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        Swal.fire({
+          html: "<p>Gagal Update Profil, mohon lengkapi data yang kosong</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 600,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-danger",
+        });
       }
     }
   };

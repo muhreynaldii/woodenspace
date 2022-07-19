@@ -16,15 +16,19 @@ import "swiper/css/pagination";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 function Home() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
+  const [isVerified, setIsVeryfied] = useState(null);
 
   useEffect(() => {
     products();
     getCategory();
+    getUser();
   }, []);
 
   const getCategory = async () => {
@@ -55,8 +59,58 @@ function Home() {
     }
   };
 
+  const getUser = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
+        headers: { Authorization: token },
+      });
+      setIsVeryfied(res.data.data.isVerified);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const emailVerification = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/email_verification",
+        headers: { Authorization: token },
+      });
+
+      if (res.status === 200) {
+        Swal.fire({
+          html: "<p>Cek email untuk mendapatkan link verifikasi!</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 600,
+          padding: "0",
+          timer: 5000,
+          customClass: "swal-success",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
+      {isVerified === false && (
+        <div className="absolute left-[50%] top-[15%] z-[4] -translate-x-[50%] rounded-xl bg-blue-400 p-4">
+          <p className="text-xs text-white lg:text-sm">
+            Harap segera melakukan verifikasi akun{" "}
+            <span
+              className="cursor-pointer underline"
+              onClick={emailVerification}
+            >
+              disini
+            </span>
+          </p>
+        </div>
+      )}
       <Header>
         {token ? (
           <NavMenu />

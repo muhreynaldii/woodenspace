@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 const DetailProduct = () => {
   const token = localStorage.getItem("token");
@@ -42,6 +44,16 @@ const DetailProduct = () => {
 
       if (res.status === 200) {
         navigate("/seller/list_product");
+        Swal.fire({
+          html: "<p>Produk berhasil dihapus.</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
       }
     } catch (error) {
       if (error.response) {

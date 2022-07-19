@@ -16,7 +16,6 @@ function InfoProduk() {
   const [description, setDescription] = useState("");
   const [productImages, setProductImages] = useState([]);
   const [category, setCategory] = useState([]);
-  // const files = productImages.length;
   const navigate = useNavigate();
 
   useEffect(() => {

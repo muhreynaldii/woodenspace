@@ -14,8 +14,9 @@ function InfoProduk() {
   const [category_id, setCategory_id] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [productImages, setProductImages] = useState(null);
+  const [productImages, setProductImages] = useState([]);
   const [category, setCategory] = useState([]);
+  // const files = productImages.length;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -189,7 +190,7 @@ function InfoProduk() {
                   </label>
                 </div>
 
-                <div className="form-group mb-4">
+                <div className="form-group mb-4 flex items-end">
                   <label htmlFor="no">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
                       Foto Produk
@@ -229,6 +230,11 @@ function InfoProduk() {
                       />
                     </div>
                   </label>
+                  {productImages.length > 0 && (
+                    <span className="ml-4 mt-4">
+                      {productImages.length} Files
+                    </span>
+                  )}
                 </div>
                 <div className="button-group mb-20 flex gap-4">
                   <button className="mx-auto block w-1/2 rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm font-medium text-neutral-04 transition duration-300 hover:bg-olive-04 hover:text-white">

@@ -30,6 +30,25 @@ const DetailProduct = () => {
       console.log(error);
     }
   };
+
+  const deleteProduct = async (id) => {
+    try {
+      const res = await axios({
+        method: "delete",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/seller/product/${id}`,
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      if (res.status === 200) {
+        navigate("/seller/list_product");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      }
+    }
+  };
   return (
     <>
       <Header>
@@ -65,12 +84,17 @@ const DetailProduct = () => {
                 <button
                   type="button"
                   className="mb-4 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
-                  onClick={() => navigate("/list_product")}
                 >
-                  Terbitkan
-                </button>
-                <button className=" block w-full rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-olive-04 hover:text-white">
                   Edit
+                </button>
+                <button
+                  className=" block w-full rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-olive-04 hover:text-white"
+                  onClick={() => {
+                    window.confirm("Delete this product ?") &&
+                      deleteProduct(data.id);
+                  }}
+                >
+                  Delete
                 </button>
               </div>
               <div className="flex items-center rounded-2xl p-4 shadow-low">

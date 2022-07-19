@@ -5,6 +5,8 @@ import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 function InfoProduk() {
   const token = localStorage.getItem("token");
@@ -64,11 +66,29 @@ function InfoProduk() {
 
       if (res.status === 200) {
         navigate("/seller/list_product");
+        Swal.fire({
+          html: "<p>Produk berhasil diterbitkan.</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
       }
     } catch (error) {
-      if (error.response) {
-        alert(error.response.data.message);
-      }
+      console.log(error);
+      Swal.fire({
+        html: "<p>Produk gagal diterbitkan.</p>",
+        position: "top",
+        showConfirmButton: false,
+        color: "white",
+        width: 500,
+        padding: "0",
+        timer: 2000,
+        customClass: "swal-danger",
+      });
     }
   };
 

@@ -5,6 +5,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 function Register() {
   const [passwordType, setPasswordType] = useState("password");
@@ -58,11 +60,29 @@ function Register() {
 
             if (res.status === 201) {
               navigate("/login", { replace: true });
-              alert(res.data.message);
+              Swal.fire({
+                html: "<p>Berhasil Register</p>",
+                position: "top",
+                showConfirmButton: false,
+                color: "white",
+                width: 500,
+                padding: "0",
+                timer: 2000,
+                customClass: "swal-success",
+              });
             }
           } catch (error) {
             if (error.response) {
-              alert(error.response.data.message[0].message);
+              Swal.fire({
+                html: "<p>Gagal Register</p>",
+                position: "top",
+                showConfirmButton: false,
+                color: "white",
+                width: 500,
+                padding: "0",
+                timer: 2000,
+                customClass: "swal-danger",
+              });
             }
           }
         }}

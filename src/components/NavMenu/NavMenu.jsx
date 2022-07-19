@@ -25,7 +25,6 @@ function NavMenu() {
 
   return (
     <nav id="nav-menu" className="mt-1">
-      {/* Menu List Menu */}
       <Menu as="div" className="relative inline-block text-left">
         <div className="flex items-center">
           <Menu.Button className="inline-flex w-full justify-center rounded-md px-2 lg:px-4">
@@ -100,26 +99,17 @@ function NavMenu() {
           <Menu.Items className="absolute top-8 right-0 mt-2 w-48 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:w-56">
             <div className="px-2 py-2">
               <Menu.Item>
-                <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
-                  Edit Profil
-                </button>
-              </Menu.Item>
-              <Menu.Item>
-                <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
-                  Jualan Saya
-                </button>
-              </Menu.Item>
-              <Menu.Item>
-                <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
-                  Logout
-                </button>
+                <Link as="div" to="/seller/list_product">
+                  <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
+                    Jualan Saya
+                  </button>
+                </Link>
               </Menu.Item>
             </div>
           </Menu.Items>
         </Transition>
       </Menu>
 
-      {/* Menu Notifikasi */}
       <Menu as="div" className="relative inline-block text-left">
         <div className="flex">
           <Menu.Button className="inline-flex w-full justify-center rounded-md px-2 lg:px-4">
@@ -195,7 +185,6 @@ function NavMenu() {
         </Transition>
       </Menu>
 
-      {/* Menu User */}
       <Menu as="div" className="relative inline-block text-left">
         <div className="flex">
           <Menu.Button className="inline-flex w-full justify-center rounded-md px-2 lg:px-4">
@@ -241,13 +230,6 @@ function NavMenu() {
                 <Link as="div" to="/profile">
                   <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
                     Edit Profil
-                  </button>
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link as="div" to="/seller/list_product">
-                  <button className="group flex w-full items-center rounded-md px-1 py-1 text-sm hover:bg-olive-04 hover:text-white lg:text-base">
-                    Jualan Saya
                   </button>
                 </Link>
               </Menu.Item>

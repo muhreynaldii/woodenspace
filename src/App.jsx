@@ -17,6 +17,7 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import Seller from "./pages/Seller/Seller";
 import DetailProductBuyer from "./pages/DetailProductBuyer/DetailProductBuyer";
 import ProtectedRoute from "./routes/ProtectedRoutes";
+import EditProduct from "./pages/EditProduct/EditProduct";
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
             <Route path="detail/:id" element={<DetailProduct />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="add_product" element={<InfoProduk />} />
-            <Route path="bidding" element={<InfoPenawar />} />
+            <Route path="edit_product/:id" element={<EditProduct />} />
+            <Route path="bidding/:id" element={<InfoPenawar />} />
             <Route path="bidding_status" element={<InfoPenawarStatus />} />
           </Route>
           <Route path="/buyer" element={<Buyer />}>

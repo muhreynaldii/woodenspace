@@ -1,15 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import Product from "../../assets/image/products/product-1.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "animate.css";
 import "../../Alert.css";
+import dateFormat from "dateformat";
 
 function NavMenu() {
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [newData, setNewData] = useState([]);
+
+  useEffect(() => {
+    getTransactions();
+    getBuyerTransactions();
+  }, []);
+
+  const getTransactions = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller",
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      setData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getBuyerTransactions = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/buyer",
+        data: newData,
+        headers: { Authorization: token },
+      });
+
+      setNewData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -167,37 +205,181 @@ function NavMenu() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute top-8 -right-4 mt-2 w-[300px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:right-0 lg:w-[376px]">
+          <Menu.Items className="absolute top-8 -right-4 mt-2 max-h-[300px] w-[300px]  origin-top-right divide-y divide-gray-100 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:right-0 lg:w-[376px]">
             <div className="px-1 py-1 ">
-              <Menu.Item>
-                <Link as="div" to="/bidding">
-                  <div className="group flex justify-between p-2 hover:cursor-pointer lg:p-5">
-                    <div
-                      className="h-[48px] w-[48px] overflow-hidden rounded-md bg-cover bg-center"
-                      style={{ backgroundImage: `url(${Product})` }}
-                    ></div>
-                    <div className="lg:mr-6 ">
-                      <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
-                        Penawaran Produk
-                      </p>
+              {data &&
+                data.map((item) => (
+                  <Menu.Item key={item?.product_transactions[0]?.id}>
+                    <Link
+                      to={`/seller/bidding/${item?.product_transactions[0]?.id}`}
+                      as="div"
+                    >
+                      <div className="group flex justify-between border-b-[1px] p-2 hover:cursor-pointer hover:rounded-lg hover:bg-olive-02 lg:p-5">
+                        <div className="flex">
+                          <div className="mr-2 lg:mr-4">
+                            <img
+                              src={item?.product_images[0].url}
+                              alt=""
+                              className="h-[48px] w-[48px] overflow-hidden rounded-md object-cover"
+                            />
+                          </div>
+                          <div>
+                            <div className="flex">
+                              <p className="mr-8 text-[10px] font-normal text-neutral-03 lg:text-xs">
+                                Penawaran Produk
+                              </p>
 
-                      <p className="py-1 text-xs font-normal lg:text-sm ">
-                        Jam Tangan Casio
-                      </p>
+                              <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
+                                {dateFormat(
+                                  item?.product_transactions[0]?.updatedAt,
+                                  "dS mmmm, mm:ss"
+                                )}
+                              </p>
+                              <span className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500 lg:ml-2"></span>
+                            </div>
+                            <div>
+                              <p className="truncate py-1 text-xs font-normal capitalize lg:text-sm">
+                                {item.name}
+                              </p>
 
-                      <p className="text-xs font-normal lg:text-sm ">
-                        Rp. 250.000
-                      </p>
-                    </div>
-                    <div className="flex">
-                      <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
-                        20 Apr, 14:04
-                      </p>
-                      <div className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500 lg:ml-2"></div>
-                    </div>
-                  </div>
-                </Link>
-              </Menu.Item>
+                              <p className="pb-1 text-xs font-normal line-through lg:text-sm ">
+                                Rp.
+                                {new Intl.NumberFormat("id-ID").format(
+                                  Math.floor(item.price)
+                                )}
+                              </p>
+
+                              <p className="pb-1 text-xs font-normal lg:text-sm ">
+                                Ditawar Rp.
+                                {new Intl.NumberFormat("id-ID").format(
+                                  Math.floor(
+                                    item?.product_transactions[0]?.price_offered
+                                  )
+                                )}
+                              </p>
+
+                              {item?.product_transactions[0]?.status ===
+                                "accepted" && (
+                                <p className="text-xs font-normal text-green-400 lg:text-sm ">
+                                  OnProcess
+                                </p>
+                              )}
+
+                              {item?.product_transactions[0]?.status ===
+                                "failed" && (
+                                <p className="text-xs font-normal text-red-400 lg:text-sm ">
+                                  Canceled
+                                </p>
+                              )}
+
+                              {item?.product_transactions[0]?.status ===
+                                "finish" && (
+                                <p className="text-xs font-normal text-neutral-03 lg:text-sm ">
+                                  Finished
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </Menu.Item>
+                ))}
+
+              {newData &&
+                newData.map((item) => (
+                  <Menu.Item key={item.id}>
+                    <Link to={"/"}>
+                      <div className="group flex justify-between border-b-[1px] p-2 hover:cursor-pointer hover:rounded-lg hover:bg-olive-02 lg:p-5">
+                        <div className="flex">
+                          <div className="mr-2 lg:mr-4">
+                            <img
+                              src={item.product.product_images[0].url}
+                              alt=""
+                              className="h-[48px] w-[48px] overflow-hidden rounded-md object-cover"
+                            />
+                          </div>
+
+                          <div>
+                            <div className="flex">
+                              <p className="mr-8 text-[10px] font-normal text-neutral-03 lg:text-xs">
+                                {item.status === "offered"
+                                  ? "Berhasil Diterbitkan"
+                                  : "Penawaran produk"}
+                              </p>
+
+                              <p className="text-right text-[10px] font-normal text-neutral-03 lg:text-xs">
+                                {dateFormat(item.updatedAt, "dS mmmm, mm:ss")}
+                              </p>
+                              <span className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500"></span>
+                            </div>
+                            <p className="truncate py-1 text-xs font-normal capitalize lg:text-sm">
+                              {item.product.name}
+                            </p>
+
+                            {item.status === "offered" && (
+                              <p className="text-xs font-normal lg:text-sm ">
+                                Rp.
+                                {new Intl.NumberFormat("id-ID").format(
+                                  Math.floor(item.price_offered)
+                                )}
+                              </p>
+                            )}
+
+                            {item.status === "accepted" && (
+                              <>
+                                <p className="text-xs font-normal line-through lg:text-sm ">
+                                  Rp.
+                                  {new Intl.NumberFormat("id-ID").format(
+                                    Math.floor(item.product.price)
+                                  )}
+                                </p>
+                                <p className="text-xs font-normal lg:text-sm ">
+                                  Berhasil ditawar Rp.
+                                  {new Intl.NumberFormat("id-ID").format(
+                                    Math.floor(item.price_offered)
+                                  )}
+                                </p>
+                                <p className="text-[10px] font-normal text-neutral-03">
+                                  Kamu akan segera dihubungi penjual via
+                                  whatsapp
+                                </p>
+                              </>
+                            )}
+
+                            {item.status === "finish" && (
+                              <>
+                                <p className="text-xs font-normal lg:text-sm ">
+                                  Rp.
+                                  {new Intl.NumberFormat("id-ID").format(
+                                    Math.floor(item.price_offered)
+                                  )}
+                                </p>
+                                <p className="text-xs font-normal lg:text-sm">
+                                  Transaksi Selesai
+                                </p>
+                              </>
+                            )}
+
+                            {item.status === "failed" && (
+                              <>
+                                <p className="text-xs font-normal lg:text-sm">
+                                  Rp.
+                                  {new Intl.NumberFormat("id-ID").format(
+                                    Math.floor(item.price_offered)
+                                  )}
+                                </p>
+                                <p className="text-xs font-normal lg:text-sm">
+                                  Tawaran ditolak
+                                </p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </Menu.Item>
+                ))}
             </div>
           </Menu.Items>
         </Transition>

@@ -1,13 +1,120 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
-import User from "../../assets/image/user.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
-import Product from "../../assets/image/products/product-1.png";
 import ModalTawarAccepted from "../../components/ModalTawarAccepted/ModalTawarAccepted";
+import axios from "axios";
+import { useEffect } from "react";
+import dateFormat from "dateformat";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 const InfoPenawar = () => {
+  const token = localStorage.getItem("token");
   let [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const [profile, setProfile] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [status, setStatus] = useState("");
+  const [idTransaction, setIdTransaction] = useState(0);
+
+  useEffect(() => {
+    getTransaction();
+  }, [id]);
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
+  useEffect(() => {
+    if (status === "accepted") {
+      navigate(`/seller/bidding_status/${idTransaction}`);
+    }
+  }, [status]);
+
+  const getTransaction = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller/${id}`,
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      setData(res.data.data);
+      setStatus(res.data.data.status);
+      setIdTransaction(res.data.data.id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserProfile = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
+        data: profile,
+        headers: { Authorization: token },
+      });
+
+      setProfile(res.data.data.detail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const acceptTransaction = async () => {
+    try {
+      const res = await axios.put(
+        `https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller/${id}`,
+        { status: "accepted" },
+        { headers: { Authorization: token } }
+      );
+
+      if (res.status === 201) {
+        navigate(`/seller/bidding_status/${id}`);
+        Swal.fire({
+          html: "<p>Tawaran Diterima.</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const cancelTransaction = async () => {
+    try {
+      const res = await axios({
+        method: "put",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/transaction/cancel/${id}`,
+        headers: { Authorization: token },
+      });
+
+      if (res.status === 200) {
+        Swal.fire({
+          html: "<p>Tawaran Berhasil Ditolak.</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function closeModal() {
     setIsOpen(false);
@@ -46,18 +153,25 @@ const InfoPenawar = () => {
               <div className="flex w-full items-center justify-between rounded-2xl p-4 shadow-low">
                 <div className="flex items-center">
                   <div className="overflow-hidden rounded-2xl">
-                    <img src={User} alt="User" />
+                    <img
+                      src={profile.avatar_url}
+                      alt="User"
+                      className="h-[48px] w-[48px] overflow-hidden rounded-2xl"
+                    />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium">Nama Penjual</p>
-                    <p className="text-xs text-neutral-03">Kota</p>
+                    <p className="text-sm font-medium">{profile.name}</p>
+                    <p className="text-xs text-neutral-03">{profile.city}</p>
                   </div>
                 </div>
 
                 <div>
-                  <button className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white">
+                  <Link
+                    to="/profile"
+                    className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white"
+                  >
                     Edit
-                  </button>
+                  </Link>
                 </div>
               </div>
               <h3 className="py-6 text-sm font-medium text-neutral-05">
@@ -67,29 +181,39 @@ const InfoPenawar = () => {
                 <div className="flex">
                   <div
                     className="h-[48px] w-[48px] overflow-hidden rounded-md bg-cover bg-center"
-                    style={{ backgroundImage: `url(${Product})` }}
+                    style={{
+                      backgroundImage: `url(${data?.product?.product_images[0]?.url})`,
+                    }}
                   ></div>
                   <div className="ml-4 lg:ml-6">
                     <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
                       Penawaran Produk
                     </p>
-                    <p className="py-1 text-xs font-normal lg:text-sm ">
-                      Jam Tangan Casio
+                    <p className="py-1 text-xs font-normal capitalize lg:text-sm ">
+                      {data?.product?.name}
                     </p>
                     <p className="text-xs font-normal lg:text-sm ">
-                      Rp. 250.000
+                      Rp.
+                      {new Intl.NumberFormat("id-ID").format(
+                        Math.floor(data.price_offered)
+                      )}
                     </p>
                   </div>
                 </div>
                 <div className="flex">
                   <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
-                    20 Apr, 14:04
+                    {dateFormat(data.updatedAt, "dS mmmm, mm:ss")}
                   </p>
                   <div className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500 lg:ml-2"></div>
                 </div>
               </div>
               <div className="border-b-neutral-01 mt-4 flex justify-center border-b-2 pb-4 md:justify-end">
-                <button className="rounded-2xl border border-olive-04 bg-white px-8 py-[6px] text-sm font-medium transition duration-300 hover:bg-olive-04 hover:text-white sm:px-12 sm:py-2">
+                <button
+                  onClick={() => {
+                    window.confirm("Tolak Tawaran ?") && cancelTransaction();
+                  }}
+                  className="rounded-2xl border border-olive-04 bg-white px-8 py-[6px] text-sm font-medium transition duration-300 hover:bg-olive-04 hover:text-white sm:px-12 sm:py-2"
+                >
                   Tolak
                 </button>
                 <button
@@ -99,13 +223,20 @@ const InfoPenawar = () => {
                   Terima
                 </button>
               </div>
-              {/* Import Modal Tawar Accepted */}
+
               <ModalTawarAccepted
                 openModal={openModal}
                 closeModal={closeModal}
                 isOpen={isOpen}
+                acceptTransaction={() => acceptTransaction()}
+                avatar={profile.avatar_url}
+                nama_penjual={profile.name}
+                city={profile.city}
+                product_image={data?.product?.product_images[0]?.url}
+                nama_product={data?.product?.name}
+                price={data?.product?.price}
+                price_offered={data.price_offered}
               />
-              {/* Import Modal Tawar Accepted */}
             </div>
           </div>
         </div>

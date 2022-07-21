@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavMenu from "./../../components/NavMenu/NavMenu";
+import NavMenu from "../../components/NavMenu/NavMenu";
 import CardCategory from "../../components/CardCategory/CardCategory";
 import axios from "axios";
 
-const ListProduct = () => {
+const Terjual = () => {
   const [data, setData] = useState([]);
   const [profile, setProfile] = useState([]);
   const token = localStorage.getItem("token");
@@ -89,37 +89,9 @@ const ListProduct = () => {
                 <CardCategory />
 
                 <div className="flex w-full flex-wrap justify-center gap-3 sm:justify-start lg:w-3/4 lg:gap-7">
-                  <Link
-                    as="div"
-                    to="/seller/add_product"
-                    className=" border-neutral-01 group mb-3 flex h-[198px] w-full flex-col items-center justify-center rounded-md border-2 border-dashed p-6 hover:cursor-pointer hover:border-olive-04 lg:mb-0 lg:w-[207px]"
-                  >
-                    <svg
-                      id="plus"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      className="icon line stroke-neutral-03 group-hover:stroke-olive-04"
-                      width="30"
-                      height="30"
-                    >
-                      <path
-                        id="primary"
-                        d="M5,12H19M12,5V19"
-                        style={{
-                          strokelLinecap: "round",
-                          strokeLinejoin: "round",
-                          strokeWidth: 2,
-                        }}
-                      ></path>
-                    </svg>
-                    <p className="mt-3 text-sm font-normal text-neutral-03 group-hover:text-olive-04">
-                      Tambah Produk
-                    </p>
-                  </Link>
-
                   {data &&
                     data
-                      .filter((status) => status.status === "available")
+                      .filter((status) => status.status === "sold")
                       .map((item) => (
                         <div
                           className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
@@ -164,4 +136,4 @@ const ListProduct = () => {
   );
 };
 
-export default ListProduct;
+export default Terjual;

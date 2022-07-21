@@ -5,6 +5,8 @@ import NavMenu from "./../../components/NavMenu/NavMenu";
 import ModalTawar from "../../components/ModalTawar/ModalTawar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import "../../Alert.css";
 
 const DetailProductBuyer = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -37,6 +39,48 @@ const DetailProductBuyer = () => {
   function openModal() {
     setIsOpen(true);
   }
+
+  const addTransaction = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios({
+        method: "post",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/buyer",
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      if (res.status === 201) {
+        Swal.fire({
+          html: "<p>Berhasil Melakukan Penawaran</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
+
+        closeModal();
+      }
+    } catch (error) {
+      if (error.response) {
+        Swal.fire({
+          html: "<p>Gagal Melakukan Penawaran</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-danger",
+        });
+
+        closeModal();
+      }
+    }
+  };
   return (
     <>
       <Header>
@@ -105,6 +149,13 @@ const DetailProductBuyer = () => {
         openModal={openModal}
         closeModal={closeModal}
         isOpen={isOpen}
+        product_name={data.name}
+        product_price={data.price}
+        product_images={data?.product_images}
+        addTransaction={(e) => addTransaction(e)}
+        data={data}
+        setData={setData}
+        id={id}
       />
     </>
   );

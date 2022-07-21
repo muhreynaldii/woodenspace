@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CarouselProduct from "../../components/CarouselProduct/CarouselProduct";
 import Header from "../../components/Header/Header";
 import NavMenu from "./../../components/NavMenu/NavMenu";
@@ -93,12 +93,12 @@ const DetailProduct = () => {
                     Math.floor(data?.price)
                   )}
                 </p>
-                <button
-                  type="button"
-                  className="mb-4 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
+                <Link
+                  to={`/seller/edit_product/${data.id}`}
+                  className="mb-4 block w-full rounded-2xl bg-olive-04 px-6 py-3 text-center text-sm text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
                 >
                   Edit
-                </button>
+                </Link>
                 <button
                   className=" block w-full rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm text-black transition duration-300 hover:bg-olive-04 hover:text-white"
                   onClick={() => {

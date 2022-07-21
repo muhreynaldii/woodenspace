@@ -1,13 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
-import User from "../../assets/image/user.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
-import Product from "../../assets/image/products/product-1.png";
 import ModalStatus from "../../components/ModalStatus/ModalStatus";
+import { useEffect } from "react";
+import axios from "axios";
+import dateFormat from "dateformat";
 
 const InfoPenawarStatus = () => {
+  const token = localStorage.getItem("token");
   let [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const [profile, setProfile] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    getTransaction();
+  }, [id]);
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
 
   function closeModal() {
     setIsOpen(false);
@@ -16,6 +29,40 @@ const InfoPenawarStatus = () => {
   function openModal() {
     setIsOpen(true);
   }
+
+  const getTransaction = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller/${id}`,
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      setData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserProfile = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
+        data: profile,
+        headers: { Authorization: token },
+      });
+
+      setProfile(res.data.data.detail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleWA = () => {
+    window.open(`https://wa.me/${data?.buyer?.detail?.phone_number}`, "_blank");
+  };
 
   return (
     <>
@@ -46,18 +93,25 @@ const InfoPenawarStatus = () => {
               <div className="flex w-full items-center justify-between rounded-2xl p-4 shadow-low">
                 <div className="flex items-center">
                   <div className="overflow-hidden rounded-2xl">
-                    <img src={User} alt="User" />
+                    <img
+                      src={profile.avatar_url}
+                      alt="User"
+                      className="h-[48px] w-[48px] overflow-hidden rounded-2xl"
+                    />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium">Nama Penjual</p>
-                    <p className="text-xs text-neutral-03">Kota</p>
+                    <p className="text-sm font-medium">{profile.name}</p>
+                    <p className="text-xs text-neutral-03">{profile.city}</p>
                   </div>
                 </div>
 
                 <div>
-                  <button className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white">
+                  <Link
+                    to={"/profile"}
+                    className="rounded-lg border border-olive-04 py-1 px-3 text-xs font-medium text-neutral-05 transition duration-300 hover:bg-olive-04 hover:text-white"
+                  >
                     Edit
-                  </button>
+                  </Link>
                 </div>
               </div>
               <h3 className="py-6 text-sm font-medium text-neutral-05">
@@ -67,23 +121,28 @@ const InfoPenawarStatus = () => {
                 <div className="flex">
                   <div
                     className="h-[48px] w-[48px] overflow-hidden rounded-md bg-cover bg-center"
-                    style={{ backgroundImage: `url(${Product})` }}
+                    style={{
+                      backgroundImage: `url(${data?.product?.product_images[0]?.url})`,
+                    }}
                   ></div>
                   <div className="ml-4 lg:ml-6">
                     <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
                       Penawaran Produk
                     </p>
                     <p className="py-1 text-xs font-normal lg:text-sm ">
-                      Jam Tangan Casio
+                      {data?.product?.name}
                     </p>
                     <p className="text-xs font-normal lg:text-sm ">
-                      Rp. 250.000
+                      Rp.
+                      {new Intl.NumberFormat("id-ID").format(
+                        Math.floor(data.price_offered)
+                      )}
                     </p>
                   </div>
                 </div>
                 <div className="flex">
                   <p className="text-[10px] font-normal text-neutral-03 lg:text-xs">
-                    20 Apr, 14:04
+                    {dateFormat(data.updatedAt, "dS mmmm, mm:ss")}
                   </p>
                   <div className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500 lg:ml-2"></div>
                 </div>
@@ -95,7 +154,10 @@ const InfoPenawarStatus = () => {
                 >
                   Status
                 </button>
-                <button className="group relative ml-4 rounded-2xl bg-olive-04 px-10 py-2 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04 lg:px-12">
+                <button
+                  onClick={handleWA}
+                  className="group relative ml-4 rounded-2xl bg-olive-04 px-10 py-2 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04 lg:px-12"
+                >
                   Hubungi di
                   <span className="absolute right-4 top-3 lg:right-6">
                     <svg
@@ -112,13 +174,14 @@ const InfoPenawarStatus = () => {
                   </span>
                 </button>
               </div>
-              {/* Import Modal Status */}
+
               <ModalStatus
                 openModal={openModal}
                 closeModal={closeModal}
                 isOpen={isOpen}
+                id={id}
+                token={token}
               />
-              {/* Import Modal Status */}
             </div>
           </div>
         </div>

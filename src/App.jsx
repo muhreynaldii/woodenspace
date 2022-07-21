@@ -18,6 +18,7 @@ import Seller from "./pages/Seller/Seller";
 import DetailProductBuyer from "./pages/DetailProductBuyer/DetailProductBuyer";
 import ProtectedRoute from "./routes/ProtectedRoutes";
 import EditProduct from "./pages/EditProduct/EditProduct";
+import Terjual from "./pages/Terjual/Terjual";
 
 function App() {
   return (
@@ -33,12 +34,13 @@ function App() {
           <Route path="/seller" element={<Seller />}>
             <Route index element={<ListProduct />} />
             <Route path="list_product" element={<ListProduct />} />
+            <Route path="terjual" element={<Terjual />} />
             <Route path="detail/:id" element={<DetailProduct />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="add_product" element={<InfoProduk />} />
             <Route path="edit_product/:id" element={<EditProduct />} />
             <Route path="bidding/:id" element={<InfoPenawar />} />
-            <Route path="bidding_status" element={<InfoPenawarStatus />} />
+            <Route path="bidding_status/:id" element={<InfoPenawarStatus />} />
           </Route>
           <Route path="/buyer" element={<Buyer />}>
             <Route index element={<DetailProductBuyer />} />

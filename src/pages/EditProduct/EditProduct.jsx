@@ -10,11 +10,6 @@ import "../../Alert.css";
 
 function EditProduct() {
   const token = localStorage.getItem("token");
-  // const [name, setName] = useState("");
-  // const [category_id, setCategory_id] = useState("");
-  // const [price, setPrice] = useState(0);
-  // const [description, setDescription] = useState("");
-  // const [productImages, setProductImages] = useState([]);
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   const navigate = useNavigate();
@@ -53,22 +48,8 @@ function EditProduct() {
     }
   };
 
-  // const handleFilesChange = (e) => {
-  //   setProductImages(e.target.files);
-  // };
-
-  const addProduct = async (e) => {
+  const editProduct = async (e) => {
     e.preventDefault();
-
-    // const data = new FormData();
-    // data.append("name", name);
-    // data.append("category_id", category_id);
-    // data.append("price", price);
-    // data.append("description", description);
-
-    // for (let i = 0; i < productImages.length; i++) {
-    //   data.append("productImages", productImages[i]);
-    // }
 
     try {
       const res = await axios({
@@ -77,7 +58,6 @@ function EditProduct() {
         data: data,
         headers: {
           Authorization: token,
-          // "content-type": "multipart/formdata",
         },
       });
 
@@ -133,7 +113,7 @@ function EditProduct() {
               </Link>
             </div>
             <div className="mx-auto w-full font-normal lg:w-[568px]">
-              <form onSubmit={(e) => addProduct(e)}>
+              <form onSubmit={(e) => editProduct(e)}>
                 <div className="form-group mb-4">
                   <label htmlFor="nama_produk">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
@@ -231,53 +211,6 @@ function EditProduct() {
                     ></textarea>
                   </label>
                 </div>
-
-                {/* <div className="form-group mb-4 flex items-end">
-                  <label htmlFor="no">
-                    <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
-                      Foto Produk
-                    </span>
-                    <div className="relative h-24 w-24 rounded-lg border-2 border-dashed p-9 shadow hover:border-olive-03">
-                      <label
-                        htmlFor="fileInput"
-                        className="absolute top-8 left-8"
-                      >
-                        <svg
-                          id="plus"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          className="icon line cursor-pointer stroke-neutral-03 group-hover:stroke-olive-04"
-                          width="30"
-                          height="30"
-                        >
-                          <path
-                            id="primary"
-                            d="M5,12H19M12,5V19"
-                            style={{
-                              strokelLinecap: "round",
-                              strokeLinejoin: "round",
-                              strokeWidth: 2,
-                            }}
-                          ></path>
-                        </svg>
-                      </label>
-                      <input
-                        id="fileInput"
-                        type="file"
-                        name="productImages"
-                        className="hidden"
-                        onChange={handleFilesChange}
-                        accept="image/png, image/jpg, image/jpeg"
-                        multiple
-                      />
-                    </div>
-                  </label>
-                  {productImages.length > 0 && (
-                    <span className="ml-4 mt-4">
-                      {productImages.length} Files
-                    </span>
-                  )}
-                </div> */}
 
                 <div className="button-group mb-20">
                   <button

@@ -53,7 +53,6 @@ const ListProduct = () => {
 
       <section id="list-product" className="pt-32">
         <div className="container mx-auto px-4">
-          {/* Box */}
           <div className="mb-6 flex justify-center">
             <div className="w-full lg:w-[968px]">
               <h3 className="mb-6 text-xl font-bold">Daftar Jualan Saya</h3>
@@ -83,13 +82,12 @@ const ListProduct = () => {
               </div>
             </div>
           </div>
-          {/* list product box */}
+
           <div className="flex justify-center">
             <div className="w-full lg:w-[968px]">
               <div className="flex flex-col lg:flex-row">
-                {/* Card Category */}
                 <CardCategory />
-                {/* Card Category */}
+
                 <div className="flex w-full flex-wrap justify-center gap-3 sm:justify-start lg:w-3/4 lg:gap-7">
                   <Link
                     as="div"
@@ -120,40 +118,42 @@ const ListProduct = () => {
                   </Link>
 
                   {data &&
-                    data.map((item) => (
-                      <div
-                        className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
-                        key={item.id}
-                      >
-                        <Link to={`/seller/detail/${item.id}`}>
-                          <div className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2">
-                            <img
-                              src={
-                                item.product_images[0].url
-                                  ? item.product_images[0].url
-                                  : "https://fakeimg.pl/300/?text=NoPhoto"
-                              }
-                              alt=""
-                              className="h-[100px] w-[190px] overflow-hidden rounded-[4px] object-scale-down transition duration-500 hover:scale-125"
-                            />
-                          </div>
-                        </Link>
-                        <Link to={`/seller/detail/${item.id}`}>
-                          <h5 className="mb-1 truncate text-xs font-normal capitalize hover:text-olive-04 sm:text-sm">
-                            {item?.name}
-                          </h5>
-                        </Link>
-                        <p className="mb-2 text-[10px] capitalize text-neutral-03 sm:text-xs">
-                          {item?.category?.name}
-                        </p>
-                        <p className="mb-3 text-xs font-normal sm:text-sm">
-                          Rp.
-                          {new Intl.NumberFormat("id-ID").format(
-                            Math.floor(item?.price)
-                          )}
-                        </p>
-                      </div>
-                    ))}
+                    data
+                      .filter((status) => status.status === "available")
+                      .map((item) => (
+                        <div
+                          className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
+                          key={item.id}
+                        >
+                          <Link to={`/seller/detail/${item.id}`}>
+                            <div className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2">
+                              <img
+                                src={
+                                  item.product_images[0].url
+                                    ? item.product_images[0].url
+                                    : "https://fakeimg.pl/300/?text=NoPhoto"
+                                }
+                                alt=""
+                                className="h-[100px] w-[190px] overflow-hidden rounded-[4px] object-scale-down transition duration-500 hover:scale-125"
+                              />
+                            </div>
+                          </Link>
+                          <Link to={`/seller/detail/${item.id}`}>
+                            <h5 className="mb-1 truncate text-xs font-normal capitalize hover:text-olive-04 sm:text-sm">
+                              {item?.name}
+                            </h5>
+                          </Link>
+                          <p className="mb-2 text-[10px] capitalize text-neutral-03 sm:text-xs">
+                            {item?.category?.name}
+                          </p>
+                          <p className="mb-3 text-xs font-normal sm:text-sm">
+                            Rp.
+                            {new Intl.NumberFormat("id-ID").format(
+                              Math.floor(item?.price)
+                            )}
+                          </p>
+                        </div>
+                      ))}
                 </div>
               </div>
             </div>

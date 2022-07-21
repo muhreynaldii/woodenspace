@@ -12,6 +12,7 @@ const Wishlist = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    document.title = "Wishlist | Woodenspace";
     getUserProfile();
     getWishlist();
   }, []);

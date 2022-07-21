@@ -13,6 +13,7 @@ function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Registrasi | Woodenspace";
     if (localStorage.getItem("token")) {
       navigate("/");
     }

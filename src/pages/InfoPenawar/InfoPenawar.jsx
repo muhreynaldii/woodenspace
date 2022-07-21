@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import User from "../../assets/image/user.png";
@@ -7,6 +7,10 @@ import Product from "../../assets/image/products/product-1.png";
 import ModalTawarAccepted from "../../components/ModalTawarAccepted/ModalTawarAccepted";
 
 const InfoPenawar = () => {
+  useEffect(() => {
+    document.title = "Info Penawar | Woodenspace";
+  }, []);
+
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {

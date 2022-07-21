@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoginRegister from "../../components/LoginRegister/LoginRegister";
 import axios from "axios";
@@ -8,9 +8,14 @@ import Swal from "sweetalert2";
 import "../../Alert.css";
 
 function ForgotPassword() {
+  useEffect(() => {
+    document.title = "Lupa Password | Woodenspace";
+  }, []);
+
   const ForgotSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
   });
+
   return (
     <LoginRegister name={"Lupa Password"}>
       <Formik

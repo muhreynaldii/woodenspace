@@ -13,6 +13,7 @@ const DetailProductBuyer = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    document.title = "Detail Produk Buyer | Woodenspace";
     product();
   }, [id]);
 

@@ -1,9 +1,71 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import iconX from "../../assets/icons/fi_x.png";
 import "./ModalStatus.css";
+import Swal from "sweetalert2";
+import "../../Alert.css";
+import axios from "axios";
 
-const ModalStatus = ({ closeModal, isOpen }) => {
+const ModalStatus = ({ closeModal, isOpen, id, token }) => {
+  const [data, setData] = useState("");
+
+  const handleStatus = async (e) => {
+    e.preventDefault();
+
+    if (data === "finish") {
+      try {
+        const res = await axios.put(
+          `https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller/${id}`,
+          { status: data },
+          { headers: { Authorization: token } }
+        );
+
+        if (res.status === 201) {
+          Swal.fire({
+            html: "<p>Transaksi Selesai.</p>",
+            position: "top",
+            showConfirmButton: false,
+            color: "white",
+            width: 500,
+            padding: "0",
+            timer: 2000,
+            customClass: "swal-success",
+          });
+
+          closeModal();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (data === "failed") {
+      try {
+        const res = await axios.put(
+          `https://wooden-space-api-development.herokuapp.com/api/v1/transaction/cancel/${id}`,
+          { status: data },
+          { headers: { Authorization: token } }
+        );
+
+        if (res.status === 200) {
+          Swal.fire({
+            html: "<p>Tawaran Berhasil Ditolak.</p>",
+            position: "top",
+            showConfirmButton: false,
+            color: "white",
+            width: 500,
+            padding: "0",
+            timer: 2000,
+            customClass: "swal-success",
+          });
+
+          closeModal();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -48,38 +110,51 @@ const ModalStatus = ({ closeModal, isOpen }) => {
                     Perbarui status penjualan produkmu
                   </Dialog.Title>
 
-                  <div className="mt-6 flex">
-                    <input type="radio" name="berhasil" id="berhasil" />
-                    <div className="ml-6 -mt-1">
-                      <p className="mb-2 text-sm font-medium text-neutral-05">
-                        Berhasil Terjual
-                      </p>
-                      <p className="text-sm font-normal text-neutral-03">
-                        Kamu telah sepakat menjual produk ini kepada pembeli
-                      </p>
+                  <form onSubmit={(e) => handleStatus(e)}>
+                    <div className="mt-6 flex">
+                      <input
+                        type="radio"
+                        name="status"
+                        id="berhasil"
+                        value="finish"
+                        onChange={(e) => setData(e.target.value)}
+                      />
+                      <div className="ml-6 -mt-1">
+                        <p className="mb-2 text-sm font-medium text-neutral-05">
+                          Berhasil Terjual
+                        </p>
+                        <p className="text-sm font-normal text-neutral-03">
+                          Kamu telah sepakat menjual produk ini kepada pembeli
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="mt-6 flex">
-                    <input type="radio" name="berhasil" id="berhasil" />
-                    <div className="ml-6 -mt-1">
-                      <p className="mb-2 text-sm font-medium text-neutral-05">
-                        Batalkan Transaksi
-                      </p>
-                      <p className="text-sm font-normal text-neutral-03">
-                        Kamu membatalkan transaksi produk ini dengan pembeli
-                      </p>
+                    <div className="mt-6 flex">
+                      <input
+                        type="radio"
+                        name="status"
+                        id="batalkan"
+                        value="failed"
+                        onChange={(e) => setData(e.target.value)}
+                      />
+                      <div className="ml-6 -mt-1">
+                        <p className="mb-2 text-sm font-medium text-neutral-05">
+                          Batalkan Transaksi
+                        </p>
+                        <p className="text-sm font-normal text-neutral-03">
+                          Kamu membatalkan transaksi produk ini dengan pembeli
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="mt-8">
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-2xl bg-olive-04 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
-                      onClick={closeModal}
-                    >
-                      Kirim
-                    </button>
-                  </div>
+                    <div className="mt-8">
+                      <button
+                        type="submit"
+                        className="inline-flex w-full justify-center rounded-2xl bg-olive-04 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
+                      >
+                        Kirim
+                      </button>
+                    </div>
+                  </form>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

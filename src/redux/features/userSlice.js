@@ -4,36 +4,16 @@ import {
   createEntityAdapter,
 } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-// export const saveProduct = createAsyncThunk(
-//   "products/saveProduct",
-//   async ({ title, price }) => {
-//     const response = await axios.post("http://localhost:5000/products", {
-//       title,
-//       price,
-//     });
-//     return response.data;
-//   }
-// );
+const token = localStorage.getItem("token");
 
-export const login = createAsyncThunk("user/login", async ({ values }) => {
-  const navigate = useNavigate();
-  try {
-    const res = await axios({
-      method: "post",
-      url: "https://wooden-space-authorization.herokuapp.com/api/v1/auth/login",
-      data: values,
-    });
-    // console.log(res.data.data.token);
-
-    if (res.status === 200) {
-      localStorage.setItem("token", res.data.data.token);
-      navigate("/", { replace: true });
-    }
-  } catch (error) {
-    console.log(error);
-  }
+export const getUser = createAsyncThunk("user/getUser", async () => {
+  const response = await axios({
+    method: "get",
+    url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
+    headers: { Authorization: token },
+  });
+  return response.data.data.detail;
 });
 
 const userEntity = createEntityAdapter({
@@ -44,10 +24,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: userEntity.getInitialState(),
   extraReducers: {
-    // [saveProduct.fulfilled]: (state, action) => {
-    //   productEntity.addOne(state, action.payload);
-    // },
-    [login.fulfilled]: (state, action) => {
+    [getUser.fulfilled]: (state, action) => {
       userEntity.setOne(state, action.payload);
     },
   },

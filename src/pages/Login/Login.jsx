@@ -49,6 +49,21 @@ function Login() {
     password: Yup.string().required("Required"),
   });
 
+  const googleLogin = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-authorization.herokuapp.com/api/v1/auth/sign_in/google",
+        withCredentials: true,
+      });
+
+      window.location.replace(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <LoginRegister name={"Masuk"}>
       <Formik
@@ -171,7 +186,7 @@ function Login() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-6 mb-10 block h-[48px] w-full rounded-2xl bg-olive-04 py-3 px-6 text-center text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
+              className="mt-6 mb-4 block h-[48px] w-full rounded-2xl bg-olive-04 py-3 px-6 text-center text-white transition duration-300 hover:bg-olive-02 hover:text-neutral-04"
             >
               {" "}
               Masuk
@@ -179,6 +194,13 @@ function Login() {
           </form>
         )}
       </Formik>
+      <button
+        onClick={googleLogin}
+        className="mb-10 block h-[48px] w-full rounded-2xl bg-olive-02 py-3 px-6 text-center text-neutral-04 transition duration-300 hover:bg-olive-04 hover:text-white"
+      >
+        Masuk Dengan Google
+      </button>
+
       <span className="flex justify-center text-sm">
         Belum Punya Akun?
         <Link

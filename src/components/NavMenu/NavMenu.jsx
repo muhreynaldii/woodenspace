@@ -11,13 +11,22 @@ import dateFormat from "dateformat";
 function NavMenu() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [isVerified, setIsVeryfied] = useState(null);
   const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
 
   useEffect(() => {
-    getTransactions();
-    getBuyerTransactions();
-  }, []);
+    if (token) {
+      getUser();
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (isVerified === true) {
+      getTransactions();
+      getBuyerTransactions();
+    }
+  }, [isVerified]);
 
   const getTransactions = async () => {
     try {
@@ -44,6 +53,19 @@ function NavMenu() {
       });
 
       setNewData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUser = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
+        headers: { Authorization: token },
+      });
+      setIsVeryfied(res.data.data.isVerified);
     } catch (error) {
       console.log(error);
     }
@@ -294,7 +316,7 @@ function NavMenu() {
                         <div className="flex">
                           <div className="mr-2 lg:mr-4">
                             <img
-                              src={item.product.product_images[0].url}
+                              src={item?.product?.product_images[0]?.url}
                               alt=""
                               className="h-[48px] w-[48px] overflow-hidden rounded-md object-cover"
                             />
@@ -314,7 +336,7 @@ function NavMenu() {
                               <span className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500"></span>
                             </div>
                             <p className="truncate py-1 text-xs font-normal capitalize lg:text-sm">
-                              {item.product.name}
+                              {item?.product?.name}
                             </p>
 
                             {item.status === "offered" && (
@@ -331,7 +353,7 @@ function NavMenu() {
                                 <p className="text-xs font-normal line-through lg:text-sm ">
                                   Rp.
                                   {new Intl.NumberFormat("id-ID").format(
-                                    Math.floor(item.product.price)
+                                    Math.floor(item?.product?.price)
                                   )}
                                 </p>
                                 <p className="text-xs font-normal lg:text-sm ">

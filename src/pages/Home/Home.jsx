@@ -149,21 +149,21 @@ function Home() {
           <SwiperSlide>
             <img
               src={banner2}
-              alt=""
+              alt="img-banner2"
               className="h-[144px] overflow-hidden rounded-[20px] object-cover sm:h-[194px] lg:h-[288px]"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
               src={banner3}
-              alt=""
+              alt="img-banner3"
               className="h-[144px] overflow-hidden rounded-[20px] object-cover sm:h-[194px] lg:h-[288px]"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
               src={banner4}
-              alt=""
+              alt="img-banner4"
               className="h-[144px] overflow-hidden rounded-[20px] object-cover sm:h-[194px] lg:h-[288px]"
             />
           </SwiperSlide>

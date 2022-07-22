@@ -98,7 +98,7 @@ const ModalStatus = ({ closeModal, isOpen, id, token }) => {
                     <button onClick={closeModal}>
                       <img
                         src={iconX}
-                        alt=""
+                        alt="icon-s"
                         className="mb-2 h-[34px] w-[34px] cursor-pointer self-end"
                       />
                     </button>

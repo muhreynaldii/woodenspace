@@ -111,7 +111,7 @@ const Wishlist = () => {
                                 ? item.product?.product_images[3].url
                                 : "https://fakeimg.pl/300/?text=NoPhoto"
                             }
-                            alt=""
+                            alt="ProductImage"
                             className="h-[100px] w-[190px] overflow-hidden rounded-[4px] object-scale-down transition duration-500 hover:scale-125"
                           />
                         </div>

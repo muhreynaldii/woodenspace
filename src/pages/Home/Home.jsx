@@ -40,6 +40,10 @@ function Home() {
   }, [dispatch]);
 
   useEffect(() => {
+    document.title = "Home | Woodenspace";
+  }, []);
+
+  useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
 

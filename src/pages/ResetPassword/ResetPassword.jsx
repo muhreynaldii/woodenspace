@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoginRegister from "../../components/LoginRegister/LoginRegister";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function ResetPassword() {
+  useEffect(() => {
+    document.title = "Reset Password | Woodenspace";
+  }, []);
+
   const [newPasswordType, setNewPasswordType] = useState("password");
   const [confNewPasswordType, setConfNewPasswordType] = useState("password");
 

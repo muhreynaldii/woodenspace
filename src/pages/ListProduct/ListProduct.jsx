@@ -18,6 +18,10 @@ const ListProduct = () => {
     dispatch(getSellerProducts());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = "Daftar Jualan Saya | Woodenspace";
+  }, []);
+
   return (
     <>
       <Header>

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import ModalTawarAccepted from "../../components/ModalTawarAccepted/ModalTawarAccepted";
 import axios from "axios";
-import { useEffect } from "react";
 import dateFormat from "dateformat";
 import Swal from "sweetalert2";
 import "../../Alert.css";
@@ -12,6 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, userSelectors } from "../../redux/features/userSlice";
 
 const InfoPenawar = () => {
+  useEffect(() => {
+    document.title = "Info Penawar | Woodenspace";
+  }, []);
+
   const token = localStorage.getItem("token");
   let [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);

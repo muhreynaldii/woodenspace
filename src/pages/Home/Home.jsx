@@ -18,10 +18,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import "../../Alert.css";
-import {
-  getProducts,
-  productSelectors,
-} from "../../redux/features/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   categorySelectors,
@@ -31,13 +27,13 @@ import {
 function Home() {
   const token = localStorage.getItem("token");
   const [isVerified, setIsVeryfied] = useState(null);
+  const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const products = useSelector(productSelectors.selectAll);
   const categories = useSelector(categorySelectors.selectAll);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    getProducts();
+  }, []);
 
   useEffect(() => {
     document.title = "Home | Woodenspace";
@@ -52,6 +48,20 @@ function Home() {
       getUser();
     }
   }, [token]);
+
+  const getProducts = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/buyer/product/",
+        headers: token && { Authorization: token },
+        data: data,
+      });
+      setData(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getUser = async () => {
     try {
@@ -186,8 +196,8 @@ function Home() {
           id="card"
           className="flex flex-wrap justify-center lg:justify-start"
         >
-          {products &&
-            products.map((item) => (
+          {data &&
+            data.map((item) => (
               <div
                 className="mr-3 mb-4 h-[198px] w-[181px] rounded-[4px] bg-white px-2 pt-2 pb-4 shadow-low"
                 key={item.id}

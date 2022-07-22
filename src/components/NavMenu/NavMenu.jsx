@@ -7,23 +7,13 @@ import Swal from "sweetalert2";
 import "animate.css";
 import "../../Alert.css";
 import dateFormat from "dateformat";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  buyerTransactionSelectors,
-  getBuyerTransactions,
-} from "../../redux/features/buyerTransactionSlice";
-import {
-  getSellerTransactions,
-  transactionSelectors,
-} from "../../redux/features/transactionSlice";
 
 function NavMenu() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [isVerified, setIsVeryfied] = useState(null);
-  const dispatch = useDispatch();
-  const buyer = useSelector(buyerTransactionSelectors.selectAll);
-  const seller = useSelector(transactionSelectors.selectAll);
+  const [data, setData] = useState([]);
+  const [newData, setNewData] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -33,10 +23,40 @@ function NavMenu() {
 
   useEffect(() => {
     if (isVerified === true) {
-      dispatch(getBuyerTransactions());
-      dispatch(getSellerTransactions());
+      getTransactions();
+      getBuyerTransactions();
     }
   }, [isVerified]);
+
+  const getTransactions = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller",
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      setData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getBuyerTransactions = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/buyer",
+        data: newData,
+        headers: { Authorization: token },
+      });
+
+      setNewData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getUser = async () => {
     try {
@@ -209,8 +229,8 @@ function NavMenu() {
         >
           <Menu.Items className="absolute top-8 -right-4 mt-2 max-h-[300px] w-[300px]  origin-top-right divide-y divide-gray-100 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:right-0 lg:w-[376px]">
             <div className="px-1 py-1 ">
-              {seller &&
-                seller.map((item) => (
+              {data &&
+                data.map((item) => (
                   <Menu.Item key={item?.product_transactions[0]?.id}>
                     <Link
                       to={`/seller/bidding/${item?.product_transactions[0]?.id}`}
@@ -288,8 +308,8 @@ function NavMenu() {
                   </Menu.Item>
                 ))}
 
-              {buyer &&
-                buyer.map((item) => (
+              {newData &&
+                newData.map((item) => (
                   <Menu.Item key={item.id}>
                     <Link to={"/"}>
                       <div className="group flex justify-between border-b-[1px] p-2 hover:cursor-pointer hover:rounded-lg hover:bg-olive-02 lg:p-5">

@@ -74,7 +74,7 @@ const Wishlist = () => {
                       className="mr-2 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
                       key={item.id}
                     >
-                      <Link to={`/buyer/detail/${item?.product.id}`}>
+                      <Link to={`/buyer/detail/${item?.product?.id}`}>
                         <div className="mb-2 h-24 overflow-hidden rounded-md bg-cover bg-center p-2">
                           <img
                             src={
@@ -87,7 +87,7 @@ const Wishlist = () => {
                           />
                         </div>
                       </Link>
-                      <Link to={`/buyer/detail/${item?.product.id}`}>
+                      <Link to={`/buyer/detail/${item?.product?.id}`}>
                         <h5 className="mb-1 truncate text-xs font-normal capitalize hover:text-olive-04 sm:text-sm">
                           {item?.product?.name}
                         </h5>

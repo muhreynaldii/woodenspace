@@ -5,8 +5,11 @@ import NavMenu from "./../../components/NavMenu/NavMenu";
 import ModalTawar from "../../components/ModalTawar/ModalTawar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { FcLike } from "react-icons/fc";
+import { BiTrashAlt } from "react-icons/bi";
 import Swal from "sweetalert2";
 import "../../Alert.css";
+import "animate.css";
 
 const DetailProductBuyer = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -15,8 +18,84 @@ const DetailProductBuyer = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    document.title = "Detail Produk Buyer | Woodenspace";
     product();
   }, [id]);
+
+  const createWishlist = async () => {
+    try {
+      const res = await axios({
+        method: "post",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/wishlist/productId/${id}`,
+        data: id,
+        headers: { Authorization: token },
+      });
+
+      if (res.status === 201) {
+        Swal.fire({
+          html: "<p>Berhasil ditambahkan ke Wishlist</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        html: "<p>Produk sudah ada dalam Wishlist</p>",
+        position: "top",
+        showConfirmButton: false,
+        color: "white",
+        padding: "0",
+        width: 500,
+        timer: 1500,
+        showClass: {
+          popup: "animate__animated animate__headShake",
+        },
+        customClass: "swal-danger",
+      });
+    }
+  };
+
+  const deleteWishlist = async () => {
+    try {
+      const res = await axios({
+        method: "delete",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/wishlist/productId/${id}`,
+        data: id,
+        headers: { Authorization: token },
+      });
+      if (res.status === 200) {
+        Swal.fire({
+          html: "<p>Produk Berhasil dihapus dari Wishlist</p>",
+          position: "top",
+          showConfirmButton: false,
+          color: "white",
+          width: 500,
+          padding: "0",
+          timer: 2000,
+          customClass: "swal-success",
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        html: "<p>Produk tidak berada dalam Wishlist</p>",
+        position: "top",
+        showConfirmButton: false,
+        color: "white",
+        padding: "0",
+        width: 500,
+        timer: 1500,
+        showClass: {
+          popup: "animate__animated animate__headShake",
+        },
+        customClass: "swal-danger",
+      });
+    }
+  };
 
   const product = async () => {
     try {
@@ -140,6 +219,27 @@ const DetailProductBuyer = () => {
                     {data?.owner?.detail?.city}
                   </p>
                 </div>
+              </div>
+              <div className="mt-2 flex flex-row justify-around lg:flex-col lg:justify-start">
+                <button
+                  className="my-2 flex h-10 w-[200px] items-center justify-start rounded-md py-2 px-3 shadow-high hover:bg-[#fcfcfc] sm:w-[222px]"
+                  onClick={createWishlist}
+                >
+                  <FcLike className="mr-4 text-lg sm:text-xl" />
+                  <span className="text-xs text-black sm:text-sm">
+                    Add To Wishlist
+                  </span>
+                </button>
+
+                <button
+                  className="my-2 flex h-10 w-[200px] items-center justify-start rounded-md bg-red-600 px-3 py-2 shadow-high hover:bg-red-500 sm:w-[222px]"
+                  onClick={deleteWishlist}
+                >
+                  <BiTrashAlt className="mr-4  text-xl text-white" />
+                  <span className="text-xs text-white sm:text-sm">
+                    Remove From Wishlist
+                  </span>
+                </button>
               </div>
             </div>
           </div>

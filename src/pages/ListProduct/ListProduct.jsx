@@ -12,6 +12,7 @@ const ListProduct = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    document.title = "Daftar Jualan Saya | Woodenspace";
     getUserProfile();
     getProducts();
   }, []);

@@ -19,6 +19,7 @@ function InfoProduk() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Tambah Product | Woodenspace";
     getCategory();
   }, []);
 

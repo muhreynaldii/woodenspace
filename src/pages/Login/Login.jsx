@@ -14,6 +14,7 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Login | Woodenspace";
     if (localStorage.getItem("token")) {
       navigate("/");
     }

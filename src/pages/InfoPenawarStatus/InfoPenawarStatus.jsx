@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import ModalStatus from "../../components/ModalStatus/ModalStatus";
-import { useEffect } from "react";
 import axios from "axios";
 import dateFormat from "dateformat";
 
 const InfoPenawarStatus = () => {
+  useEffect(() => {
+    document.title = "Info Penawar Status | Woodenspace";
+  }, []);
+
   const token = localStorage.getItem("token");
   let [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);

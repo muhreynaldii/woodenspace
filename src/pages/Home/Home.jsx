@@ -26,6 +26,7 @@ function Home() {
   const [isVerified, setIsVeryfied] = useState(null);
 
   useEffect(() => {
+    document.title = "Home | Woodenspace";
     products();
     getCategory();
     getUser();

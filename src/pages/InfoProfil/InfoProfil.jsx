@@ -23,6 +23,7 @@ function InfoProfil() {
   };
 
   useEffect(() => {
+    document.title = "Profil | Woodenspace";
     getUserProfile();
   }, []);
 

@@ -15,6 +15,7 @@ const DetailProduct = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    document.title = "Detail Produk Seller | Woodenspace";
     getDetailProduct();
   }, []);
 

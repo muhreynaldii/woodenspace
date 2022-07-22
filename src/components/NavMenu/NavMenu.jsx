@@ -72,7 +72,7 @@ function NavMenu() {
         hideClass: {
           popup: "animate__animated animate__backOutUp",
         },
-        customClass: "swal-dark",
+        customClass: "swal-info",
       });
     } catch (error) {
       console.log(error);

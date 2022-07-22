@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import fi_arrow_left from "../../assets/icons/fi_arrow-left.svg";
 import { useState } from "react";
@@ -8,20 +8,32 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import "../../Alert.css";
 
-function InfoProduk() {
+function EditProduct() {
   const token = localStorage.getItem("token");
-  const [name, setName] = useState("");
-  const [category_id, setCategory_id] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [productImages, setProductImages] = useState([]);
+  const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
-    document.title = "Tambah Product | Woodenspace";
     getCategory();
+    getDetailProduct();
   }, []);
+
+  const getDetailProduct = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/seller/product/${id}`,
+        data: data,
+        headers: { Authorization: token },
+      });
+
+      setData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getCategory = async () => {
     try {
@@ -36,38 +48,25 @@ function InfoProduk() {
     }
   };
 
-  const handleFilesChange = (e) => {
-    setProductImages(e.target.files);
-  };
-
-  const addProduct = async (e) => {
+  const editProduct = async (e) => {
     e.preventDefault();
-
-    const data = new FormData();
-    data.append("name", name);
-    data.append("category_id", category_id);
-    data.append("price", price);
-    data.append("description", description);
-
-    for (let i = 0; i < productImages.length; i++) {
-      data.append("productImages", productImages[i]);
-    }
 
     try {
       const res = await axios({
-        method: "post",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/seller/product/",
+        method: "put",
+        url: `https://wooden-space-api-development.herokuapp.com/api/v1/seller/product/${id}`,
         data: data,
         headers: {
           Authorization: token,
-          "content-type": "multipart/formdata",
         },
       });
+
+      getDetailProduct();
 
       if (res.status === 200) {
         navigate("/seller/list_product");
         Swal.fire({
-          html: "<p>Produk berhasil diterbitkan.</p>",
+          html: "<p>Produk berhasil diperbarui.</p>",
           position: "top",
           showConfirmButton: false,
           color: "white",
@@ -80,7 +79,7 @@ function InfoProduk() {
     } catch (error) {
       console.log(error);
       Swal.fire({
-        html: "<p>Produk gagal diterbitkan.</p>",
+        html: "<p>Produk gagal diperbarui.</p>",
         position: "top",
         showConfirmButton: false,
         color: "white",
@@ -109,12 +108,12 @@ function InfoProduk() {
         <div className="container mx-auto px-4">
           <div className="mx-auto flex w-full flex-wrap justify-center lg:w-[800px] lg:flex-nowrap">
             <div className="mr-auto mb-6 lg:mr-0 lg:mb-0">
-              <Link to="/">
+              <Link to={`/seller/detail/${data.id}`}>
                 <img src={fi_arrow_left} alt="" />
               </Link>
             </div>
             <div className="mx-auto w-full font-normal lg:w-[568px]">
-              <form onSubmit={(e) => addProduct(e)}>
+              <form onSubmit={(e) => editProduct(e)}>
                 <div className="form-group mb-4">
                   <label htmlFor="nama_produk">
                     <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
@@ -125,7 +124,13 @@ function InfoProduk() {
                       id="nama"
                       placeholder="Nama Produk"
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
-                      onChange={(e) => setName(e.target.value)}
+                      value={data.name || ""}
+                      onChange={(e) =>
+                        setData({
+                          ...data,
+                          name: e.target.value,
+                        })
+                      }
                     />
                   </label>
                 </div>
@@ -140,7 +145,13 @@ function InfoProduk() {
                       id="harga"
                       placeholder="Rp. 0,00"
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
-                      onChange={(e) => setPrice(e.target.value)}
+                      value={data.price || 0}
+                      onChange={(e) =>
+                        setData({
+                          ...data,
+                          price: parseInt(e.target.value),
+                        })
+                      }
                     />
                   </label>
                 </div>
@@ -154,7 +165,12 @@ function InfoProduk() {
                       name="kategori"
                       id="kategori"
                       className="value:text-neutral-03 block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
-                      onChange={(e) => setCategory_id(e.target.value)}
+                      onChange={(e) =>
+                        setData({
+                          ...data,
+                          category_id: parseInt(e.target.value),
+                        })
+                      }
                     >
                       <option className="text-xs text-neutral-03">
                         Pilih Kategori
@@ -185,66 +201,23 @@ function InfoProduk() {
                       rows="2"
                       placeholder="Deskripsi Produk"
                       className="block w-full rounded-2xl border px-4 py-3 text-xs placeholder:text-neutral-03"
-                      onChange={(e) => setDescription(e.target.value)}
+                      value={data.description || ""}
+                      onChange={(e) =>
+                        setData({
+                          ...data,
+                          description: e.target.value,
+                        })
+                      }
                     ></textarea>
                   </label>
                 </div>
 
-                <div className="form-group mb-4 flex items-end">
-                  <label htmlFor="no">
-                    <span className="mb-1 block text-xs font-normal after:text-pink-500 after:content-['*']">
-                      Foto Produk
-                    </span>
-                    <div className="relative h-24 w-24 rounded-lg border-2 border-dashed p-9 shadow hover:border-olive-03">
-                      <label
-                        htmlFor="fileInput"
-                        className="absolute top-8 left-8"
-                      >
-                        <svg
-                          id="plus"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          className="icon line cursor-pointer stroke-neutral-03 group-hover:stroke-olive-04"
-                          width="30"
-                          height="30"
-                        >
-                          <path
-                            id="primary"
-                            d="M5,12H19M12,5V19"
-                            style={{
-                              strokelLinecap: "round",
-                              strokeLinejoin: "round",
-                              strokeWidth: 2,
-                            }}
-                          ></path>
-                        </svg>
-                      </label>
-                      <input
-                        id="fileInput"
-                        type="file"
-                        name="productImages"
-                        className="hidden"
-                        onChange={handleFilesChange}
-                        accept="image/png, image/jpg, image/jpeg"
-                        multiple
-                      />
-                    </div>
-                  </label>
-                  {productImages.length > 0 && (
-                    <span className="ml-4 mt-4">
-                      {productImages.length} Files
-                    </span>
-                  )}
-                </div>
-                <div className="button-group mb-20 flex gap-4">
-                  <button className="mx-auto block w-1/2 rounded-2xl border border-olive-04 bg-white px-6 py-3 text-sm font-medium text-neutral-04 transition duration-300 hover:bg-olive-04 hover:text-white">
-                    <Link to="/seller/detail">Preview</Link>
-                  </button>
+                <div className="button-group mb-20">
                   <button
                     type="submit"
-                    className="transiiton mx-auto block w-1/2 rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-olive-02 hover:text-neutral-04"
+                    className="transiiton mx-auto block w-full rounded-2xl bg-olive-04 px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-olive-02 hover:text-neutral-04"
                   >
-                    Terbitkan
+                    Update
                   </button>
                 </div>
               </form>
@@ -256,4 +229,4 @@ function InfoProduk() {
   );
 }
 
-export default InfoProduk;
+export default EditProduct;

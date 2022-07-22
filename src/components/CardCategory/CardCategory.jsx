@@ -161,7 +161,7 @@ const CardCategory = () => {
                 ></path>
               </svg>
               <Link
-                to="#"
+                to="/seller/terjual"
                 className="mr-[9.75rem] text-base font-normal text-neutral-05 group-hover:text-olive-04 lg:mr-[92px]"
               >
                 Terjual

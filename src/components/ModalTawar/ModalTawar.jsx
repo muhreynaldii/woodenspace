@@ -44,7 +44,7 @@ const ModalTawar = ({
                   <div className="flex flex-col">
                     <img
                       src={iconX}
-                      alt=""
+                      alt="icon-X"
                       className="mb-2 h-[34px] w-[34px] cursor-pointer self-end"
                       onClick={closeModal}
                     />
@@ -61,7 +61,7 @@ const ModalTawar = ({
                     <div className="mb-6 flex h-[80px] w-full items-center rounded-2xl bg-[#EEEEEE] p-4 shadow-high">
                       <img
                         src={product_images && product_images[0].url}
-                        alt=""
+                        alt="ProductImage"
                         className="mr-4 h-[48px] w-[48px] rounded-xl"
                       />
                       <div>

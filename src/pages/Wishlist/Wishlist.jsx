@@ -100,7 +100,7 @@ const Wishlist = () => {
                 ) : (
                   data.map((item) => (
                     <div
-                      className="h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
+                      className="mr-2 h-[198px] w-[48%] rounded-md p-2 shadow-low lg:w-[207px]"
                       key={item.id}
                     >
                       <Link to={`/buyer/detail/${item?.product.id}`}>

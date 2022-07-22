@@ -8,24 +8,27 @@ import { useEffect } from "react";
 import dateFormat from "dateformat";
 import Swal from "sweetalert2";
 import "../../Alert.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, userSelectors } from "../../redux/features/userSlice";
 
 const InfoPenawar = () => {
   const token = localStorage.getItem("token");
   let [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
-  const [profile, setProfile] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
   const [status, setStatus] = useState("");
   const [idTransaction, setIdTransaction] = useState(0);
+  const dispatch = useDispatch();
+  const user = useSelector(userSelectors.selectAll);
 
   useEffect(() => {
     getTransaction();
   }, [id]);
 
   useEffect(() => {
-    getUserProfile();
-  }, []);
+    dispatch(getUser());
+  }, [dispatch]);
 
   useEffect(() => {
     if (status === "accepted") {
@@ -45,21 +48,6 @@ const InfoPenawar = () => {
       setData(res.data.data);
       setStatus(res.data.data.status);
       setIdTransaction(res.data.data.id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getUserProfile = async () => {
-    try {
-      const res = await axios({
-        method: "get",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
-        data: profile,
-        headers: { Authorization: token },
-      });
-
-      setProfile(res.data.data.detail);
     } catch (error) {
       console.log(error);
     }
@@ -154,14 +142,14 @@ const InfoPenawar = () => {
                 <div className="flex items-center">
                   <div className="overflow-hidden rounded-2xl">
                     <img
-                      src={profile.avatar_url}
+                      src={user[0]?.avatar_url}
                       alt="User"
                       className="h-[48px] w-[48px] overflow-hidden rounded-2xl"
                     />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium">{profile.name}</p>
-                    <p className="text-xs text-neutral-03">{profile.city}</p>
+                    <p className="text-sm font-medium">{user[0]?.name}</p>
+                    <p className="text-xs text-neutral-03">{user[0]?.city}</p>
                   </div>
                 </div>
 
@@ -229,9 +217,9 @@ const InfoPenawar = () => {
                 closeModal={closeModal}
                 isOpen={isOpen}
                 acceptTransaction={() => acceptTransaction()}
-                avatar={profile.avatar_url}
-                nama_penjual={profile.name}
-                city={profile.city}
+                avatar={user[0]?.avatar_url}
+                nama_penjual={user[0]?.name}
+                city={user[0]?.city}
                 product_image={data?.product?.product_images[0]?.url}
                 nama_product={data?.product?.name}
                 price={data?.product?.price}

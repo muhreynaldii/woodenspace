@@ -6,21 +6,24 @@ import ModalStatus from "../../components/ModalStatus/ModalStatus";
 import { useEffect } from "react";
 import axios from "axios";
 import dateFormat from "dateformat";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, userSelectors } from "../../redux/features/userSlice";
 
 const InfoPenawarStatus = () => {
   const token = localStorage.getItem("token");
   let [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
-  const [profile, setProfile] = useState([]);
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector(userSelectors.selectAll);
 
   useEffect(() => {
     getTransaction();
   }, [id]);
 
   useEffect(() => {
-    getUserProfile();
-  }, []);
+    dispatch(getUser());
+  }, [dispatch]);
 
   function closeModal() {
     setIsOpen(false);
@@ -40,21 +43,6 @@ const InfoPenawarStatus = () => {
       });
 
       setData(res.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getUserProfile = async () => {
-    try {
-      const res = await axios({
-        method: "get",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
-        data: profile,
-        headers: { Authorization: token },
-      });
-
-      setProfile(res.data.data.detail);
     } catch (error) {
       console.log(error);
     }
@@ -94,14 +82,14 @@ const InfoPenawarStatus = () => {
                 <div className="flex items-center">
                   <div className="overflow-hidden rounded-2xl">
                     <img
-                      src={profile.avatar_url}
+                      src={user[0]?.avatar_url}
                       alt="User"
                       className="h-[48px] w-[48px] overflow-hidden rounded-2xl"
                     />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium">{profile.name}</p>
-                    <p className="text-xs text-neutral-03">{profile.city}</p>
+                    <p className="text-sm font-medium">{user[0]?.name}</p>
+                    <p className="text-xs text-neutral-03">{user[0]?.city}</p>
                   </div>
                 </div>
 

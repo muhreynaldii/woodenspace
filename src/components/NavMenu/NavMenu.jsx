@@ -7,43 +7,45 @@ import Swal from "sweetalert2";
 import "animate.css";
 import "../../Alert.css";
 import dateFormat from "dateformat";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  buyerTransactionSelectors,
+  getBuyerTransactions,
+} from "../../redux/features/buyerTransactionSlice";
+import {
+  getSellerTransactions,
+  transactionSelectors,
+} from "../../redux/features/transactionSlice";
 
 function NavMenu() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [newData, setNewData] = useState([]);
+  const [isVerified, setIsVeryfied] = useState(null);
+  const dispatch = useDispatch();
+  const buyer = useSelector(buyerTransactionSelectors.selectAll);
+  const seller = useSelector(transactionSelectors.selectAll);
 
   useEffect(() => {
-    getTransactions();
-    getBuyerTransactions();
-  }, []);
-
-  const getTransactions = async () => {
-    try {
-      const res = await axios({
-        method: "get",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/seller",
-        data: data,
-        headers: { Authorization: token },
-      });
-
-      setData(res.data.data);
-    } catch (error) {
-      console.log(error);
+    if (token) {
+      getUser();
     }
-  };
+  }, [token]);
 
-  const getBuyerTransactions = async () => {
+  useEffect(() => {
+    if (isVerified === true) {
+      dispatch(getBuyerTransactions());
+      dispatch(getSellerTransactions());
+    }
+  }, [isVerified]);
+
+  const getUser = async () => {
     try {
       const res = await axios({
         method: "get",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/transaction/buyer",
-        data: newData,
+        url: "https://wooden-space-api-development.herokuapp.com/api/v1/user/profile",
         headers: { Authorization: token },
       });
-
-      setNewData(res.data.data);
+      setIsVeryfied(res.data.data.isVerified);
     } catch (error) {
       console.log(error);
     }
@@ -207,8 +209,8 @@ function NavMenu() {
         >
           <Menu.Items className="absolute top-8 -right-4 mt-2 max-h-[300px] w-[300px]  origin-top-right divide-y divide-gray-100 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:right-0 lg:w-[376px]">
             <div className="px-1 py-1 ">
-              {data &&
-                data.map((item) => (
+              {seller &&
+                seller.map((item) => (
                   <Menu.Item key={item?.product_transactions[0]?.id}>
                     <Link
                       to={`/seller/bidding/${item?.product_transactions[0]?.id}`}
@@ -286,15 +288,15 @@ function NavMenu() {
                   </Menu.Item>
                 ))}
 
-              {newData &&
-                newData.map((item) => (
+              {buyer &&
+                buyer.map((item) => (
                   <Menu.Item key={item.id}>
                     <Link to={"/"}>
                       <div className="group flex justify-between border-b-[1px] p-2 hover:cursor-pointer hover:rounded-lg hover:bg-olive-02 lg:p-5">
                         <div className="flex">
                           <div className="mr-2 lg:mr-4">
                             <img
-                              src={item.product.product_images[0].url}
+                              src={item?.product?.product_images[0]?.url}
                               alt=""
                               className="h-[48px] w-[48px] overflow-hidden rounded-md object-cover"
                             />
@@ -314,7 +316,7 @@ function NavMenu() {
                               <span className="ml-1 mt-1 h-2 w-2 rounded-[50%] bg-red-500"></span>
                             </div>
                             <p className="truncate py-1 text-xs font-normal capitalize lg:text-sm">
-                              {item.product.name}
+                              {item?.product?.name}
                             </p>
 
                             {item.status === "offered" && (
@@ -331,7 +333,7 @@ function NavMenu() {
                                 <p className="text-xs font-normal line-through lg:text-sm ">
                                   Rp.
                                   {new Intl.NumberFormat("id-ID").format(
-                                    Math.floor(item.product.price)
+                                    Math.floor(item?.product?.price)
                                   )}
                                 </p>
                                 <p className="text-xs font-normal lg:text-sm ">

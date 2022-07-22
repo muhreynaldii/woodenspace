@@ -18,34 +18,38 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import "../../Alert.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  categorySelectors,
+  getCategories,
+} from "../../redux/features/categorySlice";
 
 function Home() {
   const token = localStorage.getItem("token");
-  const [data, setData] = useState([]);
-  const [category, setCategory] = useState([]);
   const [isVerified, setIsVeryfied] = useState(null);
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const categories = useSelector(categorySelectors.selectAll);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   useEffect(() => {
     document.title = "Home | Woodenspace";
-    products();
-    getCategory();
-    getUser();
   }, []);
 
-  const getCategory = async () => {
-    try {
-      const response = await axios({
-        method: "get",
-        url: "https://wooden-space-api-development.herokuapp.com/api/v1/category/",
-        data: category,
-      });
-      setCategory(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
-  const products = async () => {
+  useEffect(() => {
+    if (token) {
+      getUser();
+    }
+  }, [token]);
+
+  const getProducts = async () => {
     try {
       const response = await axios({
         method: "get",
@@ -53,7 +57,6 @@ function Home() {
         headers: token && { Authorization: token },
         data: data,
       });
-
       setData(response.data.data);
     } catch (error) {
       console.log(error);
@@ -180,8 +183,8 @@ function Home() {
                 <ButtonCategory name={"Semua"} />
               </SwiperSlide>
 
-              {category &&
-                category.map((item) => (
+              {categories &&
+                categories.map((item) => (
                   <SwiperSlide style={{ width: "auto" }} key={item.id}>
                     <ButtonCategory name={item.name} />
                   </SwiperSlide>
@@ -204,8 +207,8 @@ function Home() {
                     <div className="overflow-hidden">
                       <img
                         src={
-                          item.product_images[0].url
-                            ? item.product_images[0].url
+                          item?.product_images[0]?.url
+                            ? item?.product_images[0]?.url
                             : "https://fakeimg.pl/300/?text=NoPhoto"
                         }
                         alt={item.name}

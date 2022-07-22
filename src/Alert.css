@@ -20,6 +20,12 @@
   height: 52px;
 }
 
+.swal-info {
+  background-color: #d2ecf1;
+  border-radius: 12px;
+  height: 52px;
+}
+
 @media screen and (max-width: 640px) {
   .swal-dark {
     background-color: #d2ecf1;
